@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  taxcat-website:
+    build: .
+    container_name: taxcat-website
+    restart: unless-stopped
+    ports:
+      - "9847:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+    networks:
+      - taxcat-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.taxcat.rule=Host(`taxcat.ca`) || Host(`www.taxcat.ca`)"
+      - "traefik.http.routers.taxcat.entrypoints=websecure"
+      - "traefik.http.routers.taxcat.tls.certresolver=letsencrypt"
+      - "traefik.http.services.taxcat.loadbalancer.server.port=3000"
+      # Redirect www to non-www
+      - "traefik.http.routers.taxcat-www.rule=Host(`www.taxcat.ca`)"
+      - "traefik.http.routers.taxcat-www.entrypoints=websecure"
+      - "traefik.http.routers.taxcat-www.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.taxcat-www.middlewares=redirect-to-non-www"
+      - "traefik.http.middlewares.redirect-to-non-www.redirectregex.regex=^https://www\\.(.+)"
+      - "traefik.http.middlewares.redirect-to-non-www.redirectregex.replacement=https://$${1}"
+      - "traefik.http.middlewares.redirect-to-non-www.redirectregex.permanent=true"
+
+networks:
+  taxcat-network:
+    driver: bridge
+
+# Alternative configuration without Traefik (direct port mapping)
+# Uncomment the section below if you're not using Traefik reverse proxy
+
+# version: '3.8'
+# services:
+#   taxcat-website:
+#     build: .
+#     container_name: taxcat-website
+#     restart: unless-stopped
+#     ports:
+#       - "80:3000"   # Map port 80 to container port 3000
+#       - "443:3000"  # If you have SSL setup manually
+#     environment:
+#       - NODE_ENV=production
+#       - PORT=3000
+#       - HOSTNAME=0.0.0.0 

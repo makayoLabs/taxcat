@@ -1,0 +1,11 @@
+# Netlify redirects
+# Redirect rules for Netlify hosting
+
+# SPA fallback (if needed for client-side routing, but since static HTML, not necessary)
+# /*    /index.html   200
+
+# Example redirects
+# /old-page  /new-page  301
+
+# Contact form handling (if using Netlify forms)
+# /contact  /contact  200

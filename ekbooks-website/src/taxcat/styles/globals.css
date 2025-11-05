@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Sophisticated cat-themed colors */
+  --primary-navy: #2C3E50;    /* Deep Siamese Blue */
+  --primary-blue: #3498DB;    /* Bright Russian Blue */
+  --accent-gold: #F1C40F;     /* Tabby Gold */
+  --accent-orange: #E67E22;   /* Ginger Cat Orange */
+  --background-light: #F9FAFC; /* Snow White Cat */
+  --text-light: #7F8C8D;      /* Grey Cat */
+  --success-green: #27AE60;   /* Cat Eye Green */
+  --warning-amber: #F39C12;   /* Cat Eye Amber */
+  --error-red: #E74C3C;       /* Persian Red */
+}
+
+@layer base {
+  body {
+    @apply bg-background-light text-gray-900;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .form-radio {
+    @apply h-4 w-4 text-primary-blue border-gray-300 focus:ring-primary-blue;
+  }
+
+  .cat-card {
+    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200;
+  }
+
+  .cat-button {
+    @apply px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-opacity-90 transition-colors duration-200;
+  }
+
+  .cat-input {
+    @apply rounded-md border-gray-300 focus:border-primary-blue focus:ring focus:ring-primary-blue focus:ring-opacity-50;
+  }
+
+  .cat-tab {
+    @apply px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .cat-tab-active {
+    @apply bg-primary-blue text-white;
+  }
+
+  .cat-tab-inactive {
+    @apply bg-gray-200 text-gray-700 hover:bg-gray-300;
+  }
+} 

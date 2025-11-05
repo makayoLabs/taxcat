@@ -1,0 +1,175 @@
+/* ======================
+   EKBOOKS BRAND IDENTITY
+   Marketing Coordinator Approved
+   ====================== */
+
+:root {
+  /* Primary Colors - Banking Trust */
+  --ekbooks-primary: #00843D;           /* TD Bank Green */
+  --ekbooks-primary-dark: #006B32;
+  --ekbooks-primary-light: #E6F4EC;
+  --ekbooks-primary-hover: #009647;
+  
+  /* Secondary Colors - Tech Professional */
+  --ekbooks-secondary: #0077C5;         /* QuickBooks Blue */
+  --ekbooks-secondary-dark: #005A94;
+  --ekbooks-secondary-light: #E3F2FB;
+  
+  /* Accent Colors - Sophisticated Navy */
+  --ekbooks-accent: #1D2D5C;            /* Blue Jays Navy */
+  --ekbooks-accent-dark: #151F3D;
+  --ekbooks-accent-light: #E8EBF2;
+  
+  /* Neutrals - Wealthsimple Inspired */
+  --ekbooks-background: #fcfcfc;
+  --ekbooks-background-alt: #f6f8fa;
+  --ekbooks-background-dark: #eeece7;
+  --ekbooks-background-hero: #E6F4EC;   /* Soft green */
+  
+  /* Text Colors */
+  --ekbooks-text: #32302f;
+  --ekbooks-text-muted: #6b6b6b;
+  --ekbooks-text-light: #ffffff;
+  
+  /* Status Colors */
+  --ekbooks-success: #00843D;
+  --ekbooks-warning: #F5A623;
+  --ekbooks-error: #E8291C;
+  --ekbooks-info: #0077C5;
+}
+
+/* EKBooks Theme Application */
+.theme-ekbooks,
+body[data-theme="ekbooks"],
+body {
+  --color-primary: var(--ekbooks-primary);
+  --color-primary-dark: var(--ekbooks-primary-dark);
+  --color-primary-light: var(--ekbooks-primary-light);
+  
+  --color-secondary: var(--ekbooks-secondary);
+  --color-accent: var(--ekbooks-accent);
+  
+  --color-background: var(--ekbooks-background);
+  --color-background-alt: var(--ekbooks-background-alt);
+  --color-background-accent: var(--ekbooks-background-hero);
+  
+  --color-text: var(--ekbooks-text);
+  --color-text-muted: var(--ekbooks-text-muted);
+  
+  /* Update legacy color names */
+  --accent-green: var(--ekbooks-primary);
+  --primary: var(--ekbooks-text);
+  
+  background-color: var(--ekbooks-background);
+  color: var(--ekbooks-text);
+}
+
+/* Primary Button with Gradient */
+.theme-ekbooks .btn-primary,
+body .btn-primary,
+.CTAButton_primaryButton {
+  background: linear-gradient(135deg, #00843D 0%, #009647 100%);
+  box-shadow: 0 4px 12px rgba(0, 132, 61, 0.25);
+  color: white;
+  border: none;
+}
+
+.theme-ekbooks .btn-primary:hover,
+body .btn-primary:hover,
+.CTAButton_primaryButton:hover {
+  background: linear-gradient(135deg, #006B32 0%, #00843D 100%);
+  box-shadow: 0 6px 16px rgba(0, 132, 61, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Secondary Button */
+.theme-ekbooks .btn-secondary,
+body .btn-secondary,
+.CTAButton_secondaryButton {
+  border: 2px solid var(--ekbooks-secondary);
+  color: var(--ekbooks-secondary);
+  background: transparent;
+}
+
+.theme-ekbooks .btn-secondary:hover,
+body .btn-secondary:hover,
+.CTAButton_secondaryButton:hover {
+  background-color: var(--ekbooks-secondary-light);
+  border-color: var(--ekbooks-secondary-dark);
+  color: var(--ekbooks-secondary-dark);
+}
+
+/* Links */
+.theme-ekbooks a:not([class*="Button"]),
+body a:not([class*="Button"]):not([class*="btn"]) {
+  color: var(--ekbooks-secondary);
+  transition: color 200ms ease;
+}
+
+.theme-ekbooks a:not([class*="Button"]):hover,
+body a:not([class*="Button"]):not([class*="btn"]):hover {
+  color: var(--ekbooks-secondary-dark);
+}
+
+/* Accent Badges */
+.theme-ekbooks .accent-badge,
+body .accent-badge,
+.TagPill_variantXsmall {
+  background-color: var(--ekbooks-accent-light);
+  color: var(--ekbooks-accent-dark);
+  border: 1px solid var(--ekbooks-accent);
+}
+
+/* Success/Financial amounts */
+.theme-ekbooks .text-success,
+body .text-success,
+.theme-ekbooks .text-accent-green,
+body .text-accent-green {
+  color: var(--ekbooks-primary) !important;
+  font-weight: 700;
+}
+
+/* Card hover effects */
+.theme-ekbooks .card:hover,
+body .card:hover,
+.theme-ekbooks .card-elevated:hover,
+body .card-elevated:hover {
+  border-color: var(--ekbooks-primary-light);
+  box-shadow: 0 8px 20px rgba(0, 132, 61, 0.15);
+}
+
+/* Focus states */
+.theme-ekbooks *:focus-visible,
+body *:focus-visible {
+  outline: 2px solid var(--ekbooks-primary);
+  outline-offset: 2px;
+}
+
+/* Input focus */
+.theme-ekbooks input:focus,
+body input:focus,
+.theme-ekbooks textarea:focus,
+body textarea:focus,
+.theme-ekbooks select:focus,
+body select:focus {
+  border-color: var(--ekbooks-primary);
+  box-shadow: 0 0 0 3px var(--ekbooks-primary-light);
+}
+
+/* Checkmarks and icons */
+.theme-ekbooks svg[class*="text-accent"],
+body svg[class*="text-accent"] {
+  color: var(--ekbooks-primary);
+}
+
+/* Progress bars */
+.theme-taxcat .bg-accent-green,
+body .bg-accent-green {
+  background-color: var(--ekbooks-primary) !important;
+}
+
+/* Pricing card highlights */
+.theme-ekbooks .border-accent-green,
+body .border-accent-green {
+  border-color: var(--ekbooks-primary) !important;
+}

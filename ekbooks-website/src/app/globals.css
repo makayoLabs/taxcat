@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import shared design system */
+@import '../../../taxcat-app/shared-design-system/styles/components.css';
+@import '../../../taxcat-app/shared-design-system/styles/brands/ekbooks.css';
+
+/* Base styles */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply antialiased;
+  }
+}
+
+/* Component layer for custom utilities */
+@layer components {
+  .container-max {
+    @apply w-full max-w-8xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+}

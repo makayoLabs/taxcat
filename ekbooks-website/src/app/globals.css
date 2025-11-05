@@ -1,25 +1,216 @@
+/* Import Google Fonts - Modern Typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700;800&family=DM+Serif+Display:wght@400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Import shared design system */
-@import '../../../taxcat-app/shared-design-system/styles/components.css';
-@import '../../../taxcat-app/shared-design-system/styles/brands/ekbooks.css';
+/* Wealthsimple-Inspired Design System - EKBooks */
+:root {
+  /* Primary - Professional Blue */
+  --color-primary: #0077C5;
+  --color-primary-dark: #005A94;
+  --color-primary-light: #E3F2FD;
 
-/* Base styles */
+  /* Secondary - Deep Blue */
+  --color-secondary: #134A8E;
+
+  /* Accent - Success Green */
+  --color-accent: #00A950;
+
+  /* Backgrounds - Clean & Minimal */
+  --background: #fcfcfc;
+  --background-alt: #f6f8fa;
+  --background-dark: #eeece7;
+  --background-accent: #E3F2FD;
+  --background-hero: #E9F2F9;
+
+  /* Text - Professional Hierarchy */
+  --text: #32302f;
+  --text-muted: #6b6b6b;
+  --text-light: #8a8a8a;
+  --white: #ffffff;
+
+  /* Semantic Colors */
+  --color-success: #00a950;
+  --color-warning: #f5a623;
+  --color-error: #e8291c;
+  --color-info: #0077c5;
+}
+
 @layer base {
   html {
     @apply scroll-smooth;
   }
-  
+
   body {
-    @apply antialiased;
+    @apply bg-background text-text antialiased;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    @apply font-bold;
+    letter-spacing: -0.02em;
   }
 }
 
-/* Component layer for custom utilities */
 @layer components {
-  .container-max {
-    @apply w-full max-w-8xl mx-auto px-6 sm:px-8 lg:px-12;
+  /* === WEALTHSIMPLE-STYLE COMPONENT SYSTEM === */
+
+  /* Buttons */
+  .ws-button {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-lg
+           transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
   }
+
+  .ws-button-primary {
+    @apply px-6 py-3 text-white shadow-sm hover:shadow-md;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #0088DD 100%);
+    box-shadow: 0 4px 12px rgba(0, 119, 197, 0.25);
+  }
+
+  .ws-button-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #005A94 0%, var(--color-primary) 100%);
+    box-shadow: 0 6px 16px rgba(0, 119, 197, 0.35);
+    transform: translateY(-1px);
+  }
+
+  .ws-button-secondary {
+    @apply px-6 py-3;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    background: transparent;
+  }
+
+  .ws-button-secondary:hover:not(:disabled) {
+    background-color: var(--background-accent);
+    border-color: #005A94;
+    color: #005A94;
+  }
+
+  .ws-button-sm { @apply px-4 py-2 text-sm; }
+  .ws-button-md { @apply px-6 py-3 text-base; }
+  .ws-button-lg { @apply px-8 py-4 text-lg; }
+
+  /* Cards */
+  .ws-card {
+    @apply bg-white rounded-2xl shadow-sm p-6 transition-all duration-200 border border-gray-100;
+  }
+
+  .ws-card:hover {
+    @apply shadow-md;
+    border-color: var(--color-primary);
+    border-opacity: 0.2;
+  }
+
+  /* Sections */
+  .ws-section {
+    @apply py-16 md:py-20 lg:py-24 px-4 sm:px-6;
+  }
+
+  .ws-section-lg {
+    @apply py-20 md:py-28 lg:py-32 px-4 sm:px-6;
+  }
+
+  .ws-section-primary {
+    background-color: var(--background);
+  }
+
+  .ws-section-alt {
+    background-color: var(--background-alt);
+  }
+
+  /* Containers */
+  .ws-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Grid */
+  .ws-grid {
+    @apply grid grid-cols-12 gap-6 md:gap-8;
+  }
+
+  /* Hero Layouts */
+  .ws-split-hero {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center;
+  }
+
+  /* Media */
+  .ws-media {
+    @apply relative w-full;
+  }
+
+  .ws-media-rounded {
+    @apply rounded-2xl overflow-hidden;
+  }
+}
+
+@layer utilities {
+  /* Typography */
+  .ws-display-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .ws-display-lg {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.15];
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  .ws-display-md {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.2];
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .ws-text-lg {
+    @apply text-lg md:text-xl leading-[1.6];
+  }
+
+  .ws-text-md {
+    @apply text-base md:text-lg leading-[1.6];
+  }
+
+  .ws-eyebrow-sm {
+    @apply text-xs md:text-sm font-semibold uppercase tracking-wide;
+    color: var(--text-muted);
+  }
+
+  /* Color Utilities */
+  .ws-color-muted {
+    color: var(--text-muted);
+  }
+
+  .ws-balance {
+    text-wrap: balance;
+  }
+
+  /* Brand Colors */
+  .text-brand-primary { color: var(--color-primary); }
+  .bg-brand-primary { background-color: var(--color-primary); }
+  .border-brand-primary { border-color: var(--color-primary); }
+}
+
+/* EKBooks Hero Animation */
+.ekbooks-hero-image {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.ekbooks-hero {
+  background: linear-gradient(135deg,
+    #E9F2F9 0%,
+    #F0F5FA 50%,
+    #FFFFFF 100%
+  );
 }

@@ -1,0 +1,203 @@
+# TaxCat Production Docker Compose for Unraid
+# Configured for existing infrastructure: PostgreSQL 17, Redis, SWAG/Traefik
+
+version: '3.8'
+
+services:
+
+  # EKBooks Application (TaxCat + Marketing Site)
+  ekbooks-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.unraid
+    container_name: ekbooks-app
+    restart: unless-stopped
+    environment:
+      # Core Configuration
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      - NEXT_TELEMETRY_DISABLED=1
+
+      # Database Connection (using existing PostgreSQL 17)
+      - DATABASE_URL=postgresql://taxcat:6ab3uFr5XlDoswUPh@192.168.2.125:5432/taxcat_prod
+
+      # Redis Connection (using existing Redis)
+      - REDIS_URL=redis://:Qus5urav5Jo7lslmO@192.168.2.125:6379
+
+      # Application URLs (configured for reverse proxy)
+      - NEXT_PUBLIC_APP_URL=https://ekbooks.ca
+      - NEXTAUTH_URL=https://ekbooks.ca
+      - NEXTAUTH_SECRET=k1Ab2QCpVvYxdI86iFTih3OGBpbQch6hhGPhJmuOICg=
+
+      # JWT Configuration
+      - JWT_SECRET=G6FaulLEsy+U/zkttG/0x4/K9ZdTkwPn7X3gXTpybe4=
+
+      # CMS Configuration
+      - CMS_ADMIN_EMAIL=admin@ekbooks.ca
+      - CMS_ADMIN_PASSWORD=W91+ruwroFa#uwaY#
+
+      # Security Configuration
+      - ENCRYPTION_KEY=rMYK/WMKcOsaADMeNF53s2a+olCUrx+01/hrcj02zHE=
+      - RATE_LIMIT_MAX=100
+
+      # Logging
+      - LOG_LEVEL=info
+      - LOG_FILE_PATH=/app/logs
+
+      # File Upload Configuration
+      - MAX_FILE_SIZE=10485760
+      - UPLOAD_DIRECTORY=/app/uploads
+
+      # Email Configuration (Nextcloud Integration)
+      - SMTP_HOST=nextcloud-aio-mailserver
+      - SMTP_PORT=587
+      - SMTP_USER=admin@ekbooks.ca
+      - SMTP_PASSWORD=${NEXTCLOUD_MAIL_PASSWORD}
+      - BUSINESS_EMAIL=admin@ekbooks.ca
+      - NOTIFICATION_EMAIL=notifications@ekbooks.ca
+      - NEXTCLOUD_MAIL_PASSWORD=your-nextcloud-mail-password-here
+
+      # Optional External Services (configure as needed)
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
+      - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${STRIPE_PUBLISHABLE_KEY:-}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:-}
+
+      # Monitoring (optional)
+      - SENTRY_DSN=${SENTRY_DSN:-}
+
+      # Analytics (optional)
+      - NEXT_PUBLIC_GA_ID=${NEXT_PUBLIC_GA_ID:-}
+    ports:
+      - "3000:3000"
+    volumes:
+      # Application data persistence
+      - ./data/uploads:/app/uploads
+      - ./data/logs:/app/logs
+      # Nextcloud integration (optional - for file sharing)
+      - nextcloud_data:/var/www/html/data
+      # Configuration files
+      - ./config:/app/config:ro
+    depends_on:
+      - nextcloud-aio-mailserver
+    networks:
+      - ekbooks-network
+      - nextcloud-aio
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 1G
+          cpus: '0.5'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Nextcloud AIO Mailserver (for business email integration)
+  nextcloud-aio-mailserver:
+    image: nextcloud/aio-mailserver:latest
+    container_name: nextcloud-mailserver
+    restart: unless-stopped
+    environment:
+      - MAILNAME=ekbooks.ca
+      - POSTMASTER_ADDRESS=postmaster@ekbooks.ca
+      - ENABLE_POP3=0
+      - ENABLE_IMAP=1
+      - ENABLE_SMTP=1
+      - ENABLE_SUBMISSION=1
+      - ENABLE_MANAGESIEVE=0
+      - ONE_DIR=1
+      - DMS_VMAIL_UID=5000
+      - DMS_VMAIL_GID=5000
+    volumes:
+      - nextcloud-mail-data:/var/mail
+      - nextcloud-mail-state:/var/mail-state
+      - ./config/mailserver:/tmp/docker-mailserver
+    networks:
+      - nextcloud-aio
+      - ekbooks-network
+    profiles:
+      - mail
+
+  # Nginx Reverse Proxy (Optional - for production setup)
+  nginx:
+    image: nginx:alpine
+    container_name: taxcat-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - ./data/logs/nginx:/var/log/nginx
+    depends_on:
+      - ekbooks-app
+      - nextcloud-aio-mailserver
+    networks:
+      - ekbooks-network
+      - nextcloud-aio
+    profiles:
+      - production
+
+  # Monitoring Stack (Optional - enable for production)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: taxcat-prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    networks:
+      - ekbooks-network
+    profiles:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: taxcat-grafana
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    depends_on:
+      - prometheus
+    networks:
+      - ekbooks-network
+    profiles:
+      - monitoring
+
+# Named volumes for data persistence
+volumes:
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  nextcloud_data:
+    driver: local
+  nextcloud-mail-data:
+    driver: local
+  nextcloud-mail-state:
+    driver: local
+
+# Network configuration
+networks:
+  ekbooks-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+  nextcloud-aio:
+    external: true  # Use existing Nextcloud AIO network

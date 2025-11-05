@@ -1,0 +1,234 @@
+/* Import Google Fonts - TaxCat Typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;800&family=Roboto+Mono:wght@400;600&display=swap');
+
+/* Import Brand System */
+@import './brand-taxcat.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TaxCat Brand Colors */
+:root {
+  /* Primary - H&R Block Green */
+  --color-primary: #00A950;
+  --accent-green: #00A950;
+  
+  /* Secondary - Toronto Blue */
+  --color-secondary: #134A8E;
+  
+  /* Accent - Premium Gold */
+  --color-accent: #F5A623;
+  
+  /* Backgrounds */
+  --background: #fcfcfc;
+  --background-alt: #f6f8fa;
+  --background-accent: #E6F7ED;
+  
+  /* Text */
+  --text: #32302f;
+  --text-muted: #6b6b6b;
+  --white: #ffffff;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text antialiased;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', 'Futura PT', sans-serif;
+    @apply font-bold text-primary;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+  
+  /* Monospace for numbers/data */
+  .font-mono {
+    font-family: 'Roboto Mono', 'Courier New', monospace;
+  }
+}
+
+@layer components {
+  /* TaxCat Primary Button with Gradient */
+  .btn-primary {
+    @apply px-6 py-3 text-white rounded-lg font-semibold 
+           transition-all duration-200 shadow-sm hover:shadow-md
+           inline-flex items-center justify-center gap-2;
+    background: linear-gradient(135deg, #00A950 0%, #00BD5E 100%);
+    box-shadow: 0 4px 12px rgba(0, 169, 80, 0.25);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #008040 0%, #00A950 100%);
+    box-shadow: 0 6px 16px rgba(0, 169, 80, 0.35);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-lg font-semibold 
+           transition-all duration-200
+           inline-flex items-center justify-center gap-2;
+    border: 2px solid #00A950;
+    color: #00A950;
+    background: transparent;
+  }
+
+  .btn-secondary:hover {
+    background-color: #E6F7ED;
+    border-color: #008040;
+    color: #008040;
+  }
+
+  .btn-ghost {
+    @apply px-6 py-3 text-primary rounded-lg font-semibold 
+           hover:bg-background-alt transition-all duration-200
+           inline-flex items-center justify-center gap-2;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-200;
+  }
+
+  .card-elevated {
+    @apply bg-white rounded-xl shadow-md p-8 hover:shadow-lg transition-shadow duration-200;
+  }
+
+  /* Input styles */
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg 
+           transition-all duration-200;
+  }
+  
+  .input-field:focus {
+    border-color: #00A950;
+    box-shadow: 0 0 0 3px #E6F7ED;
+    outline: none;
+  }
+
+  /* Section styles */
+  .section {
+    @apply py-16 md:py-20 lg:py-24 px-4;
+  }
+
+  .section-alt {
+    @apply py-16 md:py-20 lg:py-24 px-4 bg-background-alt;
+  }
+
+  .section-accent {
+    @apply py-16 md:py-20 lg:py-24 px-4;
+    background-color: #E6F7ED;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .eyebrow {
+    @apply text-sm md:text-base font-semibold uppercase tracking-wide text-text-muted;
+  }
+
+  /* Legacy compatibility classes */
+  .form-radio {
+    @apply h-4 w-4 border-gray-300;
+    color: #00A950;
+  }
+  
+  .form-radio:focus {
+    ring-color: #00A950;
+  }
+
+  .cat-card {
+    @apply card;
+  }
+
+  .cat-button {
+    @apply btn-primary;
+  }
+
+  .cat-input {
+    @apply input-field;
+  }
+
+  .cat-tab {
+    @apply px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .cat-tab-active {
+    background-color: #00A950;
+    @apply text-white;
+  }
+
+  .cat-tab-inactive {
+    @apply bg-gray-200 text-gray-700 hover:bg-gray-300;
+  }
+}
+
+@layer utilities {
+  .text-display-lg {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .text-display-md {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .text-display-sm {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold leading-tight;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* TaxCat brand color utilities */
+  .text-taxcat-green {
+    color: #00A950;
+  }
+  
+  .text-taxcat-blue {
+    color: #134A8E;
+  }
+  
+  .text-taxcat-gold {
+    color: #F5A623;
+  }
+  
+  .bg-taxcat-green {
+    background-color: #00A950;
+  }
+  
+  .bg-taxcat-blue {
+    background-color: #134A8E;
+  }
+  
+  .bg-taxcat-gold {
+    background-color: #F5A623;
+  }
+  
+  .border-taxcat-green {
+    border-color: #00A950;
+  }
+}

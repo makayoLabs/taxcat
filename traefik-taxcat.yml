@@ -1,0 +1,123 @@
+# Traefik configuration for TaxCat deployment with Authentik integration
+# Place this file in your Traefik config directory (e.g., /mnt/user/appdata/traefik/config/)
+
+http:
+  routers:
+    # EKBooks/TaxCat Application Router
+    ekbooks-app:
+      rule: "Host(`ekbooks.ca`) || Host(`www.ekbooks.ca`)"
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - ekbooks-auth
+        - ekbooks-headers
+        - ekbooks-rate-limit
+      service: ekbooks-app
+
+    # Nextcloud Router (if needed separately)
+    nextcloud:
+      rule: "Host(`nextcloud.yourdomain.com`)"
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - nextcloud-headers
+      service: nextcloud
+
+  middlewares:
+    # Authentik ForwardAuth for EKBooks
+    ekbooks-auth:
+      forwardAuth:
+        address: "http://authentik-server:9000/outpost.goauthentik.io/auth/traefik"
+        trustForwardHeader: true
+        authResponseHeaders:
+          - X-authentik-username
+          - X-authentik-groups
+          - X-authentik-email
+          - X-authentik-name
+          - X-authentik-uid
+        # Optional: Skip auth for marketing pages
+        # Uncomment below to allow public access to marketing site
+        # authRequestHeaders:
+        #   - X-Forwarded-Uri
+
+    # Security headers for EKBooks
+    ekbooks-headers:
+      headers:
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+          X-Real-IP: ""
+        customResponseHeaders:
+          X-Frame-Options: "DENY"
+          X-Content-Type-Options: "nosniff"
+          X-XSS-Protection: "1; mode=block"
+          Referrer-Policy: "strict-origin-when-cross-origin"
+          Permissions-Policy: "camera=(), microphone=(), geolocation=()"
+          Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.stripe.com https://*.sentry.io https://authentik-server:9000; frame-src 'self' https://js.stripe.com https://hooks.stripe.com;"
+        accessControlAllowOriginList:
+          - "https://ekbooks.ca"
+          - "https://www.ekbooks.ca"
+        accessControlAllowMethods:
+          - "GET"
+          - "POST"
+          - "PUT"
+          - "DELETE"
+          - "OPTIONS"
+        accessControlAllowHeaders:
+          - "Content-Type"
+          - "Authorization"
+          - "X-Requested-With"
+
+    # Rate limiting for EKBooks
+    ekbooks-rate-limit:
+      rateLimit:
+        burst: 100
+        average: 50
+
+    # Security headers for Nextcloud
+    nextcloud-headers:
+      headers:
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+        customResponseHeaders:
+          X-Frame-Options: "SAMEORIGIN"
+          X-Content-Type-Options: "nosniff"
+          X-XSS-Protection: "1; mode=block"
+          Referrer-Policy: "strict-origin-when-cross-origin"
+
+  services:
+    # EKBooks/TaxCat Application Service
+    ekbooks-app:
+      loadBalancer:
+        servers:
+          - url: "http://ekbooks-app:3000"
+        healthCheck:
+          path: "/api/health"
+          interval: "30s"
+          timeout: "10s"
+
+    # Nextcloud Service
+    nextcloud:
+      loadBalancer:
+        servers:
+          - url: "http://nextcloud-aio-apache:11000"
+        healthCheck:
+          path: "/status.php"
+          interval: "30s"
+          timeout: "10s"
+
+# Certificate resolver for automatic SSL
+tls:
+  certificates:
+    - certFile: /ssl/ekbooks.ca.crt
+      keyFile: /ssl/ekbooks.ca.key
+  options:
+    default:
+      minVersion: VersionTLS12
+      cipherSuites:
+        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256

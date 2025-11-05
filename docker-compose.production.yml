@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  taxcat-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    container_name: taxcat-app
+    restart: unless-stopped
+    environment:
+      # Database
+      - DATABASE_URL=postgresql://taxcat:6ab3uFr5XlDoswUPh@192.168.2.125:5432/taxcat_prod
+
+      # Redis
+      - REDIS_URL=redis://:Qus5urav5Jo7lslmO@192.168.2.125:6379
+
+      # NextAuth
+      - NEXTAUTH_URL=https://ekbooks.ca
+      - NEXTAUTH_SECRET=k1Ab2QCpVvYxdI86iFTih3OGBpbQch6hhGPhJmuOICg=
+
+      # JWT
+      - JWT_SECRET=G6FaulLEsy+U/zkttG/0x4/K9ZdTkwPn7X3gXTpybe4=
+
+      # Application
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      - NEXT_PUBLIC_APP_URL=https://ekbooks.ca
+      - NEXT_PUBLIC_SITE_URL=https://ekbooks.ca
+
+      # CMS
+      - CMS_ADMIN_EMAIL=admin@ekbooks.ca
+      - CMS_ADMIN_PASSWORD=W91+ruwroFa#uwaY#
+
+      # Security
+      - ENCRYPTION_KEY=rMYK/WMKcOsaADMeNF53s2a+olCUrx+01/hrcj02zHE=
+      - RATE_LIMIT_MAX=100
+
+      # Logging
+      - LOG_LEVEL=info
+      - LOG_FILE_PATH=/app/logs
+
+      # File Upload
+      - MAX_FILE_SIZE=10485760
+      - UPLOAD_DIRECTORY=/app/uploads
+
+      # Authentik (optional)
+      - AUTHENTIK_URL=https://YOUR_DOMAIN.com/auth
+      - AUTHENTIK_CLIENT_ID=taxcat-client
+      - AUTHENTIK_CLIENT_SECRET=YOUR_AUTHENTIK_SECRET
+
+      # Email (optional)
+      - SMTP_HOST=
+      - SMTP_PORT=587
+      - SMTP_USER=
+      - SMTP_PASSWORD=
+
+      # Payments (optional)
+      - STRIPE_SECRET_KEY=
+      - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+      - STRIPE_WEBHOOK_SECRET=
+
+      # Monitoring
+      - SENTRY_DSN=
+
+      # Next.js
+      - NEXT_TELEMETRY_DISABLED=1
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data/uploads:/app/uploads
+      - ./data/logs:/app/logs
+    networks:
+      - taxcat-network
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 1G
+          cpus: '0.5'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+networks:
+  taxcat-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

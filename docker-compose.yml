@@ -1,50 +1,54 @@
-version: '3.8'
-
 services:
-  taxcat-website:
-    build: .
-    container_name: taxcat-website
+  ekbooks:
+    build:
+      context: ./shared-wordpress-image
+      dockerfile: Dockerfile
+    image: local/wordpress-redis:ekbooks
+    container_name: wp_ekbooks
     restart: unless-stopped
-    ports:
-      - "9847:3000"
     environment:
-      - NODE_ENV=production
-      - PORT=3000
-      - HOSTNAME=0.0.0.0
+      WORDPRESS_DB_HOST: MariaDB-Official
+      WORDPRESS_DB_USER: ekbooks_user
+      WORDPRESS_DB_PASSWORD: AEVEjIztP24vca
+      WORDPRESS_DB_NAME: ekbooks_db
+      WORDPRESS_TABLE_PREFIX: wp_ek_
+      TZ: America/Toronto
+    volumes:
+      - ./ekbooks/html:/var/www/html
     networks:
-      - taxcat-network
+      - makprox
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.taxcat.rule=Host(`taxcat.ca`) || Host(`www.taxcat.ca`)"
+      - "traefik.http.routers.ekbooks.rule=Host(`ekbooks.ca`)"
+      - "traefik.http.routers.ekbooks.entrypoints=websecure"
+      - "traefik.http.routers.ekbooks.tls=true"
+      - "traefik.http.routers.ekbooks.tls.certresolver=cloudflare"
+
+  taxcat:
+    build:
+      context: ./shared-wordpress-image
+      dockerfile: Dockerfile
+    image: local/wordpress-redis:taxcat
+    container_name: wp_taxcat
+    restart: unless-stopped
+    environment:
+      WORDPRESS_DB_HOST: MariaDB-Official
+      WORDPRESS_DB_USER: taxcat_user
+      WORDPRESS_DB_PASSWORD: CpfmAgoNDN7Uym
+      WORDPRESS_DB_NAME: taxcat_db
+      WORDPRESS_TABLE_PREFIX: wp_tc_
+      TZ: America/Toronto
+    volumes:
+      - ./taxcat/html:/var/www/html
+    networks:
+      - webstack_net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.taxcat.rule=Host(`taxcat.ca`)"
       - "traefik.http.routers.taxcat.entrypoints=websecure"
-      - "traefik.http.routers.taxcat.tls.certresolver=letsencrypt"
-      - "traefik.http.services.taxcat.loadbalancer.server.port=3000"
-      # Redirect www to non-www
-      - "traefik.http.routers.taxcat-www.rule=Host(`www.taxcat.ca`)"
-      - "traefik.http.routers.taxcat-www.entrypoints=websecure"
-      - "traefik.http.routers.taxcat-www.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.taxcat-www.middlewares=redirect-to-non-www"
-      - "traefik.http.middlewares.redirect-to-non-www.redirectregex.regex=^https://www\\.(.+)"
-      - "traefik.http.middlewares.redirect-to-non-www.redirectregex.replacement=https://$${1}"
-      - "traefik.http.middlewares.redirect-to-non-www.redirectregex.permanent=true"
+      - "traefik.http.routers.taxcat.tls=true"
+      - "traefik.http.routers.taxcat.tls.certresolver=cloudflare"
 
 networks:
-  taxcat-network:
-    driver: bridge
-
-# Alternative configuration without Traefik (direct port mapping)
-# Uncomment the section below if you're not using Traefik reverse proxy
-
-# version: '3.8'
-# services:
-#   taxcat-website:
-#     build: .
-#     container_name: taxcat-website
-#     restart: unless-stopped
-#     ports:
-#       - "80:3000"   # Map port 80 to container port 3000
-#       - "443:3000"  # If you have SSL setup manually
-#     environment:
-#       - NODE_ENV=production
-#       - PORT=3000
-#       - HOSTNAME=0.0.0.0 
+  makprox:
+    external: true

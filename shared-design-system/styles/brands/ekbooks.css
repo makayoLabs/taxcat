@@ -1,0 +1,271 @@
+/**
+ * EKBooks Brand Theme
+ * Applies EKBooks-specific colors to the design system
+ */
+
+.theme-ekbooks {
+  /* Primary brand colors */
+  --color-brand-primary: #1A9E52;
+  --color-brand-primary-dark: #157A41;
+  --color-brand-primary-light: #E8F5EE;
+  --color-brand-primary-hover: #1FB35F;
+  
+  /* Secondary colors */
+  --color-brand-secondary: #191919;
+  --color-brand-secondary-dark: #000000;
+  --color-brand-secondary-light: #F5F5F5;
+  
+  /* Accent colors */
+  --color-brand-accent: #D32F2F;
+  --color-brand-accent-dark: #B71C1C;
+  --color-brand-accent-light: #FFEBEE;
+  
+  /* Background colors */
+  --color-background: #fcfcfc;
+  --color-background-alt: #eeece7;
+  --color-background-dark: #f6f8fa;
+  --color-background-accent: #E8F5EE;
+  --color-background-card: #ffffff;
+  --color-background-hero: #E8F5EE;
+  
+  /* Text colors */
+  --color-text: #32302f;
+  --color-text-muted: #6b6b6b;
+  --color-text-light: #8a8a8a;
+  --color-text-inverse: #ffffff;
+  
+  /* Border colors */
+  --color-border: #e5e7eb;
+  --color-border-light: #f3f4f6;
+  
+  /* Status colors */
+  --color-success: #1A9E52;
+  --color-warning: #F5A623;
+  --color-error: #D32F2F;
+  --color-info: #0077C5;
+}
+
+/* EKBooks primary button override */
+.theme-ekbooks .ws-button-primary {
+  background: linear-gradient(135deg, #1A9E52 0%, #1FB35F 100%);
+  box-shadow: 0 4px 12px rgba(26, 158, 82, 0.25);
+}
+
+.theme-ekbooks .ws-button-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #157A41 0%, #1A9E52 100%);
+  box-shadow: 0 6px 16px rgba(26, 158, 82, 0.35);
+}
+
+/* EKBooks secondary button */
+.theme-ekbooks .ws-button-secondary {
+  border-color: var(--color-brand-primary);
+  color: var(--color-brand-primary);
+}
+
+.theme-ekbooks .ws-button-secondary:hover:not(:disabled) {
+  background-color: var(--color-brand-primary-light);
+  border-color: var(--color-brand-primary-dark);
+  color: var(--color-brand-primary-dark);
+}
+
+/* EKBooks links */
+.theme-ekbooks a:not([class*="button"]):not([class*="ws-button"]) {
+  color: var(--color-brand-primary);
+  transition: color 200ms ease;
+}
+
+.theme-ekbooks a:not([class*="button"]):not([class*="ws-button"]):hover {
+  color: var(--color-brand-primary-dark);
+}
+
+/* EKBooks card hover effects */
+.theme-ekbooks .ws-card:hover {
+  border-color: var(--color-brand-primary-light);
+  box-shadow: 0 8px 20px rgba(26, 158, 82, 0.15);
+}
+
+/* EKBooks focus states */
+.theme-ekbooks *:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+.theme-ekbooks .ws-input:focus {
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 3px var(--color-brand-primary-light);
+}
+
+/* EKBooks Hero Animation */
+.ekbooks-hero-image {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Add subtle rotation */
+.ekbooks-hero-image {
+  animation: float 6s ease-in-out infinite,
+             rotate 12s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+.ekbooks-hero {
+  background: linear-gradient(135deg,
+    #E6F4EC 0%,      /* TD green tint */
+    #EBF5FB 50%,     /* Blue tint */
+    #FFFFFF 100%     /* White */
+  );
+}
+.ekbooks-hero-primary {
+  background: linear-gradient(135deg, 
+    #E8F5EE 0%,      /* Your brand light green */
+    #F5F5F5 50%,     /* Your secondary light */
+    #FFFFFF 100%     /* White */
+  );
+}
+.ekbooks-hero-vibrant {
+  background: linear-gradient(135deg, 
+    #E8F5EE 0%,      /* Light green */
+    #FFFFFF 40%,     /* White */
+    #E8F5EE 100%     /* Light green */
+  );
+}
+
+
+.ekbooks-hero-subtle {
+  background: linear-gradient(180deg, 
+    #FFFFFF 0%,      /* White top */
+    #F5F5F5 50%,     /* Secondary light middle */
+    #E8F5EE 100%     /* Light green bottom */
+  );
+}
+
+/* Alternating section colors for depth */
+.ekbooks-section-white {
+  background-color: #fcfcfc; /* Your main background */
+}
+
+.ekbooks-section-light {
+  background-color: #eeece7; /* Your alt background */
+}
+
+.ekbooks-section-accent {
+  background-color: #E8F5EE; /* Your brand light green */
+}
+
+.ekbooks-section-card {
+  background-color: #ffffff; /* Card background */
+  border: 1px solid #e5e7eb; /* Border */
+}
+/* Solid primary button (alternative to gradient) */
+.theme-ekbooks .ws-button-primary-solid {
+  background: #1A9E52;
+  box-shadow: 0 4px 12px rgba(26, 158, 82, 0.25);
+}
+
+.theme-ekbooks .ws-button-primary-solid:hover:not(:disabled) {
+  background: #157A41;
+  box-shadow: 0 6px 16px rgba(26, 158, 82, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Accent button (red for important actions) */
+.theme-ekbooks .ws-button-accent {
+  background: linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.25);
+}
+
+.theme-ekbooks .ws-button-accent:hover:not(:disabled) {
+  background: linear-gradient(135deg, #B71C1C 0%, #D32F2F 100%);
+  box-shadow: 0 6px 16px rgba(211, 47, 47, 0.35);
+}
+
+/* Ghost button */
+.theme-ekbooks .ws-button-ghost {
+  background: transparent;
+  border: 2px solid #1A9E52;
+  color: #1A9E52;
+}
+
+.theme-ekbooks .ws-button-ghost:hover:not(:disabled) {
+  background: #E8F5EE;
+  border-color: #157A41;
+  color: #157A41;
+}
+/* Success states (use your primary green) */
+.theme-ekbooks .ws-alert-success,
+.theme-ekbooks .ws-badge-success {
+  background-color: #E8F5EE;
+  color: #157A41;
+  border: 1px solid #1A9E52;
+}
+
+/* Error states (use your accent red) */
+.theme-ekbooks .ws-alert-error,
+.theme-ekbooks .ws-badge-error {
+  background-color: #FFEBEE;
+  color: #B71C1C;
+  border: 1px solid #D32F2F;
+}
+
+/* Warning states */
+.theme-ekbooks .ws-alert-warning,
+.theme-ekbooks .ws-badge-warning {
+  background-color: #FEF5E7;
+  color: #D68910;
+  border: 1px solid #F5A623;
+}
+
+/* Info states */
+.theme-ekbooks .ws-alert-info,
+.theme-ekbooks .ws-badge-info {
+  background-color: #E3F2FB;
+  color: #005A94;
+  border: 1px solid #0077C5;
+}
+
+/* Pricing cards with your colors */
+.theme-ekbooks .ws-pricing-card-featured {
+  border: 2px solid #1A9E52;
+  box-shadow: 0 8px 24px rgba(26, 158, 82, 0.2);
+}
+
+.theme-ekbooks .ws-pricing-card-featured .ws-pricing-badge {
+  background: linear-gradient(135deg, #1A9E52 0%, #1FB35F 100%);
+  color: white;
+}
+
+/* Tag/Pill components */
+.theme-ekbooks .ws-tag-primary {
+  background-color: #E8F5EE;
+  color: #157A41;
+  border: 1px solid #1A9E52;
+}
+
+.theme-ekbooks .ws-tag-secondary {
+  background-color: #F5F5F5;
+  color: #191919;
+  border: 1px solid #e5e7eb;
+}
+
+.theme-ekbooks .ws-tag-accent {
+  background-color: #FFEBEE;
+  color: #B71C1C;
+  border: 1px solid #D32F2F;
+}

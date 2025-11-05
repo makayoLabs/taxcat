@@ -1,0 +1,57 @@
+# Authentik Configuration for TaxCat Integration
+# This file contains the configuration needed to set up Authentik integration
+
+# 1. Create an Application in Authentik:
+# Name: TaxCat
+# Slug: taxcat
+# Provider: OAuth2/OpenID
+# Client ID: taxcat (auto-generated)
+# Client Secret: (auto-generated - save this for environment variables)
+# Redirect URIs: https://ekbooks.ca/api/auth/callback/authentik
+
+# 2. Configure OAuth2 Provider Settings:
+# Authorization flow: Authorization Code
+# Scopes: openid, profile, email
+# Subject mode: Based on the Users primary key
+# Issuer mode: Per provider
+
+# 3. Create Groups (optional but recommended):
+# - taxcat-users: Regular TaxCat users
+# - taxcat-admins: TaxCat administrators
+# - ekbooks-clients: Marketing website visitors
+
+# 4. Set up Policies (optional):
+# Create a policy to restrict access based on groups or other criteria
+
+# 5. Configure Outpost:
+# The Traefik configuration already includes the forwardAuth middleware
+# pointing to your Authentik outpost
+
+# Environment Variables to set in TaxCat:
+# NEXTAUTH_SECRET="your-nextauth-secret"
+# AUTHENTIK_CLIENT_ID="taxcat"
+# AUTHENTIK_CLIENT_SECRET="your-client-secret-from-authentik"
+# AUTHENTIK_ISSUER="https://authentik.yourdomain.com/application/o/taxcat/"
+
+# NextAuth Configuration (already implemented in the app):
+# The app includes Authentik as an OAuth provider
+# Configuration is in src/lib/auth.ts
+
+# Testing Authentik Integration:
+# 1. Visit https://ekbooks.ca
+# 2. Click login/register
+# 3. Should redirect to Authentik login page
+# 4. After authentication, should redirect back to TaxCat
+# 5. User should be logged in with Authentik credentials
+
+# Troubleshooting:
+# - Check Authentik logs: docker logs authentik-server
+# - Verify client ID/secret match between Authentik and TaxCat
+# - Ensure redirect URIs are correctly configured
+# - Check network connectivity between containers
+# - Verify SSL certificates are valid
+
+# Backup Authentik Configuration:
+# - Export your Authentik configuration regularly
+# - Include Authentik in your backup strategy
+# - Document client secrets securely

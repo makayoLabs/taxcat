@@ -1,29 +1,29 @@
-import React from 'react'
-import { CheckCircle, Users, Award, Clock } from 'lucide-react'
+import React from 'react';
+import { CheckCircle, Users, Award, Clock } from 'lucide-react';
 
 const AboutSection = () => {
   const features = [
     {
       icon: CheckCircle,
       title: 'Transparent Process',
-      description: 'Clear communication every step of the way with no hidden fees or surprises.'
+      description: 'Clear communication every step of the way with no hidden fees or surprises.',
     },
     {
       icon: Users,
       title: 'Expert Team',
-      description: 'CPA-certified professionals with years of experience in Canadian tax law.'
+      description: 'CPA-certified professionals with years of experience in Canadian tax law.',
     },
     {
       icon: Award,
       title: 'Proven Results',
-      description: 'Consistently maximizing refunds and minimizing tax burden for our clients.'
+      description: 'Consistently maximizing refunds and minimizing tax burden for our clients.',
     },
     {
       icon: Clock,
       title: 'Year-Round Support',
-      description: 'Available throughout the year for tax questions and planning advice.'
-    }
-  ]
+      description: 'Available throughout the year for tax questions and planning advice.',
+    },
+  ];
 
   return (
     <section id="about" className="section-padding bg-white">
@@ -36,34 +36,30 @@ const AboutSection = () => {
                 Our Trusted Process
               </h2>
               <p className="text-lg text-text-light mb-8">
-                At TaxCat, we believe tax filing should be transparent, educational, and stress-free. 
-                Our client-first approach combines deep expertise with friendly, accessible service 
-                to ensure you feel confident about your tax situation year-round.
+                At TaxCat, we believe tax filing should be transparent, educational, and
+                stress-free. Our client-first approach combines deep expertise with friendly,
+                accessible service to ensure you feel confident about your tax situation year-round.
               </p>
             </div>
 
             {/* Features Grid */}
             <div className="grid sm:grid-cols-2 gap-6">
-              {features.map((feature, index) => (
-                <div key={index} className="space-y-3">
+              {features.map((feature, ___index) => (
+                <div key={___index} className="space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-primary-navy/10 rounded-lg">
                       <feature.icon className="h-5 w-5 text-primary-navy" />
                     </div>
                     <h3 className="font-semibold text-text-dark">{feature.title}</h3>
                   </div>
-                  <p className="text-text-light text-sm pl-11">
-                    {feature.description}
-                  </p>
+                  <p className="text-text-light text-sm pl-11">{feature.description}</p>
                 </div>
               ))}
             </div>
 
             {/* CTA */}
             <div className="pt-6">
-              <button className="btn-primary">
-                Learn About Our Process
-              </button>
+              <button className="btn-primary">Learn About Our Process</button>
             </div>
           </div>
 
@@ -103,31 +99,31 @@ const AboutSection = () => {
               <div className="text-5xl">🎯</div>
               <h4 className="font-semibold text-text-dark">Precision & Accuracy</h4>
               <p className="text-text-light">
-                Meticulous attention to detail ensures maximum accuracy and compliance 
-                with all tax regulations.
+                Meticulous attention to detail ensures maximum accuracy and compliance with all tax
+                regulations.
               </p>
             </div>
             <div className="space-y-4">
               <div className="text-5xl">🤝</div>
               <h4 className="font-semibold text-text-dark">Personal Approach</h4>
               <p className="text-text-light">
-                We take time to understand your unique situation and provide 
-                personalized tax strategies.
+                We take time to understand your unique situation and provide personalized tax
+                strategies.
               </p>
             </div>
             <div className="space-y-4">
               <div className="text-5xl">🔒</div>
               <h4 className="font-semibold text-text-dark">Privacy & Security</h4>
               <p className="text-text-light">
-                Your financial information is protected with bank-level security 
-                and strict confidentiality protocols.
+                Your financial information is protected with bank-level security and strict
+                confidentiality protocols.
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default AboutSection 
+export default AboutSection;

@@ -1,0 +1,83 @@
+# Traefik Configuration for EKBooks
+# Place this in your Traefik dynamic configuration directory
+
+http:
+  routers:
+    ekbooks-router:
+      rule: "Host(`ekbooks.ca`)"
+      service: ekbooks-service
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - ekbooks-headers
+        - ekbooks-rate-limit
+        - ekbooks-compress
+
+    ekbooks-router-secure:
+      rule: "Host(`ekbooks.ca`)"
+      service: ekbooks-service
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - ekbooks-headers
+        - ekbooks-rate-limit
+        - ekbooks-compress
+        - https-redirect
+
+  services:
+    ekbooks-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.125:3000"
+        passHostHeader: true
+
+  middlewares:
+    ekbooks-headers:
+      headers:
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+          X-Forwarded-Host: "ekbooks.ca"
+        customResponseHeaders:
+          X-Frame-Options: "SAMEORIGIN"
+          X-XSS-Protection: "1; mode=block"
+          X-Content-Type-Options: "nosniff"
+          Referrer-Policy: "no-referrer-when-downgrade"
+          Content-Security-Policy: "default-src 'self' http: https: data: blob: 'unsafe-inline'"
+
+    ekbooks-rate-limit:
+      rateLimit:
+        burst: 100
+        average: 50
+
+    ekbooks-compress:
+      compress: {}
+
+    https-redirect:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+# Optional: Enable if you want to route through Authentik
+# Uncomment and configure if using Authentik for authentication
+#
+# http:
+#   routers:
+#     ekbooks-protected:
+#       rule: "Host(`ekbooks.ca`) && PathPrefix(`/app/dashboard`, `/app/admin`, `/app/api`)"
+#       service: ekbooks-service
+#       middlewares:
+#         - authentik
+#         - ekbooks-headers
+#         - ekbooks-rate-limit
+#
+#   middlewares:
+#     authentik:
+#       forwardAuth:
+#         address: "http://192.168.2.125:9000/outpost.goauthentik.io/auth/traefik"
+#         trustForwardHeader: true
+#         authResponseHeaders:
+#           - X-authentik-username
+#           - X-authentik-groups
+#           - X-authentik-email
+#           - X-authentik-name
+#           - X-authentik-uid

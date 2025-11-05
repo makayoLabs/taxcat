@@ -1,22 +1,22 @@
-import React from 'react'
-import { Linkedin, Mail } from 'lucide-react'
+import React from 'react';
+import { Linkedin, Mail } from 'lucide-react';
 
 interface TeamMember {
-  id: number
-  name: string
-  title: string
-  credentials: string
-  bio: string
-  image: string
-  email: string
-  linkedin?: string
+  id: number;
+  name: string;
+  title: string;
+  credentials: string;
+  bio: string;
+  image: string;
+  email: string;
+  linkedin?: string;
 }
 
 interface TeamMemberCardProps {
-  member: TeamMember
+  member: TeamMember;
 }
 
-const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
+const TeamMemberCard = ({ member }: TeamMemberCardProps) => {
   return (
     <div className="card p-6 group hover:shadow-xl transition-all duration-300">
       <div className="text-center">
@@ -39,9 +39,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
         </div>
 
         {/* Bio */}
-        <p className="text-sm text-text-light mb-6 leading-relaxed">
-          {member.bio}
-        </p>
+        <p className="text-sm text-text-light mb-6 leading-relaxed">{member.bio}</p>
 
         {/* Contact */}
         <div className="flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -64,7 +62,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TeamMemberCard 
+export default TeamMemberCard;

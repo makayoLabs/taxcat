@@ -1,0 +1,174 @@
+/* ======================
+   TAXCAT BRAND IDENTITY
+   Marketing Coordinator Approved
+   ====================== */
+
+:root {
+  /* Primary Colors - Financial Trust */
+  --taxcat-primary: #00A950;           /* H&R Block Green */
+  --taxcat-primary-dark: #008040;
+  --taxcat-primary-light: #E6F7ED;
+  --taxcat-primary-hover: #00BD5E;
+  
+  /* Secondary Colors - Toronto Pride */
+  --taxcat-secondary: #134A8E;         /* Blue Jays Blue */
+  --taxcat-secondary-dark: #0F3A6F;
+  --taxcat-secondary-light: #E3EBF5;
+  
+  /* Accent Colors - Premium Touch */
+  --taxcat-accent: #F5A623;
+  --taxcat-accent-dark: #D68910;
+  --taxcat-accent-light: #FEF5E7;
+  
+  /* Neutrals - Wealthsimple Inspired */
+  --taxcat-background: #fcfcfc;
+  --taxcat-background-alt: #f6f8fa;
+  --taxcat-background-dark: #eeece7;
+  --taxcat-background-hero: #E6F7ED;   /* Soft green */
+  
+  /* Text Colors */
+  --taxcat-text: #32302f;
+  --taxcat-text-muted: #6b6b6b;
+  --taxcat-text-light: #ffffff;
+  
+  /* Status Colors */
+  --taxcat-success: #00A950;
+  --taxcat-warning: #F5A623;
+  --taxcat-error: #E8291C;
+  --taxcat-info: #0077C5;
+}
+
+/* TaxCat Theme Application */
+.theme-taxcat,
+body[data-theme="taxcat"] {
+  --color-primary: var(--taxcat-primary);
+  --color-primary-dark: var(--taxcat-primary-dark);
+  --color-primary-light: var(--taxcat-primary-light);
+  
+  --color-secondary: var(--taxcat-secondary);
+  --color-accent: var(--taxcat-accent);
+  
+  --color-background: var(--taxcat-background);
+  --color-background-alt: var(--taxcat-background-alt);
+  --color-background-accent: var(--taxcat-background-hero);
+  
+  --color-text: var(--taxcat-text);
+  --color-text-muted: var(--taxcat-text-muted);
+  
+  background-color: var(--taxcat-background);
+  color: var(--taxcat-text);
+}
+
+/* Primary Button with Gradient */
+.theme-taxcat .btn-primary,
+.theme-taxcat .CTAButton_primaryButton {
+  background: linear-gradient(135deg, #00A950 0%, #00BD5E 100%);
+  box-shadow: 0 4px 12px rgba(0, 169, 80, 0.25);
+  color: white;
+  border: none;
+}
+
+.theme-taxcat .btn-primary:hover,
+.theme-taxcat .CTAButton_primaryButton:hover {
+  background: linear-gradient(135deg, #008040 0%, #00A950 100%);
+  box-shadow: 0 6px 16px rgba(0, 169, 80, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Secondary Button */
+.theme-taxcat .btn-secondary,
+.theme-taxcat .CTAButton_secondaryButton {
+  border: 2px solid var(--taxcat-primary);
+  color: var(--taxcat-primary);
+  background: transparent;
+}
+
+.theme-taxcat .btn-secondary:hover,
+.theme-taxcat .CTAButton_secondaryButton:hover {
+  background-color: var(--taxcat-primary-light);
+  border-color: var(--taxcat-primary-dark);
+  color: var(--taxcat-primary-dark);
+}
+
+/* Links */
+.theme-taxcat a:not([class*="Button"]) {
+  color: var(--taxcat-primary);
+  transition: color 200ms ease;
+}
+
+.theme-taxcat a:not([class*="Button"]):hover {
+  color: var(--taxcat-primary-dark);
+}
+
+/* Accent Badges */
+.theme-taxcat .accent-badge,
+.theme-taxcat .TagPill_variantXsmall {
+  background-color: var(--taxcat-accent-light);
+  color: var(--taxcat-accent-dark);
+  border: 1px solid var(--taxcat-accent);
+}
+
+/* Success/Refund amounts */
+.theme-taxcat .text-success,
+.theme-taxcat .refund-amount {
+  color: var(--taxcat-primary);
+  font-weight: 700;
+}
+
+/* Card hover effects */
+.theme-taxcat .card:hover,
+.theme-taxcat .card-elevated:hover {
+  border-color: var(--taxcat-primary-light);
+  box-shadow: 0 8px 20px rgba(0, 169, 80, 0.15);
+}
+
+/* Focus states */
+.theme-taxcat *:focus-visible {
+  outline: 2px solid var(--taxcat-primary);
+  outline-offset: 2px;
+}
+
+/* Input focus */
+.theme-taxcat input:focus,
+.theme-taxcat textarea:focus,
+.theme-taxcat select:focus {
+  border-color: var(--taxcat-primary);
+  box-shadow: 0 0 0 3px var(--taxcat-primary-light);
+}
+
+/* TaxCat Hero Animation */
+.taxcat-hero-image {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Add subtle rotation */
+.taxcat-hero-image {
+  animation: float 6s ease-in-out infinite,
+             rotate 12s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+.taxcat-hero {
+  background: linear-gradient(135deg,
+    #E6F7ED 0%,      /* Light green */
+    #F0F9F4 50%,     /* Softer green */
+    #FFFFFF 100%     /* White */
+  );
+}

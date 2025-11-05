@@ -1,0 +1,96 @@
+/**
+ * TaxCat Brand Theme
+ * Applies TaxCat-specific colors to the design system
+ */
+
+.theme-taxcat {
+  /* Primary brand colors */
+  --color-brand-primary: #00A950;
+  --color-brand-primary-dark: #008040;
+  --color-brand-primary-light: #E6F7ED;
+  --color-brand-primary-hover: #00BD5E;
+  
+  /* Secondary colors */
+  --color-brand-secondary: #134A8E;
+  --color-brand-secondary-dark: #0F3A6F;
+  --color-brand-secondary-light: #E3EBF5;
+  
+  /* Accent colors */
+  --color-brand-accent: #F5A623;
+  --color-brand-accent-dark: #D68910;
+  --color-brand-accent-light: #FEF5E7;
+  
+  /* Background colors */
+  --color-background: #fcfcfc;
+  --color-background-alt: #eeece7;
+  --color-background-dark: #f6f8fa;
+  --color-background-accent: #E6F7ED;
+  --color-background-card: #ffffff;
+  --color-background-hero: #E6F7ED;
+  
+  /* Text colors */
+  --color-text: #32302f;
+  --color-text-muted: #6b6b6b;
+  --color-text-light: #8a8a8a;
+  --color-text-inverse: #ffffff;
+  
+  /* Border colors */
+  --color-border: #e5e7eb;
+  --color-border-light: #f3f4f6;
+  
+  /* Status colors */
+  --color-success: #00A950;
+  --color-warning: #F5A623;
+  --color-error: #E8291C;
+  --color-info: #0077C5;
+}
+
+/* TaxCat primary button override */
+.theme-taxcat .ws-button-primary {
+  background: linear-gradient(135deg, #00A950 0%, #00BD5E 100%);
+  box-shadow: 0 4px 12px rgba(0, 169, 80, 0.25);
+}
+
+.theme-taxcat .ws-button-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #008040 0%, #00A950 100%);
+  box-shadow: 0 6px 16px rgba(0, 169, 80, 0.35);
+}
+
+/* TaxCat secondary button */
+.theme-taxcat .ws-button-secondary {
+  border-color: var(--color-brand-primary);
+  color: var(--color-brand-primary);
+}
+
+.theme-taxcat .ws-button-secondary:hover:not(:disabled) {
+  background-color: var(--color-brand-primary-light);
+  border-color: var(--color-brand-primary-dark);
+  color: var(--color-brand-primary-dark);
+}
+
+/* TaxCat links */
+.theme-taxcat a:not([class*="button"]):not([class*="ws-button"]) {
+  color: var(--color-brand-primary);
+  transition: color 200ms ease;
+}
+
+.theme-taxcat a:not([class*="button"]):not([class*="ws-button"]):hover {
+  color: var(--color-brand-primary-dark);
+}
+
+/* TaxCat card hover effects */
+.theme-taxcat .ws-card:hover {
+  border-color: var(--color-brand-primary-light);
+  box-shadow: 0 8px 20px rgba(0, 169, 80, 0.15);
+}
+
+/* TaxCat focus states */
+.theme-taxcat *:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+.theme-taxcat .ws-input:focus {
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 3px var(--color-brand-primary-light);
+}

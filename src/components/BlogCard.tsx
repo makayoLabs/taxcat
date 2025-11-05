@@ -1,22 +1,22 @@
-import React from 'react'
-import { ArrowRight, Calendar, Clock } from 'lucide-react'
+import React from 'react';
+import { ArrowRight, Calendar, Clock } from 'lucide-react';
 
 interface BlogPost {
-  id: number
-  title: string
-  excerpt: string
-  category: string
-  image: string
-  date: string
-  readTime: string
-  slug: string
+  id: number;
+  title: string;
+  excerpt: string;
+  category: string;
+  image: string;
+  date: string;
+  readTime: string;
+  slug: string;
 }
 
 interface BlogCardProps {
-  post: BlogPost
+  post: BlogPost;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
+const BlogCard = ({ post }: BlogCardProps) => {
   return (
     <article className="card overflow-hidden group hover:shadow-xl">
       {/* Image */}
@@ -53,9 +53,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
         </h3>
 
         {/* Excerpt */}
-        <p className="text-text-light text-sm mb-4 line-clamp-3">
-          {post.excerpt}
-        </p>
+        <p className="text-text-light text-sm mb-4 line-clamp-3">{post.excerpt}</p>
 
         {/* Read More */}
         <button className="flex items-center gap-2 text-primary-navy font-medium text-sm hover:text-primary-blue transition-colors duration-200">
@@ -64,7 +62,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
         </button>
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default BlogCard 
+export default BlogCard;

@@ -1,8 +1,8 @@
-import React from 'react'
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
+import React from 'react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear()
+const Footer = (): JSX.Element => {
+  const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     services: [
@@ -28,18 +28,18 @@ const Footer = () => {
       { name: 'Terms of Service', href: '#terms' },
       { name: 'Cookie Policy', href: '#cookies' },
       { name: 'Accessibility', href: '#accessibility' },
-    ]
-  }
+    ],
+  };
 
   const socialLinks = [
     { name: 'Facebook', href: '#', icon: Facebook },
     { name: 'Twitter', href: '#', icon: Twitter },
     { name: 'LinkedIn', href: '#', icon: Linkedin },
     { name: 'Instagram', href: '#', icon: Instagram },
-  ]
+  ];
 
   return (
-    <footer id="contact" className="bg-text-dark text-white">
+    <footer id="contact" className="bg-gray-900 text-white">
       {/* Main Footer */}
       <div className="container-max section-padding">
         <div className="grid lg:grid-cols-4 gap-12">
@@ -48,7 +48,8 @@ const Footer = () => {
             <div className="mb-6">
               <div className="text-2xl font-bold mb-2">🐱 TaxCat</div>
               <p className="text-gray-300">
-                Professional tax preparation and advisory services for individuals and small businesses across Canada.
+                Professional tax preparation and advisory services for individuals and small
+                businesses across Canada.
               </p>
             </div>
 
@@ -65,7 +66,8 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 text-accent-gold mt-1" />
                 <span className="text-gray-300">
-                  123 Business District<br />
+                  123 Business District
+                  <br />
                   Toronto, ON M5H 3M7
                 </span>
               </div>
@@ -77,7 +79,7 @@ const Footer = () => {
                 <a
                   key={social.name}
                   href={social.href}
-                  className="p-2 bg-gray-800 rounded-lg hover:bg-accent-gold transition-colors duration-200"
+                  className="p-2 bg-gray-800 rounded-lg hover:bg-primary-600 transition-colors duration-200"
                   aria-label={social.name}
                 >
                   <social.icon className="h-4 w-4" />
@@ -94,7 +96,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-accent-gold transition-colors duration-200"
+                    className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -111,7 +113,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-accent-gold transition-colors duration-200"
+                    className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -128,7 +130,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-accent-gold transition-colors duration-200"
+                    className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -149,11 +151,9 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-gold"
+                className="flex-1 px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-500"
               />
-              <button className="btn-secondary">
-                Subscribe
-              </button>
+              <button className="btn-secondary">Subscribe</button>
             </div>
           </div>
         </div>
@@ -171,7 +171,7 @@ const Footer = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-gray-300 text-sm hover:text-accent-gold transition-colors duration-200"
+                  className="text-gray-300 text-sm hover:text-primary-400 transition-colors duration-200"
                 >
                   {link.name}
                 </a>
@@ -181,7 +181,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer 
+export default Footer;

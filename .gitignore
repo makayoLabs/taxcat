@@ -1,14 +1,13 @@
 # Dependencies
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+.pnp/
+.pnp.js
 
-# Production build
-.next/
-out/
+# Build output
 dist/
 build/
+out/
+.next/
 
 # Environment variables
 .env
@@ -17,15 +16,55 @@ build/
 .env.test.local
 .env.production.local
 
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 # IDE and editor files
-.vscode/
 .idea/
+.vscode/
 *.swp
 *.swo
-*~
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Cache
+.cache/
+.npm/
+.eslintcache
+.tsbuildinfo
+
+# Temporary files
+tmp/
+temp/
+
+# Production files
+*.pem
+*.key
+*.cert
+*.crt
+
+# Debug files
+debug/
+.debug/
+
+# Misc
+.DS_Store
+*.pem
+.env*.local
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
 
 # OS generated files
-.DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
@@ -33,19 +72,11 @@ build/
 ehthumbs.db
 Thumbs.db
 
-# Logs
-logs
-*.log
-
 # Runtime data
 pids
 *.pid
 *.seed
 *.pid.lock
-
-# Coverage directory used by tools like istanbul
-coverage/
-.coverage
 
 # Dependency directories
 jspm_packages/
@@ -63,7 +94,6 @@ jspm_packages/
 .yarn-integrity
 
 # parcel-bundler cache (https://parceljs.org/)
-.cache
 .parcel-cache
 
 # next.js build output
@@ -91,7 +121,4 @@ jspm_packages/
 *.backup
 *.bak
 
-# Temporary files
-tmp/
-temp/ 
 node_modules

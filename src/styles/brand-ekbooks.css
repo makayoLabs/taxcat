@@ -1,0 +1,186 @@
+/* ======================
+   EKBOOKS BRAND IDENTITY
+   Professional Accounting Services
+   ====================== */
+
+:root {
+  /* Primary Colors - Professional Trust */
+  --ekbooks-primary: #0077C5;          /* Professional Blue */
+  --ekbooks-primary-dark: #005A94;
+  --ekbooks-primary-light: #E3F2FD;
+  --ekbooks-primary-hover: #0088DD;
+
+  /* Secondary Colors - Financial Stability */
+  --ekbooks-secondary: #134A8E;        /* Deep Blue */
+  --ekbooks-secondary-dark: #0F3A6F;
+  --ekbooks-secondary-light: #E3EBF5;
+
+  /* Accent Colors - Growth & Success */
+  --ekbooks-accent: #00A950;           /* Success Green */
+  --ekbooks-accent-dark: #008040;
+  --ekbooks-accent-light: #E6F7ED;
+
+  /* Neutrals - Clean & Professional */
+  --ekbooks-background: #fcfcfc;
+  --ekbooks-background-alt: #f6f8fa;
+  --ekbooks-background-dark: #eeece7;
+  --ekbooks-background-hero: #E9F2F9;   /* Soft blue */
+
+  /* Text Colors */
+  --ekbooks-text: #32302f;
+  --ekbooks-text-muted: #6b6b6b;
+  --ekbooks-text-light: #ffffff;
+
+  /* Status Colors */
+  --ekbooks-success: #00A950;
+  --ekbooks-warning: #F5A623;
+  --ekbooks-error: #E8291C;
+  --ekbooks-info: #0077C5;
+}
+
+/* EKBooks Theme Application */
+.theme-ekbooks,
+body[data-theme="ekbooks"] {
+  --color-primary: var(--ekbooks-primary);
+  --color-primary-dark: var(--ekbooks-primary-dark);
+  --color-primary-light: var(--ekbooks-primary-light);
+
+  --color-secondary: var(--ekbooks-secondary);
+  --color-accent: var(--ekbooks-accent);
+
+  --color-background: var(--ekbooks-background);
+  --color-background-alt: var(--ekbooks-background-alt);
+  --color-background-accent: var(--ekbooks-background-hero);
+
+  --color-text: var(--ekbooks-text);
+  --color-text-muted: var(--ekbooks-text-muted);
+
+  background-color: var(--ekbooks-background);
+  color: var(--ekbooks-text);
+}
+
+/* Primary Button with Blue Gradient */
+.theme-ekbooks .btn-primary,
+.theme-ekbooks .ws-button-primary {
+  background: linear-gradient(135deg, #0077C5 0%, #0088DD 100%);
+  box-shadow: 0 4px 12px rgba(0, 119, 197, 0.25);
+  color: white;
+  border: none;
+}
+
+.theme-ekbooks .btn-primary:hover,
+.theme-ekbooks .ws-button-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #005A94 0%, #0077C5 100%);
+  box-shadow: 0 6px 16px rgba(0, 119, 197, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Secondary Button */
+.theme-ekbooks .btn-secondary,
+.theme-ekbooks .ws-button-secondary {
+  border: 2px solid var(--ekbooks-primary);
+  color: var(--ekbooks-primary);
+  background: transparent;
+}
+
+.theme-ekbooks .btn-secondary:hover,
+.theme-ekbooks .ws-button-secondary:hover:not(:disabled) {
+  background-color: var(--ekbooks-primary-light);
+  border-color: var(--ekbooks-primary-dark);
+  color: var(--ekbooks-primary-dark);
+}
+
+/* Links */
+.theme-ekbooks a:not([class*="Button"]):not([class*="button"]) {
+  color: var(--ekbooks-primary);
+  transition: color 200ms ease;
+}
+
+.theme-ekbooks a:not([class*="Button"]):not([class*="button"]):hover {
+  color: var(--ekbooks-primary-dark);
+}
+
+/* Accent Badges */
+.theme-ekbooks .accent-badge {
+  background-color: var(--ekbooks-accent-light);
+  color: var(--ekbooks-accent-dark);
+  border: 1px solid var(--ekbooks-accent);
+}
+
+/* Success/Growth indicators */
+.theme-ekbooks .text-success {
+  color: var(--ekbooks-accent);
+  font-weight: 700;
+}
+
+/* Card hover effects */
+.theme-ekbooks .card:hover,
+.theme-ekbooks .ws-card:hover,
+.theme-ekbooks .card-elevated:hover,
+.theme-ekbooks .ws-card-elevated:hover {
+  border-color: var(--ekbooks-primary-light);
+  box-shadow: 0 8px 20px rgba(0, 119, 197, 0.15);
+}
+
+/* Focus states */
+.theme-ekbooks *:focus-visible {
+  outline: 2px solid var(--ekbooks-primary);
+  outline-offset: 2px;
+}
+
+/* Input focus */
+.theme-ekbooks input:focus,
+.theme-ekbooks textarea:focus,
+.theme-ekbooks select:focus {
+  border-color: var(--ekbooks-primary);
+  box-shadow: 0 0 0 3px var(--ekbooks-primary-light);
+}
+
+/* EKBooks Hero Animation */
+.ekbooks-hero-image {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.ekbooks-hero {
+  background: linear-gradient(135deg,
+    #E9F2F9 0%,      /* Light blue */
+    #F0F5FA 50%,     /* Softer blue */
+    #FFFFFF 100%     /* White */
+  );
+}
+
+/* Professional Badge Styles */
+.theme-ekbooks .professional-badge {
+  background: linear-gradient(135deg, var(--ekbooks-primary) 0%, var(--ekbooks-secondary) 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Trust Indicator Styles */
+.theme-ekbooks .trust-stat {
+  color: var(--ekbooks-primary);
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.theme-ekbooks .trust-label {
+  color: var(--ekbooks-text-muted);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

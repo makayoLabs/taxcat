@@ -1,20 +1,21 @@
 import './globals.css';
-import { Inter, DM_Serif_Display } from 'next/font/google';
+// Temporarily disabled for offline build - uncomment for production
+// import { Inter, DM_Serif_Display } from 'next/font/google';
 import { Metadata, Viewport } from 'next';
 import { Providers } from '@/components/Providers';
 import Navigation from '@/components/Navigation';
 import PerformanceMonitor from '@/components/PerformanceMonitor';
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-});
+// const inter = Inter({
+//   subsets: ['latin'],
+//   variable: '--font-inter',
+// });
 
-const dmSerif = DM_Serif_Display({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-dm-serif',
-});
+// const dmSerif = DM_Serif_Display({
+//   weight: '400',
+//   subsets: ['latin'],
+//   variable: '--font-dm-serif',
+// });
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -38,8 +39,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
-    <html lang="en" className={`${inter.variable} ${dmSerif.variable} scroll-smooth`}>
-      <body className={`${inter.className} theme-taxcat antialiased`}>
+    <html lang="en" className="scroll-smooth">
+      <body className="theme-taxcat antialiased"
+ style={{fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'}}>
         <Providers>
           <Navigation />
           {children}

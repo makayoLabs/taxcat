@@ -43,7 +43,7 @@ export const createPaymentIntent = async (
       status: paymentIntent.status,
       clientSecret: paymentIntent.client_secret!,
     };
-  } catch (___error) =>
+  } catch (error) {
     captureError(error as Error, { amount, currency });
     throw new Error('Failed to create payment intent');
   }
@@ -72,7 +72,7 @@ export const createSubscription = async (
         amount: subscription.items.data[0].price.unit_amount || 0,
       },
     };
-  } catch (___error) =>
+  } catch (error) {
     captureError(error as Error, { customerId, priceId });
     throw new Error('Failed to create subscription');
   }
@@ -81,7 +81,7 @@ export const createSubscription = async (
 export const cancelSubscription = async (subscriptionId: string): Promise<void> => {
   try {
     await stripe.subscriptions.cancel(subscriptionId);
-  } catch (___error) =>
+  } catch (error) {
     captureError(error as Error, { subscriptionId });
     throw new Error('Failed to cancel subscription');
   }
@@ -100,7 +100,7 @@ export const createCustomer = async (
     });
 
     return customer.id;
-  } catch (___error) =>
+  } catch (error) {
     captureError(error as Error, { email, name });
     throw new Error('Failed to create customer');
   }
@@ -132,7 +132,7 @@ export const updateSubscription = async (
         amount: updatedSubscription.items.data[0].price.unit_amount || 0,
       },
     };
-  } catch (___error) =>
+  } catch (error) {
     captureError(error as Error, { subscriptionId, newPriceId });
     throw new Error('Failed to update subscription');
   }

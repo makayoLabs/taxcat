@@ -86,7 +86,7 @@ export class XMLGenerator {
 </T1Return>`;
 
       return opts.pretty ? this.prettyPrintXML(xml) : xml;
-    } catch (___error) =>
+    } catch (error) {
       throw new TaxError(
         TaxErrorCode.XML_GENERATION_ERROR,
         'Error generating T1 XML',

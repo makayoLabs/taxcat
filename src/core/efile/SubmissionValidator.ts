@@ -135,7 +135,7 @@ export class SubmissionValidator {
             });
           }
         }
-      } catch (___error) =>
+      } catch (error) {
         this.logger.error('VALIDATION', `Error applying rule ${rule.code}`, error as Error);
         errors.push({
           code: rule.code,

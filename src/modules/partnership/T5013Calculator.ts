@@ -40,7 +40,7 @@ export class T5013Calculator {
     const totalDeductions = this.calculateTotalDeductions(deductions);
     const netIncome = totalIncome.minus(totalDeductions);
 
-    return partners.map((___partner) =>
+    return partners.map((partner) =>
       this.allocateToPartner(partner, income, deductions, netIncome)
     );
   }
@@ -88,9 +88,9 @@ export class T5013Calculator {
   }
 
   private calculateBusinessIncome(income: Income): Decimal {
-    return income.business.reduce((sum, ___bus) => {
+    return income.business.reduce((sum, bus) => {
       const expenses = Object.values(bus.expenses).reduce(
-        (total, ___exp) => total.plus(exp),
+        (total, exp) => total.plus(exp),
         new Decimal(0)
       );
       return sum.plus(bus.revenue.minus(expenses));

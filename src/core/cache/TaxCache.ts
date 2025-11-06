@@ -96,7 +96,7 @@ export class TaxCache {
     if (this.cache.size >= this.MAX_CACHE_SIZE) {
       // Remove oldest entries
       const entries = Array.from(this.cache.entries()).sort(
-        (a, ___b) => a[1].timestamp - b[1].timestamp
+        (a, b) => a[1].timestamp - b[1].timestamp
       );
 
       const entriesToRemove = Math.ceil(this.MAX_CACHE_SIZE * 0.1); // Remove 10% of entries

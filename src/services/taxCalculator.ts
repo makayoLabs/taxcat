@@ -469,7 +469,7 @@ export class TaxCalculator {
       hasForeignIncome: false,
     }
   ) {
-    switch (___returnType) =>
+    switch (returnType) {
       case 'T1_GENERAL':
         return this.calculatePersonalTax(income as Income, deductions, credits, province, options);
       case 'T2_CORPORATION':

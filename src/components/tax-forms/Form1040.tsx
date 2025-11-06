@@ -44,7 +44,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
     field: FormField<T>,
     value: string | number
   ) => {
-    setFormData((___prev) => ({
+    setFormData((prev) => ({
       ...prev,
       [section]: {
         ...prev[section],
@@ -71,7 +71,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.personalInfo.firstName}
-              onChange={(___e) => handleInputChange('personalInfo', 'firstName', e.target.value)}
+              onChange={(e) => handleInputChange('personalInfo', 'firstName', e.target.value)}
             />
           </div>
           <div>
@@ -81,7 +81,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.personalInfo.lastName}
-              onChange={(___e) => handleInputChange('personalInfo', 'lastName', e.target.value)}
+              onChange={(e) => handleInputChange('personalInfo', 'lastName', e.target.value)}
             />
           </div>
           <div>
@@ -94,7 +94,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               pattern="\d{3}-?\d{2}-?\d{4}"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.personalInfo.ssn}
-              onChange={(___e) => handleInputChange('personalInfo', 'ssn', e.target.value)}
+              onChange={(e) => handleInputChange('personalInfo', 'ssn', e.target.value)}
               placeholder="XXX-XX-XXXX"
             />
           </div>
@@ -104,7 +104,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.personalInfo.filingStatus}
-              onChange={(___e) =>
+              onChange={(e) =>
                 handleInputChange('personalInfo', 'filingStatus', e.target.value as any)
               }
             >
@@ -133,7 +133,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               step="0.01"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.income.wages}
-              onChange={(___e) =>
+              onChange={(e) =>
                 handleInputChange('income', 'wages', parseFloat(e.target.value) || 0)
               }
             />
@@ -146,7 +146,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               step="0.01"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.income.interest}
-              onChange={(___e) =>
+              onChange={(e) =>
                 handleInputChange('income', 'interest', parseFloat(e.target.value) || 0)
               }
             />
@@ -159,7 +159,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               step="0.01"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.income.dividends}
-              onChange={(___e) =>
+              onChange={(e) =>
                 handleInputChange('income', 'dividends', parseFloat(e.target.value) || 0)
               }
             />
@@ -172,7 +172,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               step="0.01"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.income.otherIncome}
-              onChange={(___e) =>
+              onChange={(e) =>
                 handleInputChange('income', 'otherIncome', parseFloat(e.target.value) || 0)
               }
             />
@@ -194,7 +194,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               step="0.01"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.deductions.standardDeduction}
-              onChange={(___e) =>
+              onChange={(e) =>
                 handleInputChange(
                   'deductions',
                   'standardDeduction',
@@ -213,7 +213,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               step="0.01"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.deductions.itemizedDeductions}
-              onChange={(___e) =>
+              onChange={(e) =>
                 handleInputChange(
                   'deductions',
                   'itemizedDeductions',
@@ -230,7 +230,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               step="0.01"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.deductions.otherDeductions}
-              onChange={(___e) =>
+              onChange={(e) =>
                 handleInputChange('deductions', 'otherDeductions', parseFloat(e.target.value) || 0)
               }
             />
@@ -250,7 +250,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               step="0.01"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.credits.childTaxCredit}
-              onChange={(___e) =>
+              onChange={(e) =>
                 handleInputChange('credits', 'childTaxCredit', parseFloat(e.target.value) || 0)
               }
             />
@@ -265,7 +265,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               step="0.01"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.credits.earnedIncomeCredit}
-              onChange={(___e) =>
+              onChange={(e) =>
                 handleInputChange('credits', 'earnedIncomeCredit', parseFloat(e.target.value) || 0)
               }
             />
@@ -278,7 +278,7 @@ export default function Form1040({ initialData, onSubmit, onSaveDraft }: Form104
               step="0.01"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.credits.otherCredits}
-              onChange={(___e) =>
+              onChange={(e) =>
                 handleInputChange('credits', 'otherCredits', parseFloat(e.target.value) || 0)
               }
             />

@@ -22,7 +22,7 @@ const HeroBlockEditor: React.FC<HeroBlockEditorProps> = ({ content, onUpdate }) 
         <input
           type="text"
           value={content.headline}
-          onChange={(___e) => handleChange('headline', e.target.value)}
+          onChange={(e) => handleChange('headline', e.target.value)}
           className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
         />
       </div>
@@ -31,7 +31,7 @@ const HeroBlockEditor: React.FC<HeroBlockEditorProps> = ({ content, onUpdate }) 
         <label className="block text-sm font-medium text-taxcat-gray">Subheadline</label>
         <textarea
           value={content.subheadline || ''}
-          onChange={(___e) => handleChange('subheadline', e.target.value)}
+          onChange={(e) => handleChange('subheadline', e.target.value)}
           rows={2}
           className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
         />
@@ -43,7 +43,7 @@ const HeroBlockEditor: React.FC<HeroBlockEditorProps> = ({ content, onUpdate }) 
           <input
             type="text"
             value={content.ctaText || ''}
-            onChange={(___e) => handleChange('ctaText', e.target.value)}
+            onChange={(e) => handleChange('ctaText', e.target.value)}
             placeholder="e.g., Get Started"
             className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
           />
@@ -54,7 +54,7 @@ const HeroBlockEditor: React.FC<HeroBlockEditorProps> = ({ content, onUpdate }) 
           <input
             type="text"
             value={content.ctaLink || ''}
-            onChange={(___e) => handleChange('ctaLink', e.target.value)}
+            onChange={(e) => handleChange('ctaLink', e.target.value)}
             placeholder="e.g., /contact"
             className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
           />
@@ -97,7 +97,7 @@ const HeroBlockEditor: React.FC<HeroBlockEditorProps> = ({ content, onUpdate }) 
         <label className="block text-sm font-medium text-taxcat-gray">Alignment</label>
         <select
           value={content.alignment}
-          onChange={(___e) => handleChange('alignment', e.target.value as 'left' | 'center' | 'right')}
+          onChange={(e) => handleChange('alignment', e.target.value as 'left' | 'center' | 'right')}
           className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
         >
           <option value="left">Left</option>
@@ -112,13 +112,13 @@ const HeroBlockEditor: React.FC<HeroBlockEditorProps> = ({ content, onUpdate }) 
           <input
             type="color"
             value={content.overlay || '#000000'}
-            onChange={(___e) => handleChange('overlay', e.target.value)}
+            onChange={(e) => handleChange('overlay', e.target.value)}
             className="h-8 w-8 rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue"
           />
           <input
             type="text"
             value={content.overlay || ''}
-            onChange={(___e) => handleChange('overlay', e.target.value)}
+            onChange={(e) => handleChange('overlay', e.target.value)}
             placeholder="#000000"
             className="block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
           />

@@ -44,7 +44,7 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
   };
 
   const handleFeatureChange = (serviceId: string, index: number, value: string): void => {
-    const service = content.services.find((___s) => s.id === serviceId);
+    const service = content.services.find((s) => s.id === serviceId);
     if (!service) {
       return;
     }
@@ -55,7 +55,7 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
   };
 
   const handleAddFeature = (serviceId: string): void => {
-    const service = content.services.find((___s) => s.id === serviceId);
+    const service = content.services.find((s) => s.id === serviceId);
     if (!service) {
       return;
     }
@@ -65,12 +65,12 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
   };
 
   const handleRemoveFeature = (serviceId: string, index: number): void => {
-    const service = content.services.find((___s) => s.id === serviceId);
+    const service = content.services.find((s) => s.id === serviceId);
     if (!service) {
       return;
     }
 
-    const updatedFeatures = (service.features || []).filter((_, ___i) => i !== index);
+    const updatedFeatures = (service.features || []).filter((_, i) => i !== index);
     handleServiceChange(serviceId, 'features', updatedFeatures);
   };
 
@@ -93,7 +93,7 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
           <label className="block text-sm font-medium text-taxcat-gray">Layout</label>
           <select
             value={content.layout}
-            onChange={(___e) => handleChange('layout', e.target.value as 'grid' | 'list' | 'cards')}
+            onChange={(e) => handleChange('layout', e.target.value as 'grid' | 'list' | 'cards')}
             className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
           >
             <option value="grid">Grid</option>
@@ -106,7 +106,7 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
           <label className="block text-sm font-medium text-taxcat-gray">Columns</label>
           <select
             value={content.columns}
-            onChange={(___e) => handleChange('columns', parseInt(e.target.value) as 2 | 3 | 4)}
+            onChange={(e) => handleChange('columns', parseInt(e.target.value) as 2 | 3 | 4)}
             className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
           >
             <option value={2}>2 Columns</option>
@@ -121,7 +121,7 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
           <input
             type="checkbox"
             checked={content.showPricing}
-            onChange={(___e) => handleChange('showPricing', e.target.checked)}
+            onChange={(e) => handleChange('showPricing', e.target.checked)}
             className="h-4 w-4 text-taxcat-blue focus:ring-taxcat-blue border-taxcat-gray/20 rounded"
           />
           <label className="ml-2 text-sm text-taxcat-gray">Show Pricing</label>
@@ -132,7 +132,7 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
         <label className="block text-sm font-medium text-taxcat-gray">Theme</label>
         <select
           value={content.theme}
-          onChange={(___e) =>
+          onChange={(e) =>
             handleChange(
               'theme',
               e.target.value as 'default' | 'taxcat-blue' | 'taxcat-white' | 'taxcat-gray'
@@ -162,11 +162,11 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
 
         <DragDropContext onDragEnd={handleDragEnd}>
           <Droppable droppableId="services">
-            {(___provided) => (
+            {(provided) => (
               <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-4">
-                {content.services.map((service, ___index) => (
+                {content.services.map((service, index) => (
                   <Draggable key={service.id} draggableId={service.id} index={___index}>
-                    {(___provided) => (
+                    {(provided) => (
                       <div
                         ref={provided.innerRef}
                         {...provided.draggableProps}
@@ -195,7 +195,7 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
                             <input
                               type="text"
                               value={service.title}
-                              onChange={(___e) =>
+                              onChange={(e) =>
                                 handleServiceChange(service.id, 'title', e.target.value)
                               }
                               className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
@@ -208,7 +208,7 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
                             </label>
                             <textarea
                               value={service.description}
-                              onChange={(___e) =>
+                              onChange={(e) =>
                                 handleServiceChange(service.id, 'description', e.target.value)
                               }
                               rows={3}
@@ -223,7 +223,7 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
                             <input
                               type="text"
                               value={service.icon}
-                              onChange={(___e) =>
+                              onChange={(e) =>
                                 handleServiceChange(service.id, 'icon', e.target.value)
                               }
                               className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
@@ -238,7 +238,7 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
                               <input
                                 type="text"
                                 value={service.price || ''}
-                                onChange={(___e) =>
+                                onChange={(e) =>
                                   handleServiceChange(service.id, 'price', e.target.value)
                                 }
                                 placeholder="e.g. $99/month"
@@ -266,7 +266,7 @@ const ServicesBlockEditor = ({ content, onUpdate }: ServicesBlockEditorProps) =>
                                   <input
                                     type="text"
                                     value={feature}
-                                    onChange={(___e) =>
+                                    onChange={(e) =>
                                       handleFeatureChange(service.id, featureIndex, e.target.value)
                                     }
                                     className="block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"

@@ -256,7 +256,7 @@ export default function TaxReturnForm({ onSubmit, onSaveDraft, initialData }: Ta
                   type="number"
                   step="0.01"
                   {...field}
-                  onChange={(___e) => field.onChange(parseFloat(e.target.value))}
+                  onChange={(e) => field.onChange(parseFloat(e.target.value))}
                   className="w-full px-3 py-2 border rounded-md"
                 />
                 {errors.income?.wages && (
@@ -278,7 +278,7 @@ export default function TaxReturnForm({ onSubmit, onSaveDraft, initialData }: Ta
                   type="number"
                   step="0.01"
                   {...field}
-                  onChange={(___e) => field.onChange(parseFloat(e.target.value))}
+                  onChange={(e) => field.onChange(parseFloat(e.target.value))}
                   className="w-full px-3 py-2 border rounded-md"
                 />
                 {errors.income?.selfEmployment && (
@@ -302,7 +302,7 @@ export default function TaxReturnForm({ onSubmit, onSaveDraft, initialData }: Ta
                   type="number"
                   step="0.01"
                   {...field}
-                  onChange={(___e) => field.onChange(parseFloat(e.target.value))}
+                  onChange={(e) => field.onChange(parseFloat(e.target.value))}
                   className="w-full px-3 py-2 border rounded-md"
                 />
                 {errors.income?.investments?.dividends && (
@@ -356,7 +356,7 @@ export default function TaxReturnForm({ onSubmit, onSaveDraft, initialData }: Ta
                       type="number"
                       step="0.01"
                       {...field}
-                      onChange={(___e) => field.onChange(parseFloat(e.target.value))}
+                      onChange={(e) => field.onChange(parseFloat(e.target.value))}
                       className="w-full px-3 py-2 border rounded-md"
                     />
                   </div>
@@ -375,7 +375,7 @@ export default function TaxReturnForm({ onSubmit, onSaveDraft, initialData }: Ta
                       type="number"
                       step="0.01"
                       {...field}
-                      onChange={(___e) => field.onChange(parseFloat(e.target.value))}
+                      onChange={(e) => field.onChange(parseFloat(e.target.value))}
                       className="w-full px-3 py-2 border rounded-md"
                     />
                   </div>

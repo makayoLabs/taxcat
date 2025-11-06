@@ -125,7 +125,7 @@ export class CRAWebService {
 
       this.logger.info('CRA_SERVICE', 'Authentication successful');
       this.performanceMonitor.endOperation(operationId, true);
-    } catch (___error) =>
+    } catch (error) {
       this.performanceMonitor.endOperation(operationId, false, { error });
       throw error;
     }
@@ -152,7 +152,7 @@ export class CRAWebService {
 
       this.performanceMonitor.endOperation(operationId, true);
       return result;
-    } catch (___error) =>
+    } catch (error) {
       this.performanceMonitor.endOperation(operationId, false, { error });
       throw error;
     }
@@ -189,7 +189,7 @@ export class CRAWebService {
 
       this.performanceMonitor.endOperation(operationId, true);
       return result;
-    } catch (___error) =>
+    } catch (error) {
       this.performanceMonitor.endOperation(operationId, false, { error });
       throw error;
     }

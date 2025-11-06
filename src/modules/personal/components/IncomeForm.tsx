@@ -152,7 +152,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
           </button>
         </div>
 
-        {income.employment.map((emp, ___index) => (
+        {income.employment.map((emp, index) => (
           <div key={index} className="bg-gray-50 p-4 rounded-lg mb-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -160,7 +160,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                 <input
                   type="text"
                   value={emp.employerName}
-                  onChange={(___e) => handleEmploymentChange(index, 'employerName', e.target.value)}
+                  onChange={(e) => handleEmploymentChange(index, 'employerName', e.target.value)}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
@@ -170,7 +170,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                 <input
                   type="text"
                   value={emp.employerNumber}
-                  onChange={(___e) => handleEmploymentChange(index, 'employerNumber', e.target.value)}
+                  onChange={(e) => handleEmploymentChange(index, 'employerNumber', e.target.value)}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
@@ -183,7 +183,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                   type="number"
                   step="0.01"
                   value={emp.income.toString()}
-                  onChange={(___e) => handleEmploymentChange(index, 'income', e.target.value)}
+                  onChange={(e) => handleEmploymentChange(index, 'income', e.target.value)}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
@@ -196,7 +196,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                   type="number"
                   step="0.01"
                   value={emp.tax.toString()}
-                  onChange={(___e) => handleEmploymentChange(index, 'tax', e.target.value)}
+                  onChange={(e) => handleEmploymentChange(index, 'tax', e.target.value)}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
@@ -209,7 +209,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                   type="number"
                   step="0.01"
                   value={emp.cpp.toString()}
-                  onChange={(___e) => handleEmploymentChange(index, 'cpp', e.target.value)}
+                  onChange={(e) => handleEmploymentChange(index, 'cpp', e.target.value)}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
@@ -222,7 +222,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                   type="number"
                   step="0.01"
                   value={emp.ei.toString()}
-                  onChange={(___e) => handleEmploymentChange(index, 'ei', e.target.value)}
+                  onChange={(e) => handleEmploymentChange(index, 'ei', e.target.value)}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
@@ -258,7 +258,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                     type="number"
                     step="0.01"
                     value={income.investment.dividends.eligible.toString()}
-                    onChange={(___e) =>
+                    onChange={(e) =>
                       handleInvestmentChange('dividends', 'eligible', e.target.value)
                     }
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -273,7 +273,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                     type="number"
                     step="0.01"
                     value={income.investment.dividends.nonEligible.toString()}
-                    onChange={(___e) =>
+                    onChange={(e) =>
                       handleInvestmentChange('dividends', 'nonEligible', e.target.value)
                     }
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -288,7 +288,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                     type="number"
                     step="0.01"
                     value={income.investment.dividends.foreign.toString()}
-                    onChange={(___e) => handleInvestmentChange('dividends', 'foreign', e.target.value)}
+                    onChange={(e) => handleInvestmentChange('dividends', 'foreign', e.target.value)}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   />
                 </div>
@@ -306,7 +306,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                     type="number"
                     step="0.01"
                     value={income.investment.interest.canadian.toString()}
-                    onChange={(___e) => handleInvestmentChange('interest', 'canadian', e.target.value)}
+                    onChange={(e) => handleInvestmentChange('interest', 'canadian', e.target.value)}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   />
                 </div>
@@ -319,7 +319,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                     type="number"
                     step="0.01"
                     value={income.investment.interest.foreign.toString()}
-                    onChange={(___e) => handleInvestmentChange('interest', 'foreign', e.target.value)}
+                    onChange={(e) => handleInvestmentChange('interest', 'foreign', e.target.value)}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   />
                 </div>
@@ -335,7 +335,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                     type="number"
                     step="0.01"
                     value={income.investment.capitalGains.securities.toString()}
-                    onChange={(___e) =>
+                    onChange={(e) =>
                       handleInvestmentChange('capitalGains', 'securities', e.target.value)
                     }
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -348,7 +348,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                     type="number"
                     step="0.01"
                     value={income.investment.capitalGains.realEstate.toString()}
-                    onChange={(___e) =>
+                    onChange={(e) =>
                       handleInvestmentChange('capitalGains', 'realEstate', e.target.value)
                     }
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -363,7 +363,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                     type="number"
                     step="0.01"
                     value={income.investment.capitalGains.other.toString()}
-                    onChange={(___e) =>
+                    onChange={(e) =>
                       handleInvestmentChange('capitalGains', 'other', e.target.value)
                     }
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -387,7 +387,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                 type="number"
                 step="0.01"
                 value={income.pension.cpp.toString()}
-                onChange={(___e) => handlePensionChange('cpp', e.target.value)}
+                onChange={(e) => handlePensionChange('cpp', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -398,7 +398,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                 type="number"
                 step="0.01"
                 value={income.pension.oas.toString()}
-                onChange={(___e) => handlePensionChange('oas', e.target.value)}
+                onChange={(e) => handlePensionChange('oas', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -411,7 +411,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                 type="number"
                 step="0.01"
                 value={income.pension.employerPension.toString()}
-                onChange={(___e) => handlePensionChange('employerPension', e.target.value)}
+                onChange={(e) => handlePensionChange('employerPension', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -422,7 +422,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                 type="number"
                 step="0.01"
                 value={income.pension.rrsp.toString()}
-                onChange={(___e) => handlePensionChange('rrsp', e.target.value)}
+                onChange={(e) => handlePensionChange('rrsp', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -433,7 +433,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                 type="number"
                 step="0.01"
                 value={income.pension.rrif.toString()}
-                onChange={(___e) => handlePensionChange('rrif', e.target.value)}
+                onChange={(e) => handlePensionChange('rrif', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -444,7 +444,7 @@ export const IncomeForm: React.FC<IncomeFormProps> = ({ income, onChange, errors
                 type="number"
                 step="0.01"
                 value={income.pension.foreignPension.toString()}
-                onChange={(___e) => handlePensionChange('foreignPension', e.target.value)}
+                onChange={(e) => handlePensionChange('foreignPension', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>

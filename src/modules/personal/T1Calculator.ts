@@ -96,7 +96,7 @@ export class T1Calculator implements ITaxCalculator {
 
       // Check cache first
       const cachedResult = this.cache.get(taxpayer, this.year, income, deductions, credits);
-      if (___cachedResult) =>
+      if (cachedResult) {
         this.logger.info('T1_CALCULATION', 'Returning cached result', {
           sin: taxpayer.sin,
           year: this.year,
@@ -385,11 +385,11 @@ export class T1Calculator implements ITaxCalculator {
   }
 
   private calculateCPPContributions(income: Income): Decimal {
-    return income.employment.reduce((sum, ___emp) => sum.plus(emp.t4.cpp), new Decimal(0));
+    return income.employment.reduce((sum, emp) => sum.plus(emp.t4.cpp), new Decimal(0));
   }
 
   private calculateEIContributions(income: Income): Decimal {
-    return income.employment.reduce((sum, ___emp) => sum.plus(emp.t4.ei), new Decimal(0));
+    return income.employment.reduce((sum, emp) => sum.plus(emp.t4.ei), new Decimal(0));
   }
 
   private calculateQPPContributions(income: Income): Decimal {
@@ -398,13 +398,13 @@ export class T1Calculator implements ITaxCalculator {
   }
 
   private calculateEmploymentIncome(income: Income): Decimal {
-    return income.employment.reduce((sum, ___emp) => sum.plus(emp.t4.income), new Decimal(0));
+    return income.employment.reduce((sum, emp) => sum.plus(emp.t4.income), new Decimal(0));
   }
 
   private calculateBusinessIncome(income: Income): Decimal {
-    return income.business.reduce((sum, ___bus) => {
+    return income.business.reduce((sum, bus) => {
       const expenses = Object.values(bus.expenses).reduce(
-        (total, ___exp) => total.plus(exp),
+        (total, exp) => total.plus(exp),
         new Decimal(0)
       );
       return sum.plus(bus.revenue.minus(expenses));

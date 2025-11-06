@@ -227,14 +227,14 @@ export class TaxCalculator {
     const federalRate =
       this.config.federalBrackets
         .reverse()
-        .find((___bracket) => taxableIncome.gte(bracket.threshold))?.rate || 0;
+        .find((bracket) => taxableIncome.gte(bracket.threshold))?.rate || 0;
 
     // Find provincial bracket
     const provincialRates = this.config.provincialRates[this.province];
     const provincialRate =
       provincialRates.brackets
         .reverse()
-        .find((___bracket) => taxableIncome.gte(bracket.threshold))?.rate || 0;
+        .find((bracket) => taxableIncome.gte(bracket.threshold))?.rate || 0;
 
     return new Decimal(federalRate + provincialRate).mul(new Decimal(100));
   }

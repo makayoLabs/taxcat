@@ -40,7 +40,7 @@ export default function DocumentUpload({
 
         const result = await response.json();
         setUploadedFiles((___prev) => [...prev, ...result.documents]);
-      } catch (___error) =>
+      } catch (error) {
         console.error('Error uploading files:', error);
       } finally {
         setIsUploading(false);

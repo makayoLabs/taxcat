@@ -85,7 +85,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                 type="number"
                 step="0.01"
                 value={deductions.rrsp.contributions.toString()}
-                onChange={(___e) => handleRRSPChange('contributions', e.target.value)}
+                onChange={(e) => handleRRSPChange('contributions', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -96,7 +96,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                 type="number"
                 step="0.01"
                 value={deductions.rrsp.prpp.toString()}
-                onChange={(___e) => handleRRSPChange('prpp', e.target.value)}
+                onChange={(e) => handleRRSPChange('prpp', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -109,7 +109,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                 type="number"
                 step="0.01"
                 value={deductions.rrsp.spousalContributions.toString()}
-                onChange={(___e) => handleRRSPChange('spousalContributions', e.target.value)}
+                onChange={(e) => handleRRSPChange('spousalContributions', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -120,7 +120,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                 type="number"
                 step="0.01"
                 value={deductions.rrsp.hbpRepayment.toString()}
-                onChange={(___e) => handleRRSPChange('hbpRepayment', e.target.value)}
+                onChange={(e) => handleRRSPChange('hbpRepayment', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -139,7 +139,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                 type="number"
                 step="0.01"
                 value={deductions.employment.unionDues.toString()}
-                onChange={(___e) => handleEmploymentChange('unionDues', e.target.value)}
+                onChange={(e) => handleEmploymentChange('unionDues', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -150,7 +150,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                 type="number"
                 step="0.01"
                 value={deductions.employment.professionalDues.toString()}
-                onChange={(___e) => handleEmploymentChange('professionalDues', e.target.value)}
+                onChange={(e) => handleEmploymentChange('professionalDues', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -161,7 +161,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                 type="number"
                 step="0.01"
                 value={deductions.employment.toolExpenses.toString()}
-                onChange={(___e) => handleEmploymentChange('toolExpenses', e.target.value)}
+                onChange={(e) => handleEmploymentChange('toolExpenses', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -174,7 +174,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                 type="number"
                 step="0.01"
                 value={deductions.employment.workFromHome.toString()}
-                onChange={(___e) => handleEmploymentChange('workFromHome', e.target.value)}
+                onChange={(e) => handleEmploymentChange('workFromHome', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -193,7 +193,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                 type="number"
                 step="0.01"
                 value={deductions.other.movingExpenses.toString()}
-                onChange={(___e) => handleOtherChange('movingExpenses', e.target.value)}
+                onChange={(e) => handleOtherChange('movingExpenses', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -204,7 +204,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                 type="number"
                 step="0.01"
                 value={deductions.other.supportPayments.toString()}
-                onChange={(___e) => handleOtherChange('supportPayments', e.target.value)}
+                onChange={(e) => handleOtherChange('supportPayments', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -215,7 +215,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                 type="number"
                 step="0.01"
                 value={deductions.other.carryingCharges.toString()}
-                onChange={(___e) => handleOtherChange('carryingCharges', e.target.value)}
+                onChange={(e) => handleOtherChange('carryingCharges', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -228,7 +228,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                 type="number"
                 step="0.01"
                 value={deductions.other.explorationDevelopment.toString()}
-                onChange={(___e) => handleOtherChange('explorationDevelopment', e.target.value)}
+                onChange={(e) => handleOtherChange('explorationDevelopment', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -254,7 +254,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                     type="text"
                     placeholder="Description"
                     value={key.replace('custom_', '')}
-                    onChange={(___e) => {
+                    onChange={(e) => {
                       const newKey = `custom_${e.target.value}`;
                       const { [key]: value, ...rest } = deductions.other.otherDeductions;
                       handleCustomDeductionChange(newKey, value.toString());
@@ -267,7 +267,7 @@ export const DeductionsForm: React.FC<DeductionsFormProps> = ({ deductions, onCh
                     type="number"
                     step="0.01"
                     value={value.toString()}
-                    onChange={(___e) => handleCustomDeductionChange(key, e.target.value)}
+                    onChange={(e) => handleCustomDeductionChange(key, e.target.value)}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   />
                 </div>

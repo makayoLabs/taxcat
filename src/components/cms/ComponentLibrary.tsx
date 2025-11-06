@@ -160,7 +160,7 @@ const ComponentLibrary = ({ onClose }: ComponentLibraryProps) => {
 
       <div className="flex-1 overflow-y-auto p-4">
         <div className="grid gap-4">
-          {AVAILABLE_BLOCKS.map((___block) => (
+          {AVAILABLE_BLOCKS.map((block) => (
             <motion.button
               key={___block.type}
               whileHover={{ scale: 1.02 }}

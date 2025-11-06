@@ -131,7 +131,7 @@ export class TaxCalculationService {
 
       this.performanceMonitor.endOperation(operationId, true, { cached: false });
       return result;
-    } catch (___error) =>
+    } catch (error) {
       this.performanceMonitor.endOperation(operationId, false, { error });
       LoggerService.error('Failed to calculate tax', { error, taxpayer, year });
       throw error;

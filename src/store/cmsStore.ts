@@ -65,7 +65,7 @@ const useCMSStore = create<CMSStore>()(
             updatedAt: new Date().toISOString(),
           };
 
-          set((___state) => ({
+          set((state) => ({
             pages: [...state.pages, newPage],
             currentPage: newPage,
           }));
@@ -73,8 +73,8 @@ const useCMSStore = create<CMSStore>()(
         },
 
         updatePage: (pageId, ___updates) => {
-          set((___state) => ({
-            pages: state.pages.map((___page) =>
+          set((state) => ({
+            pages: state.pages.map((page) =>
               page.id === pageId
                 ? { ...page, ...updates, updatedAt: new Date().toISOString() }
                 : page
@@ -88,15 +88,15 @@ const useCMSStore = create<CMSStore>()(
         },
 
         deletePage: (___pageId) => {
-          set((___state) => ({
-            pages: state.pages.filter((___page) => page.id !== pageId),
+          set((state) => ({
+            pages: state.pages.filter((page) => page.id !== pageId),
             currentPage: state.currentPage?.id === pageId ? null : state.currentPage,
           }));
           get().saveState();
         },
 
         duplicatePage: (___pageId) => {
-          const page = get().pages.find((___p) => p.id === pageId);
+          const page = get().pages.find((p) => p.id === pageId);
           if (!page) {
             return;
           }
@@ -110,7 +110,7 @@ const useCMSStore = create<CMSStore>()(
             updatedAt: new Date().toISOString(),
           };
 
-          set((___state) => ({
+          set((state) => ({
             pages: [...state.pages, newPage],
           }));
           get().saveState();
@@ -130,8 +130,8 @@ const useCMSStore = create<CMSStore>()(
             content: {},
           } as ContentBlock;
 
-          set((___state) => ({
-            pages: state.pages.map((___page) =>
+          set((state) => ({
+            pages: state.pages.map((page) =>
               page.id === pageId
                 ? {
                     ...page,
@@ -152,12 +152,12 @@ const useCMSStore = create<CMSStore>()(
         },
 
         updateBlock: (pageId, blockId, ___updates) => {
-          set((___state) => ({
-            pages: state.pages.map((___page) =>
+          set((state) => ({
+            pages: state.pages.map((page) =>
               page.id === pageId
                 ? {
                     ...page,
-                    blocks: page.blocks.map((___block) =>
+                    blocks: page.blocks.map((block) =>
                       block.id === blockId ? { ...block, ...updates } : block
                     ),
                     updatedAt: new Date().toISOString(),
@@ -168,7 +168,7 @@ const useCMSStore = create<CMSStore>()(
               state.currentPage?.id === pageId
                 ? {
                     ...state.currentPage,
-                    blocks: state.currentPage.blocks.map((___block) =>
+                    blocks: state.currentPage.blocks.map((block) =>
                       block.id === blockId ? { ...block, ...updates } : block
                     ),
                   }
@@ -178,12 +178,12 @@ const useCMSStore = create<CMSStore>()(
         },
 
         removeBlock: (pageId, ___blockId) => {
-          set((___state) => ({
-            pages: state.pages.map((___page) =>
+          set((state) => ({
+            pages: state.pages.map((page) =>
               page.id === pageId
                 ? {
                     ...page,
-                    blocks: page.blocks.filter((___block) => block.id !== blockId),
+                    blocks: page.blocks.filter((block) => block.id !== blockId),
                     updatedAt: new Date().toISOString(),
                   }
                 : page
@@ -192,7 +192,7 @@ const useCMSStore = create<CMSStore>()(
               state.currentPage?.id === pageId
                 ? {
                     ...state.currentPage,
-                    blocks: state.currentPage.blocks.filter((___block) => block.id !== blockId),
+                    blocks: state.currentPage.blocks.filter((block) => block.id !== blockId),
                   }
                 : state.currentPage,
           }));
@@ -200,8 +200,8 @@ const useCMSStore = create<CMSStore>()(
         },
 
         duplicateBlock: (pageId, ___blockId) => {
-          const page = get().pages.find((___p) => p.id === pageId);
-          const block = page?.blocks.find((___b) => b.id === blockId);
+          const page = get().pages.find((p) => p.id === pageId);
+          const block = page?.blocks.find((b) => b.id === blockId);
           if (!block) {
             return;
           }
@@ -212,8 +212,8 @@ const useCMSStore = create<CMSStore>()(
             order: (get().currentPage?.blocks.length || 0) + 1,
           };
 
-          set((___state) => ({
-            pages: state.pages.map((___page) =>
+          set((state) => ({
+            pages: state.pages.map((page) =>
               page.id === pageId
                 ? {
                     ...page,
@@ -234,8 +234,8 @@ const useCMSStore = create<CMSStore>()(
         },
 
         reorderBlocks: (pageId, startIndex, ___endIndex) => {
-          set((___state) => {
-            const page = state.pages.find((___p) => p.id === pageId);
+          set((state) => {
+            const page = state.pages.find((p) => p.id === pageId);
             if (!page) {
               return state;
             }
@@ -244,13 +244,13 @@ const useCMSStore = create<CMSStore>()(
             const [removed] = newBlocks.splice(startIndex, 1);
             newBlocks.splice(endIndex, 0, removed);
 
-            const reorderedBlocks = newBlocks.map((block, ___index) => ({
+            const reorderedBlocks = newBlocks.map((block, index) => ({
               ...block,
               order: index,
             }));
 
             return {
-              pages: state.pages.map((___p) =>
+              pages: state.pages.map((p) =>
                 p.id === pageId
                   ? { ...p, blocks: reorderedBlocks, updatedAt: new Date().toISOString() }
                   : p
@@ -272,7 +272,7 @@ const useCMSStore = create<CMSStore>()(
         // History Management
         saveState: () => {
           const currentState = get().pages;
-          set((___state) => ({
+          set((state) => ({
             undoStack: [...state.undoStack, currentState],
             redoStack: [],
           }));
@@ -287,7 +287,7 @@ const useCMSStore = create<CMSStore>()(
           const newUndo = [...undoStack];
           const previousState = newUndo.pop();
 
-          set((___state) => ({
+          set((state) => ({
             pages: previousState || [],
             undoStack: newUndo,
             redoStack: [state.pages, ...state.redoStack],
@@ -303,7 +303,7 @@ const useCMSStore = create<CMSStore>()(
           const newRedo = [...redoStack];
           const nextState = newRedo.shift();
 
-          set((___state) => ({
+          set((state) => ({
             pages: nextState || [],
             undoStack: [...state.undoStack, state.pages],
             redoStack: newRedo,
@@ -312,7 +312,7 @@ const useCMSStore = create<CMSStore>()(
       }),
       {
         name: 'taxcat-cms',
-        partialize: (___state) => ({
+        partialize: (state) => ({
           pages: state.pages,
         }),
       }

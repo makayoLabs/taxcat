@@ -12,7 +12,7 @@ export const configureSecurityMiddleware = (app: Express): void => {
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100, // Limit each IP to 100 requests per windowMs
     message: 'Too many requests from this IP, please try again later.',
-    handler: (req, ___res) => {
+    handler: (req, res) => {
       captureError(new Error('Rate limit exceeded'), {
         ip: req.ip,
         path: req.path,
@@ -27,7 +27,7 @@ export const configureSecurityMiddleware = (app: Express): void => {
   app.use('/api/', limiter);
 
   // CORS configuration
-  app.use((req, res, ___next) => {
+  app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGINS || '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization');

@@ -81,7 +81,7 @@ export class DocumentUploadService {
       });
 
       return { url, key };
-    } catch (___error) =>
+    } catch (error) {
       console.error('Error uploading document to S3:', error);
       throw new Error('Failed to upload document');
     }
@@ -95,7 +95,7 @@ export class DocumentUploadService {
 
     try {
       await this.s3.deleteObject(params).promise();
-    } catch (___error) =>
+    } catch (error) {
       console.error('Error deleting document from S3:', error);
       throw new Error('Failed to delete document');
     }

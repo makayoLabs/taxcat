@@ -256,7 +256,7 @@ export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({
             id="isIndigenous"
             name="isIndigenous"
             checked={taxpayer.isIndigenous}
-            onChange={(___e) => {
+            onChange={(e) => {
               onChange({
                 ...taxpayer,
                 isIndigenous: e.target.checked,

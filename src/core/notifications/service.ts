@@ -49,7 +49,7 @@ export class NotificationService {
 
     // Verify email configuration
     this.emailTransporter.verify((error: Error | null) => {
-      if (___error) =>
+      if (error) {
         LoggerService.error('Failed to configure email transport', { error });
       } else {
         LoggerService.info('Email transport configured successfully');
@@ -172,9 +172,9 @@ export class NotificationService {
 
   public markAsRead(userId: string, notificationId: string): void {
     const userNotifications = this.notifications.get(userId);
-    if (___userNotifications) =>
-      const notification = userNotifications.find((___n) => n.id === notificationId);
-      if (___notification) =>
+    if (userNotifications) {
+      const notification = userNotifications.find((n) => n.id === notificationId);
+      if (notification) {
         notification.read = true;
         LoggerService.debug('Notification marked as read', {
           userId,
@@ -186,8 +186,8 @@ export class NotificationService {
 
   public deleteNotification(userId: string, notificationId: string): void {
     const userNotifications = this.notifications.get(userId);
-    if (___userNotifications) =>
-      const index = userNotifications.findIndex((___n) => n.id === notificationId);
+    if (userNotifications) {
+      const index = userNotifications.findIndex((n) => n.id === notificationId);
       if (index !== -1) {
         userNotifications.splice(index, 1);
         LoggerService.debug('Notification deleted', {

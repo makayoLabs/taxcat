@@ -190,7 +190,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
               id="fiscalPeriod.start"
               name="fiscalPeriod.start"
               value={corporation.fiscalPeriod.start.toISOString().split('T')[0]}
-              onChange={(___e) => {
+              onChange={(e) => {
                 onChange({
                   ...corporation,
                   fiscalPeriod: {
@@ -212,7 +212,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
               id="fiscalPeriod.end"
               name="fiscalPeriod.end"
               value={corporation.fiscalPeriod.end.toISOString().split('T')[0]}
-              onChange={(___e) => {
+              onChange={(e) => {
                 onChange({
                   ...corporation,
                   fiscalPeriod: {
@@ -320,7 +320,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
         {errors.directors && <p className="mb-4 text-sm text-error">{errors.directors}</p>}
 
         <div className="space-y-4">
-          {corporation.directors.map((director, ___index) => (
+          {corporation.directors.map((director, index) => (
             <div key={index} className="border rounded-lg p-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -328,7 +328,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
                   <input
                     type="text"
                     value={director.name}
-                    onChange={(___e) => handleDirectorChange(index, 'name', e.target.value)}
+                    onChange={(e) => handleDirectorChange(index, 'name', e.target.value)}
                     className="cat-input"
                   />
                 </div>
@@ -338,7 +338,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
                   <input
                     type="text"
                     value={director.sin || ''}
-                    onChange={(___e) => handleDirectorChange(index, 'sin', e.target.value)}
+                    onChange={(e) => handleDirectorChange(index, 'sin', e.target.value)}
                     className="cat-input"
                   />
                 </div>
@@ -348,7 +348,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
                   <input
                     type="text"
                     value={director.address}
-                    onChange={(___e) => handleDirectorChange(index, 'address', e.target.value)}
+                    onChange={(e) => handleDirectorChange(index, 'address', e.target.value)}
                     className="cat-input"
                   />
                 </div>
@@ -358,7 +358,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
                   <input
                     type="date"
                     value={director.startDate.toISOString().split('T')[0]}
-                    onChange={(___e) =>
+                    onChange={(e) =>
                       handleDirectorChange(index, 'startDate', new Date(e.target.value))
                     }
                     className="cat-input"
@@ -372,7 +372,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
                   <input
                     type="date"
                     value={director.endDate?.toISOString().split('T')[0] || ''}
-                    onChange={(___e) =>
+                    onChange={(e) =>
                       handleDirectorChange(index, 'endDate', new Date(e.target.value))
                     }
                     className="cat-input"
@@ -406,7 +406,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
         {errors.shareholders && <p className="mb-4 text-sm text-error">{errors.shareholders}</p>}
 
         <div className="space-y-4">
-          {corporation.shareholders.map((shareholder, ___index) => (
+          {corporation.shareholders.map((shareholder, index) => (
             <div key={index} className="border rounded-lg p-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -414,7 +414,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
                   <input
                     type="text"
                     value={shareholder.name}
-                    onChange={(___e) => handleShareholderChange(index, 'name', e.target.value)}
+                    onChange={(e) => handleShareholderChange(index, 'name', e.target.value)}
                     className="cat-input"
                   />
                 </div>
@@ -424,7 +424,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
                   <input
                     type="text"
                     value={shareholder.sin || ''}
-                    onChange={(___e) => handleShareholderChange(index, 'sin', e.target.value)}
+                    onChange={(e) => handleShareholderChange(index, 'sin', e.target.value)}
                     className="cat-input"
                   />
                 </div>
@@ -432,14 +432,14 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
 
               <div className="mt-4">
                 <h4 className="font-medium mb-2">Share Classes</h4>
-                {shareholder.shares.map((share, ___shareIndex) => (
+                {shareholder.shares.map((share, shareIndex) => (
                   <div key={shareIndex} className="grid grid-cols-3 gap-4 mb-2">
                     <div>
                       <input
                         type="text"
                         placeholder="Class"
                         value={share.class}
-                        onChange={(___e) =>
+                        onChange={(e) =>
                           handleSharesChange(index, shareIndex, 'class', e.target.value)
                         }
                         className="cat-input"
@@ -450,7 +450,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
                         type="number"
                         placeholder="Number"
                         value={share.number}
-                        onChange={(___e) =>
+                        onChange={(e) =>
                           handleSharesChange(index, shareIndex, 'number', e.target.value)
                         }
                         className="cat-input"
@@ -461,7 +461,7 @@ export const CorporateInfoForm: React.FC<CorporateInfoFormProps> = ({
                         type="number"
                         placeholder="Percentage"
                         value={share.percentage}
-                        onChange={(___e) =>
+                        onChange={(e) =>
                           handleSharesChange(index, shareIndex, 'percentage', e.target.value)
                         }
                         className="cat-input"

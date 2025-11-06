@@ -134,7 +134,7 @@ export const SchedulesForm: React.FC<SchedulesFormProps> = ({ schedules, onChang
   };
 
   const renderScheduleStatus = (status: 'not_started' | 'in_progress' | 'completed'): void => {
-    switch (___status) =>
+    switch (status) {
       case 'completed':
         return (
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success text-white">
@@ -161,7 +161,7 @@ export const SchedulesForm: React.FC<SchedulesFormProps> = ({ schedules, onChang
       <div className="cat-card">
         <h3 className="text-xl font-semibold mb-4">Required Schedules</h3>
         <div className="space-y-4">
-          {T2_SCHEDULES.filter((___schedule) => schedule.required).map((___schedule) => (
+          {T2_SCHEDULES.filter((___schedule) => schedule.required).map((schedule) => (
             <div
               key={schedule.id}
               className={`p-4 rounded-lg border ${
@@ -202,7 +202,7 @@ export const SchedulesForm: React.FC<SchedulesFormProps> = ({ schedules, onChang
       <div className="cat-card">
         <h3 className="text-xl font-semibold mb-4">Optional Schedules</h3>
         <div className="space-y-4">
-          {T2_SCHEDULES.filter((___schedule) => !schedule.required).map((___schedule) => (
+          {T2_SCHEDULES.filter((___schedule) => !schedule.required).map((schedule) => (
             <div
               key={schedule.id}
               className={`p-4 rounded-lg border ${

@@ -306,7 +306,7 @@ export class EFileManager {
   }
 
   public getSubmissionHistory(type?: EFileSubmission['type'], year?: number): EFileSubmission[] {
-    return Array.from(this.submissions.values()).filter((___submission) => {
+    return Array.from(this.submissions.values()).filter((submission) => {
       if (type && submission.type !== type) {
         return false;
       }

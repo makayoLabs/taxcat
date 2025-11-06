@@ -33,7 +33,7 @@ export class T2Calculator {
 
   constructor(private readonly year: TaxYear = 2024) {}
 
-  public calculateTax(___data: T2CorporateData) =>
+  public calculateTax(data: T2CorporateData) =>
     const netIncome = this.calculateNetIncome(data);
     const taxableIncome = this.calculateTaxableIncome(data, netIncome);
 
@@ -65,7 +65,7 @@ export class T2Calculator {
   private calculateNetIncome(data: T2CorporateData): Decimal {
     const revenue = data.financials.revenue;
     const totalExpenses = Object.values(data.financials.expenses).reduce(
-      (sum, ___expense) => sum.plus(expense),
+      (sum, expense) => sum.plus(expense),
       new Decimal(0)
     );
 
@@ -111,7 +111,7 @@ export class T2Calculator {
     return taxableIncome.times(rates.GENERAL);
   }
 
-  private calculateCredits(___data: T2CorporateData) =>
+  private calculateCredits(data: T2CorporateData) =>
     return {
       investment: data.calculations.credits.investment,
       sred: data.calculations.credits.sred,
@@ -132,7 +132,7 @@ export class T2Calculator {
     const totalCredits = credits.investment
       .plus(credits.sred)
       .plus(credits.foreign)
-      .plus(Object.values(credits.other).reduce((sum, ___credit) => sum.plus(credit), new Decimal(0)));
+      .plus(Object.values(credits.other).reduce((sum, credit) => sum.plus(credit), new Decimal(0)));
 
     const balance = totalTax.minus(totalCredits);
 

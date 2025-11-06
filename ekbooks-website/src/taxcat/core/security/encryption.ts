@@ -47,7 +47,7 @@ export class EncryptionService {
         tag: tag.toString('base64'),
         keyId: keyId || 'current',
       };
-    } catch (___error) =>
+    } catch (error) {
       LoggerService.error('Encryption failed', { error });
       throw new Error('Encryption failed');
     }
@@ -73,7 +73,7 @@ export class EncryptionService {
       decrypted += decipher.final('utf8');
 
       return decrypted;
-    } catch (___error) =>
+    } catch (error) {
       LoggerService.error('Decryption failed', { error });
       throw new Error('Decryption failed');
     }
@@ -84,7 +84,7 @@ export class EncryptionService {
       const salt = await randomBytes(16);
       const key = (await scrypt(password, salt, 64)) as Buffer;
       return `${salt.toString('base64')}.${key.toString('base64')}`;
-    } catch (___error) =>
+    } catch (error) {
       LoggerService.error('Password hashing failed', { error });
       throw new Error('Password hashing failed');
     }
@@ -95,7 +95,7 @@ export class EncryptionService {
       const [salt, key] = hash.split('.');
       const keyBuffer = (await scrypt(password, Buffer.from(salt, 'base64'), 64)) as Buffer;
       return keyBuffer.toString('base64') === key;
-    } catch (___error) =>
+    } catch (error) {
       LoggerService.error('Password verification failed', { error });
       throw new Error('Password verification failed');
     }
@@ -124,7 +124,7 @@ export class EncryptionService {
 
       LoggerService.info('Encryption key rotated', { keyId: newKeyId });
       return newKeyId;
-    } catch (___error) =>
+    } catch (error) {
       LoggerService.error('Key rotation failed', { error });
       throw new Error('Key rotation failed');
     }
@@ -134,7 +134,7 @@ export class EncryptionService {
     try {
       const bytes = await randomBytes(length);
       return bytes.toString('base64').replace(/[/+=]/g, '').slice(0, length);
-    } catch (___error) =>
+    } catch (error) {
       LoggerService.error('Token generation failed', { error });
       throw new Error('Token generation failed');
     }

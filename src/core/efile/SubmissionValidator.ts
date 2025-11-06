@@ -6,7 +6,7 @@ export interface ValidationRule {
   code: string;
   message: string;
   severity: 'ERROR' | 'WARNING';
-  validate: (___data: any) => boolean;
+  validate: (data: any) => boolean;
 }
 
 export interface ValidationResult {
@@ -38,31 +38,31 @@ export class SubmissionValidator {
       code: 'T1_001',
       message: 'SIN number must be valid',
       severity: 'ERROR',
-      validate: (___taxpayer: TaxPayer) => this.validateSIN(taxpayer.sin),
+      validate: (taxpayer: TaxPayer) => this.validateSIN(taxpayer.sin),
     },
     {
       code: 'T1_002',
       message: 'Taxpayer must be at least 16 years old',
       severity: 'ERROR',
-      validate: (___taxpayer: TaxPayer) => this.validateAge(taxpayer.dateOfBirth, 16),
+      validate: (taxpayer: TaxPayer) => this.validateAge(taxpayer.dateOfBirth, 16),
     },
     {
       code: 'T1_003',
       message: 'Total income must not exceed maximum limit',
       severity: 'ERROR',
-      validate: (___income: Income) => this.validateTotalIncome(income),
+      validate: (income: Income) => this.validateTotalIncome(income),
     },
     {
       code: 'T1_004',
       message: 'RRSP contributions must not exceed yearly limit',
       severity: 'ERROR',
-      validate: (___deductions: Deductions) => this.validateRRSPContributions(deductions),
+      validate: (deductions: Deductions) => this.validateRRSPContributions(deductions),
     },
     {
       code: 'T1_005',
       message: 'Charitable donations must have valid registration numbers',
       severity: 'ERROR',
-      validate: (___credits: Credits) => this.validateCharitableDonations(credits),
+      validate: (credits: Credits) => this.validateCharitableDonations(credits),
     },
   ];
 
@@ -176,7 +176,7 @@ export class SubmissionValidator {
 
     for (let i = sin.length - 1; i >= 0; i--) {
       let n = parseInt(sin.charAt(i), 10);
-      if (___alternate) =>
+      if (alternate) {
         n *= 2;
         if (n > 9) {
           n -= 9;
@@ -222,7 +222,7 @@ export class SubmissionValidator {
       income.other.social,
       income.other.foreign,
       ...Object.values(income.other.other),
-    ].reduce((sum, ___amount) => sum.plus(amount), new Decimal(0));
+    ].reduce((sum, amount) => sum.plus(amount), new Decimal(0));
 
     return totalIncome.lte(MAX_INCOME);
   }

@@ -23,7 +23,7 @@ export default function DocumentUpload({
       setIsUploading(true);
       try {
         const formData = new FormData();
-        acceptedFiles.forEach((___file) => {
+        acceptedFiles.forEach((file) => {
           formData.append('files', file);
         });
         formData.append('userId', userId);
@@ -39,7 +39,7 @@ export default function DocumentUpload({
         }
 
         const result = await response.json();
-        setUploadedFiles((___prev) => [...prev, ...result.documents]);
+        setUploadedFiles((prev) => [...prev, ...result.documents]);
       } catch (error) {
         console.error('Error uploading files:', error);
       } finally {
@@ -106,7 +106,7 @@ export default function DocumentUpload({
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-lg font-medium text-gray-900 mb-4">Uploaded Documents</h3>
           <ul className="divide-y divide-gray-200">
-            {uploadedFiles.map((___file) => (
+            {uploadedFiles.map((file) => (
               <li key={file.id} className="py-3 flex items-center justify-between">
                 <div className="flex items-center">
                   <svg

@@ -66,8 +66,8 @@ const useCMSStore = create<CMSStore>((___set) => ({
       }
 
       const updatedBlocks = page.blocks
-        .filter((___block) => block.id !== blockId)
-        .map((block, ___index) => ({ ...block, order: index }));
+        .filter((block) => block.id !== blockId)
+        .map((block, index) => ({ ...block, order: index }));
 
       const updatedPage = {
         ...page,
@@ -91,7 +91,7 @@ const useCMSStore = create<CMSStore>((___set) => ({
       const [removed] = blocks.splice(startIndex, 1);
       blocks.splice(endIndex, 0, removed);
 
-      const updatedBlocks = blocks.map((block, ___index) => ({
+      const updatedBlocks = blocks.map((block, index) => ({
         ...block,
         order: index,
       }));
@@ -114,7 +114,7 @@ const useCMSStore = create<CMSStore>((___set) => ({
         return state;
       }
 
-      const updatedBlocks = page.blocks.map((___block) =>
+      const updatedBlocks = page.blocks.map((block) =>
         block.id === blockId ? { ...block, content } : block
       );
 
@@ -136,7 +136,7 @@ const useCMSStore = create<CMSStore>((___set) => ({
         return state;
       }
 
-      const blockToDuplicate = page.blocks.find((___b) => b.id === blockId);
+      const blockToDuplicate = page.blocks.find((b) => b.id === blockId);
       if (!blockToDuplicate) {
         return state;
       }

@@ -100,7 +100,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ block, onUpdate, onClose })
               min="0"
               max="32"
               value={block.settings.spacing.top}
-              onChange={(___e) => handleSpacingChange('top', parseInt(e.target.value))}
+              onChange={(e) => handleSpacingChange('top', parseInt(e.target.value))}
               className="w-full mt-1"
             />
             <span className="text-sm text-gray-500">{block.settings.spacing.top}px</span>
@@ -112,7 +112,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ block, onUpdate, onClose })
               min="0"
               max="32"
               value={block.settings.spacing.bottom}
-              onChange={(___e) => handleSpacingChange('bottom', parseInt(e.target.value))}
+              onChange={(e) => handleSpacingChange('bottom', parseInt(e.target.value))}
               className="w-full mt-1"
             />
             <span className="text-sm text-gray-500">{block.settings.spacing.bottom}px</span>
@@ -140,7 +140,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ block, onUpdate, onClose })
             <input
               type="color"
               value={block.settings.background.color}
-              onChange={(___e) => handleBackgroundChange('color', e.target.value)}
+              onChange={(e) => handleBackgroundChange('color', e.target.value)}
               className="w-full h-10 mt-1 rounded-md"
             />
           </div>
@@ -149,7 +149,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ block, onUpdate, onClose })
             <input
               type="text"
               value={block.settings.background.image || ''}
-              onChange={(___e) => handleBackgroundChange('image', e.target.value)}
+              onChange={(e) => handleBackgroundChange('image', e.target.value)}
               placeholder="Enter image URL"
               className="w-full mt-1 px-3 py-2 border rounded-md"
             />
@@ -159,7 +159,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ block, onUpdate, onClose })
             <input
               type="color"
               value={block.settings.background.overlay || '#000000'}
-              onChange={(___e) => handleBackgroundChange('overlay', e.target.value)}
+              onChange={(e) => handleBackgroundChange('overlay', e.target.value)}
               className="w-full h-10 mt-1 rounded-md"
             />
           </div>
@@ -192,7 +192,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ block, onUpdate, onClose })
             <input
               type="checkbox"
               checked={block.settings.visibility.desktop}
-              onChange={(___e) => handleVisibilityChange('desktop', e.target.checked)}
+              onChange={(e) => handleVisibilityChange('desktop', e.target.checked)}
               className="h-4 w-4 text-taxcat-blue rounded"
             />
           </div>
@@ -201,7 +201,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ block, onUpdate, onClose })
             <input
               type="checkbox"
               checked={block.settings.visibility.tablet}
-              onChange={(___e) => handleVisibilityChange('tablet', e.target.checked)}
+              onChange={(e) => handleVisibilityChange('tablet', e.target.checked)}
               className="h-4 w-4 text-taxcat-blue rounded"
             />
           </div>
@@ -210,7 +210,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ block, onUpdate, onClose })
             <input
               type="checkbox"
               checked={block.settings.visibility.mobile}
-              onChange={(___e) => handleVisibilityChange('mobile', e.target.checked)}
+              onChange={(e) => handleVisibilityChange('mobile', e.target.checked)}
               className="h-4 w-4 text-taxcat-blue rounded"
             />
           </div>
@@ -238,7 +238,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ block, onUpdate, onClose })
 
       <div className="flex-1 overflow-y-auto">
         <div className="p-4 space-y-4">
-          {sections.map((___section) => (
+          {sections.map((section) => (
             <div key={section.id} className="border rounded-lg overflow-hidden">
               <button
                 onClick={() => setOpenSection(section.id === openSection ? '' : section.id)}

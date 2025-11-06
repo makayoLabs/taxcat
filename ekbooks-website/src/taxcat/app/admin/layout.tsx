@@ -62,7 +62,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
           {/* Navigation */}
           <nav className="flex-1 px-2 py-4 space-y-1">
-            {navigation.map((___item) => (
+            {navigation.map((item) => (
               <NavItem key={item.name} item={item} />
             ))}
           </nav>

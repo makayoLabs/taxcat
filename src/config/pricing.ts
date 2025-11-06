@@ -113,7 +113,7 @@ export const calculatePrice = (
   }
 
   // Apply discounts
-  if (___discountCode) =>
+  if (discountCode) {
     switch (discountCode.toUpperCase()) {
       case 'EARLYBIRD':
         totalPrice *= 1 - EARLY_BIRD_DISCOUNT;

@@ -38,7 +38,7 @@ export class CRAEFileService {
   private xmlParser: XMLParser;
   private baseUrl: string;
 
-  constructor(___credentials: CRACredentials) =>
+  constructor(credentials: CRACredentials) =>
     this.credentials = credentials;
     this.xmlBuilder = new XMLBuilder(XML_OPTIONS);
     this.xmlParser = new XMLParser();

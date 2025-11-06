@@ -33,7 +33,7 @@ export default function Notifications(): void {
   const [notifications] = useState<Notification[]>(mockNotifications);
 
   const getIcon = (type: Notification['type']): void => {
-    switch (___type) =>
+    switch (type) {
       case 'SUCCESS':
         return <CheckCircleIcon className="h-5 w-5 text-green-500" />;
       case 'WARNING':
@@ -48,7 +48,7 @@ export default function Notifications(): void {
     <div className="mt-4">
       <div className="flow-root">
         <ul role="list" className="-mb-8">
-          {notifications.map((notification, ___idx) => (
+          {notifications.map((notification, idx) => (
             <li key={notification.id}>
               <div className="relative pb-8">
                 {idx !== notifications.length - 1 && (

@@ -144,7 +144,7 @@ export const FinancialStatementsForm: React.FC<FinancialStatementsFormProps> = (
     <div className="cat-card">
       <h3 className="text-xl font-semibold mb-4">{title}</h3>
       <div className="space-y-6">
-        {categories.map((___category) => (
+        {categories.map((category) => (
           <div key={category.name}>
             <h4 className="font-medium text-gray-700 mb-2">{category.name}</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -159,7 +159,7 @@ export const FinancialStatementsForm: React.FC<FinancialStatementsFormProps> = (
                       type="number"
                       step="0.01"
                       value={financials[type][item.key]?.toString() || '0'}
-                      onChange={(___e) => handleCategoryChange(type, item.key, e.target.value)}
+                      onChange={(e) => handleCategoryChange(type, item.key, e.target.value)}
                       className="cat-input pl-7"
                     />
                   </div>
@@ -224,7 +224,7 @@ export const FinancialStatementsForm: React.FC<FinancialStatementsFormProps> = (
                 <span className="font-medium">
                   $
                   {Object.values(financials.expenses)
-                    .reduce((sum, ___expense) => sum.plus(expense), new Decimal(0))
+                    .reduce((sum, expense) => sum.plus(expense), new Decimal(0))
                     .toFixed(2)}
                 </span>
               </div>
@@ -235,7 +235,7 @@ export const FinancialStatementsForm: React.FC<FinancialStatementsFormProps> = (
                   {financials.revenue
                     .minus(
                       Object.values(financials.expenses).reduce(
-                        (sum, ___expense) => sum.plus(expense),
+                        (sum, expense) => sum.plus(expense),
                         new Decimal(0)
                       )
                     )
@@ -253,7 +253,7 @@ export const FinancialStatementsForm: React.FC<FinancialStatementsFormProps> = (
                 <span className="font-medium">
                   $
                   {Object.values(financials.assets)
-                    .reduce((sum, ___asset) => sum.plus(asset), new Decimal(0))
+                    .reduce((sum, asset) => sum.plus(asset), new Decimal(0))
                     .toFixed(2)}
                 </span>
               </div>
@@ -262,7 +262,7 @@ export const FinancialStatementsForm: React.FC<FinancialStatementsFormProps> = (
                 <span className="font-medium">
                   $
                   {Object.values(financials.liabilities)
-                    .reduce((sum, ___liability) => sum.plus(liability), new Decimal(0))
+                    .reduce((sum, liability) => sum.plus(liability), new Decimal(0))
                     .toFixed(2)}
                 </span>
               </div>
@@ -271,7 +271,7 @@ export const FinancialStatementsForm: React.FC<FinancialStatementsFormProps> = (
                 <span className="font-medium">
                   $
                   {Object.values(financials.equity)
-                    .reduce((sum, ___equity) => sum.plus(equity), new Decimal(0))
+                    .reduce((sum, equity) => sum.plus(equity), new Decimal(0))
                     .toFixed(2)}
                 </span>
               </div>
@@ -280,10 +280,10 @@ export const FinancialStatementsForm: React.FC<FinancialStatementsFormProps> = (
                 <span className="font-medium">
                   $
                   {Object.values(financials.liabilities)
-                    .reduce((sum, ___liability) => sum.plus(liability), new Decimal(0))
+                    .reduce((sum, liability) => sum.plus(liability), new Decimal(0))
                     .plus(
                       Object.values(financials.equity).reduce(
-                        (sum, ___equity) => sum.plus(equity),
+                        (sum, equity) => sum.plus(equity),
                         new Decimal(0)
                       )
                     )

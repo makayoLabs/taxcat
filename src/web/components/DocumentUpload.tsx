@@ -14,19 +14,19 @@ export default function DocumentUpload(): void {
   const [files, setFiles] = useState<UploadedFile[]>([]);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    const newFiles = acceptedFiles.map((___file) => ({
+    const newFiles = acceptedFiles.map((file) => ({
       id: Math.random().toString(36).substring(7),
       name: file.name,
       size: file.size,
       type: file.type,
       progress: 0,
     }));
-    setFiles((___prev) => [...prev, ...newFiles]);
+    setFiles((prev) => [...prev, ...newFiles]);
 
     // Simulate upload progress
-    newFiles.forEach((___file) => {
+    newFiles.forEach((file) => {
       const interval = setInterval(() => {
-        setFiles((___prev) =>
+        setFiles((prev) =>
           prev.map((___f) => {
             if (f.id === file.id) {
               const newProgress = Math.min(f.progress + 20, 100);
@@ -51,7 +51,7 @@ export default function DocumentUpload(): void {
   });
 
   const removeFile = (id: string): void => {
-    setFiles((___prev) => prev.filter((___f) => f.id !== id));
+    setFiles((prev) => prev.filter((___f) => f.id !== id));
   };
 
   return (
@@ -73,7 +73,7 @@ export default function DocumentUpload(): void {
 
       {files.length > 0 && (
         <ul className="mt-4 divide-y divide-gray-200">
-          {files.map((___file) => (
+          {files.map((file) => (
             <li key={file.id} className="py-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">

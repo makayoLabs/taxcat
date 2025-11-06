@@ -85,7 +85,7 @@ export class DocumentManager {
         .promise();
 
       return metadata;
-    } catch (___error) =>
+    } catch (error) {
       captureError(error as Error, {
         service: 'DOCUMENT_UPLOAD',
         fileName,
@@ -106,7 +106,7 @@ export class DocumentManager {
         .promise();
 
       return response.Body as Buffer;
-    } catch (___error) =>
+    } catch (error) {
       captureError(error as Error, {
         service: 'DOCUMENT_DOWNLOAD',
         documentId,
@@ -123,7 +123,7 @@ export class DocumentManager {
           Key: documentId,
         })
         .promise();
-    } catch (___error) =>
+    } catch (error) {
       captureError(error as Error, {
         service: 'DOCUMENT_DELETE',
         documentId,
@@ -180,7 +180,7 @@ export class DocumentManager {
       }
 
       return documents;
-    } catch (___error) =>
+    } catch (error) {
       captureError(error as Error, {
         service: 'DOCUMENT_LIST',
         clientId,
@@ -203,7 +203,7 @@ export class DocumentManager {
       });
 
       return url;
-    } catch (___error) =>
+    } catch (error) {
       captureError(error as Error, {
         service: 'DOCUMENT_PRESIGNED_URL',
         documentId,

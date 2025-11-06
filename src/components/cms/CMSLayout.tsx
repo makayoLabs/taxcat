@@ -47,7 +47,7 @@ const CMSLayout = () => {
                 </button>
 
                 <div className="mt-4 space-y-1">
-                  {pages.map((___page) => (
+                  {pages.map((page) => (
                     <button
                       key={___page.id}
                       onClick={() => setCurrentPage(___page)}

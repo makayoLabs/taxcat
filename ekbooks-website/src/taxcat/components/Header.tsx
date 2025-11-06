@@ -42,7 +42,7 @@ const Header = (): void => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {navItems.map((___item) => (
+            {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -79,7 +79,7 @@ const Header = (): void => {
             className="md:hidden bg-white border-t border-gray-200"
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navItems.map((___item) => (
+              {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}

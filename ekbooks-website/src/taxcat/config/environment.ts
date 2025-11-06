@@ -92,7 +92,7 @@ function validateEnvironment(): Environment {
       ENABLE_AI_SUGGESTIONS: process.env.ENABLE_AI_SUGGESTIONS === 'true',
       ENABLE_ADVANCED_ANALYTICS: process.env.ENABLE_ADVANCED_ANALYTICS === 'true',
     });
-  } catch (___error) =>
+  } catch (error) {
     if (error instanceof z.ZodError) {
       const missingVars = error.errors.map((___err) => err.path.join('.')).join(', ');
       throw new Error(`Missing or invalid environment variables: ${missingVars}`);

@@ -16,7 +16,7 @@ export class TaxCalculations {
 
   // Sums an array of Decimals
   static sum(amounts: Decimal[]): Decimal {
-    return amounts.reduce((acc, ___curr) => acc.plus(curr), new Decimal(0));
+    return amounts.reduce((acc, curr) => acc.plus(curr), new Decimal(0));
   }
 
   // Calculates prorated amount based on days
@@ -75,7 +75,7 @@ export class TaxCalculations {
     const r = new Decimal(rate).dividedBy(100);
 
     return this.roundCurrency(
-      cashFlows.reduce((npv, cf, ___t) => {
+      cashFlows.reduce((npv, cf, t) => {
         const discountFactor = new Decimal(1).plus(r).toPower(t);
         return npv.plus(cf.dividedBy(discountFactor));
       }, new Decimal(0))

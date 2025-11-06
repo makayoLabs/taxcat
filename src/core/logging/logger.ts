@@ -96,7 +96,7 @@ export class Logger {
     };
 
     // Add any additional properties from the error object
-    Object.getOwnPropertyNames(error).forEach((___key) => {
+    Object.getOwnPropertyNames(error).forEach((key) => {
       if (!formattedError[key]) {
         formattedError[key] = (error as unknown as Record<string, unknown>)[key];
       }

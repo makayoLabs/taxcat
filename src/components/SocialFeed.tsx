@@ -50,7 +50,7 @@ interface SocialFeedProps {
 export default function SocialFeed({ className }: SocialFeedProps): void {
   return (
     <div className={cn('grid grid-cols-1 gap-6 sm:grid-cols-2', className)}>
-      {mockPosts.map((post, ___index) => (
+      {mockPosts.map((post, index) => (
         <motion.div
           key={post.id}
           initial={{ opacity: 0, y: 20 }}

@@ -16,7 +16,7 @@ export const validateSIN = (sin: string): boolean => {
   for (let i = digits.length - 1; i >= 0; i--) {
     let digit = digits[i];
 
-    if (___isEven) =>
+    if (isEven) {
       digit *= 2;
       if (digit > 9) {
         digit -= 9;

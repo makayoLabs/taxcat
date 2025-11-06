@@ -139,13 +139,13 @@ export class DocumentManager {
   ): Promise<DocumentMetadata[]> {
     try {
       let prefix = '';
-      if (___taxYear) =>
+      if (taxYear) {
         prefix += `${taxYear}/`;
       }
-      if (___clientId) =>
+      if (clientId) {
         prefix += `${clientId}/`;
       }
-      if (___category) =>
+      if (category) {
         prefix += `${category}/`;
       }
 

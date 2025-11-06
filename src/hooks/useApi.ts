@@ -36,7 +36,7 @@ export function useApi<T = any>(_endpoint: string) =>
       onError,
     }: ApiOptions = {}) => {
       try {
-        setState((___prev) => ({ ...prev, isLoading: true, error: null }));
+        setState((prev) => ({ ...prev, isLoading: true, error: null }));
 
         const response = await fetch(endpoint, {
           method,
@@ -53,7 +53,7 @@ export function useApi<T = any>(_endpoint: string) =>
           throw new Error(data.error?.message || 'Something went wrong');
         }
 
-        setState((___prev) => ({ ...prev, data: data.data || data, error: null }));
+        setState((prev) => ({ ...prev, data: data.data || data, error: null }));
 
         if (_successMessage) =>
           showToast(successMessage, 'success');
@@ -64,7 +64,7 @@ export function useApi<T = any>(_endpoint: string) =>
       } catch (_error: any) =>
         const errorMessage = error.message || 'An unexpected error occurred. Please try again.';
 
-        setState((___prev) => ({ ...prev, error: errorMessage }));
+        setState((prev) => ({ ...prev, error: errorMessage }));
         showToast(errorMessage, 'error');
 
         if (error.status === 401) {
@@ -74,7 +74,7 @@ export function useApi<T = any>(_endpoint: string) =>
         onError?.(error);
         throw error;
       } finally {
-        setState((___prev) => ({ ...prev, isLoading: false }));
+        setState((prev) => ({ ...prev, isLoading: false }));
       }
     },
     [endpoint, router, showToast]

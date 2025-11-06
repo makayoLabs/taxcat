@@ -107,7 +107,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.basic.personal.toString()}
-                onChange={(___e) => handleBasicChange('personal', e.target.value)}
+                onChange={(e) => handleBasicChange('personal', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -118,7 +118,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.basic.age.toString()}
-                onChange={(___e) => handleBasicChange('age', e.target.value)}
+                onChange={(e) => handleBasicChange('age', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -131,7 +131,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.basic.spouse.toString()}
-                onChange={(___e) => handleBasicChange('spouse', e.target.value)}
+                onChange={(e) => handleBasicChange('spouse', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -144,7 +144,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.basic.eligible_dependant.toString()}
-                onChange={(___e) => handleBasicChange('eligible_dependant', e.target.value)}
+                onChange={(e) => handleBasicChange('eligible_dependant', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -155,7 +155,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.basic.caregiver.toString()}
-                onChange={(___e) => handleBasicChange('caregiver', e.target.value)}
+                onChange={(e) => handleBasicChange('caregiver', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -174,7 +174,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.medical.expenses.toString()}
-                onChange={(___e) => handleMedicalChange('expenses', e.target.value)}
+                onChange={(e) => handleMedicalChange('expenses', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -187,7 +187,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.medical.attendantCare.toString()}
-                onChange={(___e) => handleMedicalChange('attendantCare', e.target.value)}
+                onChange={(e) => handleMedicalChange('attendantCare', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -198,7 +198,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.medical.disabilitySupports.toString()}
-                onChange={(___e) => handleMedicalChange('disabilitySupports', e.target.value)}
+                onChange={(e) => handleMedicalChange('disabilitySupports', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -217,7 +217,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.education.tuition.toString()}
-                onChange={(___e) => handleEducationChange('tuition', e.target.value)}
+                onChange={(e) => handleEducationChange('tuition', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -230,7 +230,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.education.studentLoanInterest.toString()}
-                onChange={(___e) => handleEducationChange('studentLoanInterest', e.target.value)}
+                onChange={(e) => handleEducationChange('studentLoanInterest', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -241,7 +241,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.education.textbooks.toString()}
-                onChange={(___e) => handleEducationChange('textbooks', e.target.value)}
+                onChange={(e) => handleEducationChange('textbooks', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -262,7 +262,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.donations.charitable.toString()}
-                onChange={(___e) => handleDonationsChange('charitable', e.target.value)}
+                onChange={(e) => handleDonationsChange('charitable', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -275,7 +275,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.donations.political.toString()}
-                onChange={(___e) => handleDonationsChange('political', e.target.value)}
+                onChange={(e) => handleDonationsChange('political', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -288,7 +288,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.donations.cultural.toString()}
-                onChange={(___e) => handleDonationsChange('cultural', e.target.value)}
+                onChange={(e) => handleDonationsChange('cultural', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -309,7 +309,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.other.pension.toString()}
-                onChange={(___e) => handleOtherChange('pension', e.target.value)}
+                onChange={(e) => handleOtherChange('pension', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -320,7 +320,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.other.disability.toString()}
-                onChange={(___e) => handleOtherChange('disability', e.target.value)}
+                onChange={(e) => handleOtherChange('disability', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -331,7 +331,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.other.foreignTaxCredit.toString()}
-                onChange={(___e) => handleOtherChange('foreignTaxCredit', e.target.value)}
+                onChange={(e) => handleOtherChange('foreignTaxCredit', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -344,7 +344,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                 type="number"
                 step="0.01"
                 value={credits.other.labourSponsored.toString()}
-                onChange={(___e) => handleOtherChange('labourSponsored', e.target.value)}
+                onChange={(e) => handleOtherChange('labourSponsored', e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
@@ -370,7 +370,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                     type="text"
                     placeholder="Description"
                     value={key.replace('custom_', '')}
-                    onChange={(___e) => {
+                    onChange={(e) => {
                       const newKey = `custom_${e.target.value}`;
                       const { [key]: value, ...rest } = credits.other.otherCredits;
                       handleCustomCreditChange(newKey, value.toString());
@@ -383,7 +383,7 @@ export const CreditsForm: React.FC<CreditsFormProps> = ({ credits, onChange, err
                     type="number"
                     step="0.01"
                     value={value.toString()}
-                    onChange={(___e) => handleCustomCreditChange(key, e.target.value)}
+                    onChange={(e) => handleCustomCreditChange(key, e.target.value)}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   />
                 </div>

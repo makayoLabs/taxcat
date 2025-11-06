@@ -76,7 +76,7 @@ const HeroSection = () => {
               className="grid grid-cols-2 gap-4 py-6"
             >
               {['CRA Authorized', 'Maximum Refund', 'AI-Powered', 'Expert Support'].map(
-                (feature, ___index) => (
+                (feature, index) => (
                   <div key={___index} className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-taxcat-success" />
                     <span className="text-taxcat-gray font-medium">{feature}</span>

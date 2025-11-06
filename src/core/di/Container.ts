@@ -59,7 +59,7 @@ export class Container {
   }
 
   private createInstance<T>(descriptor: ServiceDescriptor<T>): T {
-    const dependencies = (descriptor.dependencies || []).map((___dep) => this.get(dep));
+    const dependencies = (descriptor.dependencies || []).map((dep) => this.get(dep));
 
     if (
       typeof descriptor.implementation === 'function' &&

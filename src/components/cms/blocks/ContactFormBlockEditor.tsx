@@ -59,7 +59,7 @@ const ContactFormBlockEditor: React.FC<ContactFormBlockEditorProps> = ({ content
           <input
             type="text"
             value={content.submitText}
-            onChange={(___e) => handleChange('submitText', e.target.value)}
+            onChange={(e) => handleChange('submitText', e.target.value)}
             className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
             placeholder="e.g., Send Message"
           />
@@ -70,7 +70,7 @@ const ContactFormBlockEditor: React.FC<ContactFormBlockEditorProps> = ({ content
           <input
             type="text"
             value={content.successMessage}
-            onChange={(___e) => handleChange('successMessage', e.target.value)}
+            onChange={(e) => handleChange('successMessage', e.target.value)}
             className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
             placeholder="e.g., Thank you for your message!"
           />
@@ -83,7 +83,7 @@ const ContactFormBlockEditor: React.FC<ContactFormBlockEditorProps> = ({ content
           <input
             type="email"
             value={content.emailTo}
-            onChange={(___e) => handleChange('emailTo', e.target.value)}
+            onChange={(e) => handleChange('emailTo', e.target.value)}
             className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
             placeholder="recipient@example.com"
           />
@@ -94,7 +94,7 @@ const ContactFormBlockEditor: React.FC<ContactFormBlockEditorProps> = ({ content
           <input
             type="text"
             value={content.subject}
-            onChange={(___e) => handleChange('subject', e.target.value)}
+            onChange={(e) => handleChange('subject', e.target.value)}
             className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
             placeholder="New Contact Form Submission"
           />
@@ -116,11 +116,11 @@ const ContactFormBlockEditor: React.FC<ContactFormBlockEditorProps> = ({ content
 
         <DragDropContext onDragEnd={handleDragEnd}>
           <Droppable droppableId="fields">
-            {(___provided) => (
+            {(provided) => (
               <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-4">
-                {content.fields.map((field, ___index) => (
+                {content.fields.map((field, index) => (
                   <Draggable key={field.id} draggableId={field.id} index={index}>
-                    {(___provided) => (
+                    {(provided) => (
                       <div
                         ref={provided.innerRef}
                         {...provided.draggableProps}
@@ -150,7 +150,7 @@ const ContactFormBlockEditor: React.FC<ContactFormBlockEditorProps> = ({ content
                               <input
                                 type="text"
                                 value={field.label}
-                                onChange={(___e) =>
+                                onChange={(e) =>
                                   handleFieldChange(field.id, 'label', e.target.value)
                                 }
                                 className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
@@ -163,7 +163,7 @@ const ContactFormBlockEditor: React.FC<ContactFormBlockEditorProps> = ({ content
                               </label>
                               <select
                                 value={field.type}
-                                onChange={(___e) =>
+                                onChange={(e) =>
                                   handleFieldChange(field.id, 'type', e.target.value)
                                 }
                                 className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
@@ -185,7 +185,7 @@ const ContactFormBlockEditor: React.FC<ContactFormBlockEditorProps> = ({ content
                             <input
                               type="text"
                               value={field.placeholder || ''}
-                              onChange={(___e) =>
+                              onChange={(e) =>
                                 handleFieldChange(field.id, 'placeholder', e.target.value)
                               }
                               className="mt-1 block w-full rounded-md border-taxcat-gray/20 shadow-sm focus:border-taxcat-blue focus:ring-taxcat-blue sm:text-sm"
@@ -199,7 +199,7 @@ const ContactFormBlockEditor: React.FC<ContactFormBlockEditorProps> = ({ content
                               </label>
                               <textarea
                                 value={field.options?.join('\n') || ''}
-                                onChange={(___e) =>
+                                onChange={(e) =>
                                   handleFieldChange(field.id, 'options', e.target.value.split('\n'))
                                 }
                                 rows={3}
@@ -213,7 +213,7 @@ const ContactFormBlockEditor: React.FC<ContactFormBlockEditorProps> = ({ content
                             <input
                               type="checkbox"
                               checked={field.required}
-                              onChange={(___e) =>
+                              onChange={(e) =>
                                 handleFieldChange(field.id, 'required', e.target.checked)
                               }
                               className="h-4 w-4 text-taxcat-blue focus:ring-taxcat-blue border-taxcat-gray/20 rounded"

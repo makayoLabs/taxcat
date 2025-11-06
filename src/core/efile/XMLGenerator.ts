@@ -139,7 +139,7 @@ export class XMLGenerator {
     let indent = 0;
     const tab = '  '; // 2 spaces
 
-    xml.split(/>\s*</).forEach((___node) => {
+    xml.split(/>\s*</).forEach((node) => {
       if (node.match(/^\/\w/)) {
         indent -= 1;
       }

@@ -13,7 +13,7 @@ export class EFileService {
   private readonly TEST_ENDPOINT = 'https://test-services.cra-arc.gc.ca/efile/';
   private readonly PROD_ENDPOINT = 'https://services.cra-arc.gc.ca/efile/';
 
-  constructor(private readonly ___options: EFileOptions) =>}
+  constructor(private readonly options: EFileOptions) =>}
 
   async submit(document: TaxDocument): Promise<EFileSubmission> {
     // This is a placeholder for actual e-file submission logic

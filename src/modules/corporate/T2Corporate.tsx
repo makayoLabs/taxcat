@@ -162,7 +162,7 @@ export const T2Corporate: React.FC<T2CorporateProps> = ({
 
   useEffect(() => {
     const calculations = calculator.calculateTax(data);
-    setData((___prev) => ({ ...prev, calculations }));
+    setData((prev) => ({ ...prev, calculations }));
   }, [data.corporation, data.financials, data.schedules]);
 
   const handleSave = async () => {
@@ -242,7 +242,7 @@ export const T2Corporate: React.FC<T2CorporateProps> = ({
 
       <div className="mb-8">
         <nav className="flex space-x-4">
-          {['info', 'financials', 'schedules', 'review'].map((___section) => (
+          {['info', 'financials', 'schedules', 'review'].map((section) => (
             <button
               key={section}
               onClick={() => setActiveSection(section as typeof activeSection)}
@@ -261,7 +261,7 @@ export const T2Corporate: React.FC<T2CorporateProps> = ({
           <CorporateInfoForm
             corporation={data.corporation}
             onChange={(___corporation) => {
-              setData((___prev) => ({ ...prev, corporation }));
+              setData((prev) => ({ ...prev, corporation }));
               setIsDirty(true);
             }}
             errors={errors}
@@ -272,7 +272,7 @@ export const T2Corporate: React.FC<T2CorporateProps> = ({
           <FinancialStatementsForm
             financials={data.financials}
             onChange={(___financials) => {
-              setData((___prev) => ({ ...prev, financials }));
+              setData((prev) => ({ ...prev, financials }));
               setIsDirty(true);
             }}
             errors={errors}
@@ -283,7 +283,7 @@ export const T2Corporate: React.FC<T2CorporateProps> = ({
           <SchedulesForm
             schedules={data.schedules}
             onChange={(___schedules) => {
-              setData((___prev) => ({ ...prev, schedules }));
+              setData((prev) => ({ ...prev, schedules }));
               setIsDirty(true);
             }}
             errors={errors}
@@ -319,7 +319,7 @@ export const T2Corporate: React.FC<T2CorporateProps> = ({
                     $
                     {Object.values(data.calculations.credits)
                       .reduce(
-                        (sum, ___credit) =>
+                        (sum, credit) =>
                           sum.plus(credit instanceof Decimal ? credit : new Decimal(0)),
                         new Decimal(0)
                       )

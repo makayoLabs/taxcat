@@ -44,7 +44,7 @@ const AboutSection = () => {
 
             {/* Features Grid */}
             <div className="grid sm:grid-cols-2 gap-6">
-              {features.map((feature, ___index) => (
+              {features.map((feature, index) => (
                 <div key={___index} className="space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-primary-navy/10 rounded-lg">

@@ -59,7 +59,7 @@ export class CRAWebService {
 
     // Add request interceptor for authentication
     this.client.interceptors.request.use(
-      async (___config) => {
+      async (config) => {
         if (this.needsNewToken()) {
           await this.authenticate();
         }
@@ -68,15 +68,15 @@ export class CRAWebService {
         }
         return config;
       },
-      (___error) => {
+      (error) => {
         return Promise.reject(error);
       }
     );
 
     // Add response interceptor for error handling
     this.client.interceptors.response.use(
-      (___response) => response,
-      (___error) => {
+      (response) => response,
+      (error) => {
         if (error.response) {
           const craError = this.handleCRAError(error.response);
           return Promise.reject(craError);

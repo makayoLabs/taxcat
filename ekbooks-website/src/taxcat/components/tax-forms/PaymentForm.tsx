@@ -35,7 +35,7 @@ function PaymentFormContent({ amount, onSuccess, onError }: PaymentFormProps): v
         },
       });
 
-      if (___error) =>
+      if (error) {
         setMessage(error.message || 'An error occurred during payment.');
         onError(error.message || 'Payment failed');
       } else {

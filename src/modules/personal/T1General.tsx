@@ -197,7 +197,7 @@ export const T1General: React.FC<T1GeneralProps> = ({ taxpayerId, year, onSave, 
       data.deductions,
       data.credits
     );
-    setData((___prev) => ({ ...prev, calculations }));
+    setData((prev) => ({ ...prev, calculations }));
   }, [data.taxpayer, data.income, data.deductions, data.credits]);
 
   const handleSave = async () => {
@@ -262,7 +262,7 @@ export const T1General: React.FC<T1GeneralProps> = ({ taxpayerId, year, onSave, 
   };
 
   const handleTaxpayerChange = (updatedTaxpayer: TaxPayer): void => {
-    setData((___prev) => ({
+    setData((prev) => ({
       ...prev,
       taxpayer: updatedTaxpayer,
     }));
@@ -270,7 +270,7 @@ export const T1General: React.FC<T1GeneralProps> = ({ taxpayerId, year, onSave, 
   };
 
   const handleIncomeChange = (updatedIncome: Income): void => {
-    setData((___prev) => ({
+    setData((prev) => ({
       ...prev,
       income: updatedIncome,
     }));
@@ -278,7 +278,7 @@ export const T1General: React.FC<T1GeneralProps> = ({ taxpayerId, year, onSave, 
   };
 
   const handleDeductionsChange = (updatedDeductions: Deductions): void => {
-    setData((___prev) => ({
+    setData((prev) => ({
       ...prev,
       deductions: updatedDeductions,
     }));
@@ -291,7 +291,7 @@ export const T1General: React.FC<T1GeneralProps> = ({ taxpayerId, year, onSave, 
 
       <div className="mb-8">
         <nav className="flex space-x-4">
-          {['personal', 'income', 'deductions', 'credits', 'review'].map((___section) => (
+          {['personal', 'income', 'deductions', 'credits', 'review'].map((section) => (
             <button
               key={section}
               onClick={() => setActiveSection(section as typeof activeSection)}

@@ -117,7 +117,6 @@ export default function LessonViewer({
                     {term.example && (
                       <dd className="text-sm text-purple-700 italic">Example: {term.example}</dd>
                     )}
-                  </dd>
                   </div>
                 ))}
               </div>

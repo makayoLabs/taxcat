@@ -1,54 +1,175 @@
-services:
-  ekbooks:
-    build:
-      context: ./shared-wordpress-image
-      dockerfile: Dockerfile
-    image: local/wordpress-redis:ekbooks
-    container_name: wp_ekbooks
-    restart: unless-stopped
-    environment:
-      WORDPRESS_DB_HOST: MariaDB-Official
-      WORDPRESS_DB_USER: ekbooks_user
-      WORDPRESS_DB_PASSWORD: AEVEjIztP24vca
-      WORDPRESS_DB_NAME: ekbooks_db
-      WORDPRESS_TABLE_PREFIX: wp_ek_
-      TZ: America/Toronto
-    volumes:
-      - ./ekbooks/html:/var/www/html
-    networks:
-      - makprox
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.ekbooks.rule=Host(`ekbooks.ca`)"
-      - "traefik.http.routers.ekbooks.entrypoints=websecure"
-      - "traefik.http.routers.ekbooks.tls=true"
-      - "traefik.http.routers.ekbooks.tls.certresolver=cloudflare"
+# TaxCat & EKBooks - Next.js Docker Compose for Unraid
+# Integrates with existing Traefik, PostgreSQL, and Redis containers
+version: '3.8'
 
+services:
+  # TaxCat Main Application
   taxcat:
     build:
-      context: ./shared-wordpress-image
+      context: .
       dockerfile: Dockerfile
-    image: local/wordpress-redis:taxcat
-    container_name: wp_taxcat
+    image: taxcat:latest
+    container_name: taxcat
     restart: unless-stopped
+    env_file:
+      - .env.docker
     environment:
-      WORDPRESS_DB_HOST: MariaDB-Official
-      WORDPRESS_DB_USER: taxcat_user
-      WORDPRESS_DB_PASSWORD: CpfmAgoNDN7Uym
-      WORDPRESS_DB_NAME: taxcat_db
-      WORDPRESS_TABLE_PREFIX: wp_tc_
-      TZ: America/Toronto
+      - NODE_ENV=production
+      - TZ=America/Toronto
+      # Database - Connect to your existing PostgreSQL 17 container
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/taxcat?schema=public
+      # Redis - Connect to your existing Redis container
+      - REDIS_URL=redis://redis:6379
+      # Application URLs
+      - NEXT_PUBLIC_APP_URL=https://taxcat.ca
+      - NEXTAUTH_URL=https://taxcat.ca
     volumes:
-      - ./taxcat/html:/var/www/html
+      - taxcat_uploads:/app/uploads
+      - taxcat_logs:/app/logs
     networks:
-      - webstack_net
+      - webstack_net  # Your existing Traefik network
+      - database_net  # For PostgreSQL connection
     labels:
+      # Traefik Configuration
       - "traefik.enable=true"
+      - "traefik.docker.network=webstack_net"
+
+      # HTTP to HTTPS redirect
+      - "traefik.http.routers.taxcat-http.rule=Host(`taxcat.ca`)"
+      - "traefik.http.routers.taxcat-http.entrypoints=web"
+      - "traefik.http.routers.taxcat-http.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+
+      # HTTPS router
       - "traefik.http.routers.taxcat.rule=Host(`taxcat.ca`)"
       - "traefik.http.routers.taxcat.entrypoints=websecure"
       - "traefik.http.routers.taxcat.tls=true"
       - "traefik.http.routers.taxcat.tls.certresolver=cloudflare"
 
+      # Service
+      - "traefik.http.services.taxcat.loadbalancer.server.port=3000"
+
+      # Security Headers
+      - "traefik.http.routers.taxcat.middlewares=security-headers"
+      - "traefik.http.middlewares.security-headers.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.security-headers.headers.stsIncludeSubdomains=true"
+      - "traefik.http.middlewares.security-headers.headers.contentTypeNosniff=true"
+      - "traefik.http.middlewares.security-headers.headers.browserXssFilter=true"
+      - "traefik.http.middlewares.security-headers.headers.frameDeny=true"
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      - postgres
+      - redis
+
+  # EKBooks Application
+  ekbooks:
+    build:
+      context: ./ekbooks-website
+      dockerfile: Dockerfile
+    image: ekbooks:latest
+    container_name: ekbooks
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - TZ=America/Toronto
+      - NEXT_PUBLIC_APP_URL=https://ekbooks.ca
+    volumes:
+      - ekbooks_uploads:/app/uploads
+      - ekbooks_logs:/app/logs
+    networks:
+      - makprox  # Your existing Traefik network
+    labels:
+      # Traefik Configuration
+      - "traefik.enable=true"
+      - "traefik.docker.network=makprox"
+
+      # HTTP to HTTPS redirect
+      - "traefik.http.routers.ekbooks-http.rule=Host(`ekbooks.ca`)"
+      - "traefik.http.routers.ekbooks-http.entrypoints=web"
+      - "traefik.http.routers.ekbooks-http.middlewares=redirect-to-https"
+
+      # HTTPS router
+      - "traefik.http.routers.ekbooks.rule=Host(`ekbooks.ca`)"
+      - "traefik.http.routers.ekbooks.entrypoints=websecure"
+      - "traefik.http.routers.ekbooks.tls=true"
+      - "traefik.http.routers.ekbooks.tls.certresolver=cloudflare"
+
+      # Service
+      - "traefik.http.services.ekbooks.loadbalancer.server.port=3000"
+
+      # Security Headers
+      - "traefik.http.routers.ekbooks.middlewares=security-headers"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # PostgreSQL 17 Database (if not already running externally)
+  # Comment out this section if you're using an existing PostgreSQL container
+  postgres:
+    image: postgres:17-alpine
+    container_name: taxcat_postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-taxcat}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=taxcat
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init-db.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - database_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-taxcat}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache (if not already running externally)
+  # Comment out this section if you're using an existing Redis container
+  redis:
+    image: redis:7-alpine
+    container_name: taxcat_redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis_data:/data
+    networks:
+      - database_net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  taxcat_uploads:
+    driver: local
+  taxcat_logs:
+    driver: local
+  ekbooks_uploads:
+    driver: local
+  ekbooks_logs:
+    driver: local
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
 networks:
+  # Your existing Traefik networks (must be created externally)
+  webstack_net:
+    external: true
   makprox:
     external: true
+  # Database network for internal communication
+  database_net:
+    driver: bridge

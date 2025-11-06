@@ -53,7 +53,7 @@ export class CRAEFileService {
       });
 
       return response.data.token;
-    } catch (___error) =>
+    } catch (error) {
       captureError(error as Error, { service: 'CRA_AUTH' });
       throw new Error('Failed to authenticate with CRA');
     }
@@ -71,7 +71,7 @@ export class CRAEFileService {
       };
 
       return this.xmlBuilder.build(returnData);
-    } catch (___error) =>
+    } catch (error) {
       captureError(error as Error, {
         service: 'CRA_XML_GENERATION',
         returnType: taxReturn.type,
@@ -120,7 +120,7 @@ export class CRAEFileService {
         status: result.Response.Status,
         errors: result.Response.Errors?.Error || [],
       };
-    } catch (___error) =>
+    } catch (error) {
       captureError(error as Error, {
         service: 'CRA_SUBMIT',
         returnType: taxReturn.type,
@@ -140,7 +140,7 @@ export class CRAEFileService {
       });
 
       return response.data.status;
-    } catch (___error) =>
+    } catch (error) {
       captureError(error as Error, {
         service: 'CRA_STATUS_CHECK',
         confirmationNumber,
@@ -160,7 +160,7 @@ export class CRAEFileService {
       });
 
       return response.data;
-    } catch (___error) =>
+    } catch (error) {
       captureError(error as Error, {
         service: 'CRA_RECEIPT_DOWNLOAD',
         confirmationNumber,

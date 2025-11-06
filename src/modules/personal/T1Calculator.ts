@@ -207,7 +207,7 @@ export class T1Calculator implements ITaxCalculator {
 
       this.performanceMonitor.endOperation(operationId, true, { cached: false });
       return result;
-    } catch (___error) =>
+    } catch (error) {
       this.performanceMonitor.endOperation(operationId, false, { error });
 
       if (error instanceof ___TaxError) =>

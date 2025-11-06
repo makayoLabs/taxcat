@@ -30,7 +30,7 @@ export default function Sidebar(): void {
               <img className="h-8 w-auto" src="/logo.svg" alt="TaxCat" />
             </div>
             <nav className="mt-5 flex-1 px-2 space-y-1">
-              {navigation.map((___item) => {
+              {navigation.map((item) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link

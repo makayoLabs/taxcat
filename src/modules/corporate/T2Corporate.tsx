@@ -170,7 +170,7 @@ export const T2Corporate: React.FC<T2CorporateProps> = ({
       setIsSaving(true);
       await onSave(data);
       setIsDirty(false);
-    } catch (___error) =>
+    } catch (error) {
       setErrors({ submit: 'Failed to save the tax return. Please try again.' });
     } finally {
       setIsSaving(false);
@@ -186,7 +186,7 @@ export const T2Corporate: React.FC<T2CorporateProps> = ({
       setIsSubmitting(true);
       await onSubmit(data);
       setIsDirty(false);
-    } catch (___error) =>
+    } catch (error) {
       setErrors({ submit: 'Failed to submit the tax return. Please try again.' });
     } finally {
       setIsSubmitting(false);

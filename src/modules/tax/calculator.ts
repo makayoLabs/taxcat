@@ -120,7 +120,7 @@ export class TaxCalculator {
 
       Logger.info('Completed tax calculation', { result });
       return result;
-    } catch (___error) =>
+    } catch (error) {
       if (error instanceof ___Error) =>
         Logger.error('Error calculating tax', { error });
         throw error;

@@ -1,0 +1,636 @@
+{
+  "id": "tax-basics-for-teens",
+  "slug": "tax-basics-for-teens",
+  "title": "Tax Basics for Teens",
+  "description": "Learn the fundamentals of Canadian taxes, understand your first paycheque, and discover why filing a tax return matters even for part-time workers.",
+  "category": "TAX_BASICS",
+  "difficulty": "BEGINNER",
+  "estimatedMinutes": 45,
+  "order": 1,
+  "pointsReward": 150,
+  "learningObjectives": [
+    "Understand what taxes are and how they fund government services",
+    "Read and interpret your first paycheque deductions",
+    "Learn why teens should file tax returns",
+    "Protect your Social Insurance Number",
+    "Decode a T4 slip"
+  ],
+  "thumbnailUrl": "/images/modules/tax-basics-thumb.jpg",
+  "lessons": [
+    {
+      "id": "lesson-1-what-are-taxes",
+      "slug": "what-are-taxes",
+      "title": "What Are Taxes?",
+      "order": 1,
+      "estimatedMinutes": 8,
+      "contentType": "article",
+      "hasInteractive": true,
+      "content": {
+        "introduction": "Taxes are contributions that Canadians make to fund important services we all use - from schools and hospitals to roads and parks.",
+        "sections": [
+          {
+            "heading": "Why Do We Pay Taxes?",
+            "content": "Every time you use a public service - riding the bus to school, visiting a doctor, or checking out a library book - you're using something paid for by taxes. Taxes are how we pool our money together to pay for things that benefit everyone.",
+            "examples": [
+              "🏥 **Healthcare**: Doctor visits, hospitals, emergency services",
+              "📚 **Education**: Public schools, libraries, student loans",
+              "🚌 **Infrastructure**: Roads, bridges, public transit",
+              "👮 **Safety**: Police, fire departments, RCMP",
+              "🌳 **Parks**: National parks, playgrounds, recreation centers"
+            ]
+          },
+          {
+            "heading": "Types of Taxes in Canada",
+            "content": "There are several types of taxes you'll encounter:",
+            "types": [
+              {
+                "name": "Income Tax",
+                "description": "Tax on money you earn from working. This is taken off your paycheque automatically.",
+                "example": "If you earn $1,000, about $50-150 might go to income tax"
+              },
+              {
+                "name": "Sales Tax (GST/HST)",
+                "description": "Tax added when you buy things. Rate varies by province (5-15%).",
+                "example": "A $10 item might cost $11.30 after tax in Ontario"
+              },
+              {
+                "name": "Property Tax",
+                "description": "Tax on owning property (your parents probably pay this).",
+                "example": "Annual tax on houses, apartments, land"
+              }
+            ]
+          },
+          {
+            "heading": "Federal vs Provincial Taxes",
+            "content": "In Canada, both the federal government and your provincial government collect income tax. That's why you see two deductions on your paycheque!",
+            "breakdown": {
+              "federal": "Goes to Canada Revenue Agency (CRA) for national programs",
+              "provincial": "Stays in your province for local services"
+            }
+          }
+        ],
+        "interactive": {
+          "type": "spending-pie-chart",
+          "title": "Where Does Your Tax Dollar Go?",
+          "data": {
+            "Healthcare": 25,
+            "Education": 15,
+            "Social Services": 20,
+            "Infrastructure": 10,
+            "Defense": 8,
+            "Justice & Police": 7,
+            "Other": 15
+          },
+          "instruction": "Click each slice to see what your taxes pay for!"
+        },
+        "keyTakeaways": [
+          "Taxes fund services we all use every day",
+          "You pay income tax on earnings and sales tax on purchases",
+          "Both federal and provincial governments collect income tax",
+          "Understanding taxes helps you make better financial decisions"
+        ]
+      }
+    },
+    {
+      "id": "lesson-2-first-paycheque",
+      "slug": "your-first-paycheque",
+      "title": "Understanding Your First Paycheque",
+      "order": 2,
+      "estimatedMinutes": 12,
+      "contentType": "interactive",
+      "hasInteractive": true,
+      "content": {
+        "introduction": "Your first paycheque can be confusing! You worked 20 hours at $15/hour ($300 gross), but only got $255 deposited. Where did $45 go? Let's break it down.",
+        "sections": [
+          {
+            "heading": "Gross vs Net Income",
+            "content": "These are two important terms you'll see on every paycheque:",
+            "terms": [
+              {
+                "term": "Gross Income",
+                "definition": "Total amount you earned BEFORE any deductions",
+                "example": "20 hours × $15/hour = $300 gross"
+              },
+              {
+                "term": "Net Income (Take-Home Pay)",
+                "definition": "Amount you actually receive AFTER deductions",
+                "example": "$300 gross - $45 deductions = $255 net"
+              }
+            ],
+            "tip": "Always negotiate salary based on GROSS income, but budget based on NET income!"
+          },
+          {
+            "heading": "Common Paycheque Deductions",
+            "content": "Here's what typically comes off your paycheque:",
+            "deductions": [
+              {
+                "name": "Federal Income Tax",
+                "description": "Tax to Canadian government",
+                "calculation": "Varies by income (5-33%)",
+                "example": "$300 × 5% = $15",
+                "required": true
+              },
+              {
+                "name": "Provincial Income Tax",
+                "description": "Tax to your province",
+                "calculation": "Varies by province (5-21%)",
+                "example": "$300 × 5% = $15",
+                "required": true
+              },
+              {
+                "name": "CPP (Canada Pension Plan)",
+                "description": "Savings for retirement",
+                "calculation": "5.95% of earnings",
+                "example": "$300 × 5.95% = $17.85",
+                "required": true,
+                "note": "You get this money back when you retire!"
+              },
+              {
+                "name": "EI (Employment Insurance)",
+                "description": "Insurance if you lose your job",
+                "calculation": "1.58% of earnings",
+                "example": "$300 × 1.58% = $4.74",
+                "required": true,
+                "note": "Protects you if you're laid off"
+              }
+            ]
+          },
+          {
+            "heading": "Reading Your Pay Stub",
+            "content": "Your pay stub contains important information. Here are the key sections:",
+            "sections": [
+              {
+                "section": "Employee Information",
+                "includes": ["Your name", "Employee ID", "Social Insurance Number (last 3 digits)"]
+              },
+              {
+                "section": "Earning Details",
+                "includes": ["Hours worked", "Hourly rate", "Gross earnings", "Overtime (if any)"]
+              },
+              {
+                "section": "Deductions",
+                "includes": ["Federal tax", "Provincial tax", "CPP", "EI", "Other deductions"]
+              },
+              {
+                "section": "Net Pay",
+                "includes": ["Amount deposited to your bank", "Year-to-date totals"]
+              }
+            ]
+          }
+        ],
+        "interactive": {
+          "type": "paystub-decoder",
+          "title": "Decode This Paycheque!",
+          "instruction": "Click on each section of the pay stub to learn what it means",
+          "samplePaystub": {
+            "employeeName": "Alex Student",
+            "payPeriod": "Jan 1-15, 2025",
+            "hoursWorked": 40,
+            "hourlyRate": 16.50,
+            "grossPay": 660.00,
+            "deductions": {
+              "federalTax": 33.00,
+              "provincialTax": 33.00,
+              "cpp": 39.27,
+              "ei": 10.43
+            },
+            "netPay": 544.30
+          },
+          "questions": [
+            {
+              "question": "What is Alex's take-home pay?",
+              "answer": "$544.30"
+            },
+            {
+              "question": "How much goes to CPP?",
+              "answer": "$39.27"
+            }
+          ]
+        },
+        "keyTakeaways": [
+          "Gross income is what you earn; net income is what you take home",
+          "Typical deductions: federal tax, provincial tax, CPP, EI",
+          "Keep all your pay stubs - you'll need them for taxes!",
+          "Your deductions help fund important programs"
+        ]
+      }
+    },
+    {
+      "id": "lesson-3-why-file-taxes",
+      "slug": "why-file-a-tax-return",
+      "title": "Why File a Tax Return?",
+      "order": 3,
+      "estimatedMinutes": 10,
+      "contentType": "article",
+      "hasInteractive": true,
+      "content": {
+        "introduction": "Even if you only earned $5,000 from your part-time job, filing a tax return can put money back in your pocket and start building your financial history!",
+        "sections": [
+          {
+            "heading": "Top Reasons Teens Should File",
+            "reasons": [
+              {
+                "title": "💰 Get Money Back!",
+                "description": "If you earned under $15,000, you likely paid too much tax. Filing gets you a refund!",
+                "example": "Emma earned $7,000 at her summer job. $400 was deducted for taxes. She filed her return and got ALL $400 back!"
+              },
+              {
+                "title": "📈 Build RRSP Room",
+                "description": "Every year you file creates contribution room for future retirement savings.",
+                "longTermBenefit": "File now, even with zero income, and you'll have more room to save later"
+              },
+              {
+                "title": "🎓 Claim Education Credits",
+                "description": "Tuition, textbooks, and student loan interest can be claimed.",
+                "savings": "Post-secondary students can save $1,000+ per year"
+              },
+              {
+                "title": "💳 Build Credit History",
+                "description": "Filing taxes helps establish your identity with financial institutions.",
+                "benefit": "Makes it easier to get credit cards, loans, and apartments later"
+              },
+              {
+                "title": "📝 Required for Benefits",
+                "description": "Many government benefits require you to file taxes annually.",
+                "examples": ["GST/HST credit ($400+ per year)", "Climate Action Incentive", "Student grants"]
+              }
+            ]
+          },
+          {
+            "heading": "What Happens If You Don't File?",
+            "consequences": [
+              "❌ Miss out on refunds (average teen refund: $300-500)",
+              "❌ Can't receive GST/HST credits",
+              "❌ Don't build RRSP contribution room",
+              "❌ May face penalties if you owe tax",
+              "❌ Harder to get student loans or financial aid"
+            ]
+          },
+          {
+            "heading": "The Filing Process is Easy!",
+            "steps": [
+              {
+                "step": 1,
+                "action": "Collect your T4 slips (from employers)",
+                "timing": "You'll receive these by end of February"
+              },
+              {
+                "step": 2,
+                "action": "Use free tax software (like TaxCat!)",
+                "timing": "Takes 15-30 minutes for simple returns"
+              },
+              {
+                "step": 3,
+                "action": "Submit electronically (NETFILE)",
+                "timing": "Get refund in 2-3 weeks"
+              }
+            ],
+            "tip": "First-time filers can't use NETFILE - you'll need to mail your first return. But after that, it's all online!"
+          }
+        ],
+        "interactive": {
+          "type": "refund-calculator",
+          "title": "Calculate Your Potential Refund",
+          "description": "Enter your part-time job income to see if you're owed money!",
+          "inputs": [
+            {"name": "totalIncome", "label": "Annual income from part-time work"},
+            {"name": "taxDeducted", "label": "Total tax deducted (from pay stubs)"}
+          ],
+          "calculation": "Basic refund estimate based on personal exemption"
+        },
+        "keyTakeaways": [
+          "Filing taxes can get you hundreds of dollars back",
+          "Builds RRSP room for future savings",
+          "Required for many government benefits",
+          "Easy to do with free software",
+          "Start the habit early!"
+        ]
+      }
+    },
+    {
+      "id": "lesson-4-sin-protection",
+      "slug": "protecting-your-sin",
+      "title": "Your SIN & Personal Information",
+      "order": 4,
+      "estimatedMinutes": 7,
+      "contentType": "article",
+      "hasInteractive": true,
+      "content": {
+        "introduction": "Your Social Insurance Number (SIN) is like your financial fingerprint. Protecting it is crucial!",
+        "sections": [
+          {
+            "heading": "What is a SIN?",
+            "content": "A Social Insurance Number is a 9-digit number issued by the Canadian government. You need it to work, pay taxes, and access government programs.",
+            "format": "XXX-XXX-XXX (example: 123-456-789)",
+            "importance": "Your SIN is linked to all your earnings, taxes, and government benefits for life"
+          },
+          {
+            "heading": "When You SHOULD Give Your SIN",
+            "validUses": [
+              "✅ Starting a new job (employer needs it)",
+              "✅ Filing your tax return (CRA needs it)",
+              "✅ Opening an RRSP or TFSA (bank needs it)",
+              "✅ Applying for student loans",
+              "✅ Applying for EI or other government benefits"
+            ]
+          },
+          {
+            "heading": "When You SHOULD NOT Give Your SIN",
+            "invalidUses": [
+              "❌ Shopping (stores don't need it)",
+              "❌ Getting a credit card (they don't need it)",
+              "❌ Renting an apartment (landlord doesn't need it)",
+              "❌ Random online forms",
+              "❌ Anyone asking via phone, email, or text"
+            ],
+            "warning": "⚠️ The CRA will NEVER call, text, or email asking for your SIN!"
+          },
+          {
+            "heading": "Protecting Your SIN",
+            "tips": [
+              "📝 Don't carry your SIN card in your wallet",
+              "🔒 Store it in a safe place at home",
+              "🚫 Never share it on social media",
+              "👀 Question anyone who asks for it",
+              "📱 Don't save it on your phone",
+              "💻 Don't enter it on unsecure websites"
+            ]
+          },
+          {
+            "heading": "Signs of SIN Identity Theft",
+            "redFlags": [
+              "CRA says you have income you didn't earn",
+              "You receive tax slips from companies you never worked for",
+              "Someone files a tax return in your name",
+              "You're denied government benefits you should qualify for"
+            ],
+            "action": "If you suspect identity theft, call Service Canada immediately: 1-800-206-7218"
+          }
+        ],
+        "interactive": {
+          "type": "scenario-quiz",
+          "title": "SIN Safety Scenarios",
+          "scenarios": [
+            {
+              "situation": "A store cashier asks for your SIN to process a return",
+              "options": ["Give it to them", "Refuse and ask why they need it", "Give them a fake number"],
+              "correct": 1,
+              "explanation": "Stores never need your SIN. Ask for a manager if they insist."
+            },
+            {
+              "situation": "Your new employer asks for your SIN on your first day",
+              "options": ["Give it to them", "Refuse", "Ask for time to think"],
+              "correct": 0,
+              "explanation": "Employers legally need your SIN to report your earnings to CRA."
+            },
+            {
+              "situation": "You receive a text claiming to be from CRA asking for your SIN",
+              "options": ["Reply with your SIN", "Delete and report as scam", "Call the number provided"],
+              "correct": 1,
+              "explanation": "CRA never contacts you via text. This is always a scam!"
+            }
+          ]
+        },
+        "keyTakeaways": [
+          "Your SIN is for work, taxes, and government programs only",
+          "Never give your SIN to stores or random requests",
+          "Store your SIN card safely at home, not in your wallet",
+          "CRA never calls, texts, or emails for your SIN",
+          "Report suspected identity theft immediately"
+        ]
+      }
+    },
+    {
+      "id": "lesson-5-t4-tutorial",
+      "slug": "understanding-t4-slips",
+      "title": "T4 Slip Tutorial",
+      "order": 5,
+      "estimatedMinutes": 8,
+      "contentType": "interactive",
+      "hasInteractive": true,
+      "content": {
+        "introduction": "Every February, you'll receive T4 slips from each employer you worked for in the previous year. Let's decode what all those boxes mean!",
+        "sections": [
+          {
+            "heading": "What is a T4 Slip?",
+            "content": "A T4 is an official document your employer must give you showing how much you earned and how much tax was deducted.",
+            "deadline": "Employers must provide T4s by February 28",
+            "formats": "You might receive it by mail, email, or through an online portal"
+          },
+          {
+            "heading": "Important T4 Boxes for Teens",
+            "boxes": [
+              {
+                "box": "Box 10",
+                "name": "Province of Employment",
+                "description": "Which province you worked in",
+                "example": "ON (Ontario)",
+                "whyItMatters": "Determines your provincial tax rate"
+              },
+              {
+                "box": "Box 14",
+                "name": "Employment Income",
+                "description": "Total you earned before deductions",
+                "example": "$8,500.00",
+                "whyItMatters": "This is your gross income for the year"
+              },
+              {
+                "box": "Box 16",
+                "name": "Employee's CPP Contributions",
+                "description": "Amount you paid into CPP",
+                "example": "$392.50",
+                "whyItMatters": "This builds your retirement pension"
+              },
+              {
+                "box": "Box 18",
+                "name": "Employee's EI Premiums",
+                "description": "Amount you paid for EI",
+                "example": "$134.30",
+                "whyItMatters": "Insurance if you lose your job"
+              },
+              {
+                "box": "Box 22",
+                "name": "Income Tax Deducted",
+                "description": "Total federal + provincial tax taken off",
+                "example": "$425.00",
+                "whyItMatters": "You might get some or all of this back!"
+              }
+            ]
+          },
+          {
+            "heading": "Common Mistakes with T4s",
+            "mistakes": [
+              {
+                "mistake": "Not waiting for all T4s",
+                "fix": "If you had 3 jobs, wait for 3 T4s before filing"
+              },
+              {
+                "mistake": "Entering wrong box numbers",
+                "fix": "Double-check you're putting Box 14 in the right place"
+              },
+              {
+                "mistake": "Losing your T4",
+                "fix": "Contact your employer for a copy (they can reissue it)"
+              },
+              {
+                "mistake": "Filing before receiving T4s",
+                "fix": "Wait until late February or early March to file"
+              }
+            ]
+          }
+        ],
+        "interactive": {
+          "type": "t4-matching-game",
+          "title": "Match the T4 Box to Its Meaning",
+          "instruction": "Drag each box number to its correct description",
+          "pairs": [
+            {"box": "Box 14", "meaning": "Employment Income"},
+            {"box": "Box 16", "meaning": "CPP Contributions"},
+            {"box": "Box 18", "meaning": "EI Premiums"},
+            {"box": "Box 22", "meaning": "Income Tax Deducted"},
+            {"box": "Box 10", "meaning": "Province of Employment"}
+          ]
+        },
+        "keyTakeaways": [
+          "T4 slips arrive by end of February",
+          "Box 14 shows your total income",
+          "Box 22 shows tax deducted (possible refund!)",
+          "You need ALL your T4s before filing",
+          "Keep T4s for at least 6 years"
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "title": "Tax Basics Final Assessment",
+    "description": "Test your knowledge! Pass with 70% to earn your Tax Basics badge.",
+    "passingScore": 70,
+    "timeLimit": 900,
+    "attemptsAllowed": 3,
+    "questions": [
+      {
+        "id": "q1",
+        "questionType": "MULTIPLE_CHOICE",
+        "order": 1,
+        "points": 10,
+        "question": "Which of these services is primarily funded by taxes?",
+        "options": ["Netflix subscriptions", "Public hospitals", "Private school tuition", "Restaurant meals"],
+        "correctAnswer": 1,
+        "explanation": "Public hospitals are funded by taxes. Private services like Netflix, private schools, and restaurants are paid for directly by customers."
+      },
+      {
+        "id": "q2",
+        "questionType": "MULTIPLE_CHOICE",
+        "order": 2,
+        "points": 10,
+        "question": "What is the difference between gross and net income?",
+        "options": [
+          "There is no difference",
+          "Gross is after deductions, net is before",
+          "Gross is before deductions, net is after",
+          "Net includes bonuses, gross doesn't"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Gross income is what you earn BEFORE deductions. Net income (take-home pay) is what you receive AFTER deductions."
+      },
+      {
+        "id": "q3",
+        "questionType": "TRUE_FALSE",
+        "order": 3,
+        "points": 10,
+        "question": "You should carry your Social Insurance Number card in your wallet for emergencies.",
+        "correctAnswer": false,
+        "explanation": "FALSE! Never carry your SIN card in your wallet. Store it safely at home. If your wallet is stolen, your SIN could be used for identity theft."
+      },
+      {
+        "id": "q4",
+        "questionType": "MULTIPLE_CHOICE",
+        "order": 4,
+        "points": 10,
+        "question": "What does CPP stand for and what is it for?",
+        "options": [
+          "Canadian Payment Plan - pays for healthcare",
+          "Canada Pension Plan - savings for retirement",
+          "Car Payment Program - helps buy vehicles",
+          "Credit Protection Plan - protects credit cards"
+        ],
+        "correctAnswer": 1,
+        "explanation": "CPP is Canada Pension Plan. The money deducted from your paycheque goes into a pension that you'll receive when you retire."
+      },
+      {
+        "id": "q5",
+        "questionType": "MULTIPLE_CHOICE",
+        "order": 5,
+        "points": 10,
+        "question": "If you earned $7,000 in a part-time job and had $400 deducted for taxes, should you file a tax return?",
+        "options": [
+          "No, you didn't earn enough",
+          "No, it's too complicated",
+          "Yes, you'll likely get a refund",
+          "Only if your parents tell you to"
+        ],
+        "correctAnswer": 2,
+        "explanation": "YES! With $7,000 income, you're under the basic personal amount ($15,000+), so you likely paid too much tax. Filing will get you most or all of that $400 back!"
+      },
+      {
+        "id": "q6",
+        "questionType": "MULTIPLE_CHOICE",
+        "order": 6,
+        "points": 10,
+        "question": "Which box on a T4 slip shows your total employment income?",
+        "options": ["Box 10", "Box 14", "Box 22", "Box 18"],
+        "correctAnswer": 1,
+        "explanation": "Box 14 shows your total employment income (gross pay) for the year. This is the amount you earned before any deductions."
+      },
+      {
+        "id": "q7",
+        "questionType": "TRUE_FALSE",
+        "order": 7,
+        "points": 10,
+        "question": "The CRA might call, text, or email you to ask for your Social Insurance Number.",
+        "correctAnswer": false,
+        "explanation": "FALSE! The CRA will NEVER call, text, or email asking for your SIN. This is always a scam. Report it immediately."
+      },
+      {
+        "id": "q8",
+        "questionType": "MULTIPLE_CHOICE",
+        "order": 8,
+        "points": 10,
+        "question": "What is EI (Employment Insurance) used for?",
+        "options": [
+          "Health insurance coverage",
+          "Income if you lose your job",
+          "Car insurance payments",
+          "Student loan payments"
+        ],
+        "correctAnswer": 1,
+        "explanation": "EI provides temporary income if you lose your job through no fault of your own. It's insurance against unemployment."
+      },
+      {
+        "id": "q9",
+        "questionType": "MULTIPLE_CHOICE",
+        "order": 9,
+        "points": 10,
+        "question": "By when must employers provide T4 slips to employees?",
+        "options": ["December 31", "January 31", "February 28", "April 30"],
+        "correctAnswer": 2,
+        "explanation": "Employers must provide T4 slips by February 28 (or 29 in leap years) for the previous tax year."
+      },
+      {
+        "id": "q10",
+        "questionType": "MULTIPLE_CHOICE",
+        "order": 10,
+        "points": 10,
+        "question": "Which is a valid reason to give someone your Social Insurance Number?",
+        "options": [
+          "A store asks for it to process a return",
+          "A new employer asks for it on your first day",
+          "Someone calls claiming to be from CRA",
+          "An online form requests it for a contest"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Employers legally need your SIN to report your earnings to the CRA. Never give your SIN to stores, callers, or random online forms."
+      }
+    ]
+  }
+}

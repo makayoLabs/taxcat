@@ -311,4 +311,70 @@ model Dependent {
   createdAt   DateTime        @default(now())
   updatedAt   DateTime        @updatedAt
   taxReturn   TaxReturn       @relation(fields: [taxReturnId], references: [id], onDelete: Cascade)
-} 
+}
+
+// Mock Tax Return for Practice (Educational - Not for actual filing)
+model MockReturn {
+  id                String          @id @default(cuid())
+  userId            String?         // Optional - can be used without account
+  sessionId         String?         // For anonymous users
+  
+  // Personal Information
+  firstName         String
+  lastName          String
+  sin               String          // Simulated SIN (not real)
+  dateOfBirth       DateTime
+  filingStatus      FilingStatus
+  spouseFirstName   String?
+  spouseSIN         String?
+  numberOfDependents Int            @default(0)
+  address           String
+  city              String
+  province          String
+  postalCode        String
+  phone             String?
+  email             String?
+  
+  // Income
+  employmentIncome  Float           @default(0)
+  selfEmploymentIncome Float        @default(0)
+  investmentIncome  Float           @default(0)
+  otherIncome       Float           @default(0)
+  
+  // Deductions
+  rrspContributions Float           @default(0)
+  unionDues         Float           @default(0)
+  childcareExpenses Float           @default(0)
+  movingExpenses    Float           @default(0)
+  
+  // Tax Credits
+  medicalExpenses   Float           @default(0)
+  donations         Float           @default(0)
+  tuitionFees       Float           @default(0)
+  publicTransit     Float           @default(0)
+  
+  // Tax Paid
+  taxDeducted       Float           @default(0)
+  
+  // Calculated Results
+  totalIncome       Float           @default(0)
+  totalDeductions   Float           @default(0)
+  taxableIncome     Float           @default(0)
+  federalTax        Float           @default(0)
+  provincialTax     Float           @default(0)
+  totalTax          Float           @default(0)
+  refundAmount      Float           @default(0)
+  
+  // Wizard Progress
+  currentStep       Int             @default(1)
+  completed         Boolean         @default(false)
+  completedAt       DateTime?
+  
+  // Metadata
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  
+  @@index([userId])
+  @@index([sessionId])
+  @@map("mock_returns")
+}

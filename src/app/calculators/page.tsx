@@ -1,7 +1,25 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Calculator, TrendingUp, PiggyBank, DollarSign, FileText, Percent, ArrowRight } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Free Canadian Tax Calculators | TaxCat',
+  description: 'Free tax calculators for Canadians. Calculate tax brackets, RRSP savings, TFSA room, CPP/EI, HST/GST, and estimate your tax refund. All provinces supported.',
+  keywords: ['Canadian tax calculator', 'RRSP calculator', 'TFSA calculator', 'tax refund estimator', 'CPP calculator', 'EI calculator', 'HST calculator', 'tax bracket calculator'],
+  openGraph: {
+    title: 'Free Canadian Tax Calculators | TaxCat',
+    description: 'Free tax calculators for Canadians. Calculate tax brackets, RRSP savings, TFSA room, and more.',
+    url: 'https://taxcat.ca/calculators',
+    siteName: 'TaxCat',
+    locale: 'en_CA',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free Canadian Tax Calculators | TaxCat',
+    description: 'Free tax calculators for Canadians. All provinces supported.',
+  }
+};
 
 interface CalculatorCard {
   title: string;

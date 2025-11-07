@@ -124,7 +124,7 @@ export class EFileManager {
 
       this.performanceMonitor.endOperation(operationId, true);
       return id;
-    } catch (___error) =>
+    } catch (error) {
       this.performanceMonitor.endOperation(operationId, false, { error });
       throw error;
     }
@@ -161,7 +161,7 @@ export class EFileManager {
 
       this.performanceMonitor.endOperation(operationId, true);
       return submission;
-    } catch (___error) =>
+    } catch (error) {
       this.performanceMonitor.endOperation(operationId, false, { error });
       throw error;
     }
@@ -205,7 +205,7 @@ export class EFileManager {
 
       this.performanceMonitor.endOperation(operationId, true);
       return submission;
-    } catch (___error) =>
+    } catch (error) {
       this.performanceMonitor.endOperation(operationId, false, { error });
       throw error;
     }
@@ -243,7 +243,7 @@ export class EFileManager {
 
       this.performanceMonitor.endOperation(operationId, true);
       return submission;
-    } catch (___error) =>
+    } catch (error) {
       this.performanceMonitor.endOperation(operationId, false, { error });
       throw error;
     }

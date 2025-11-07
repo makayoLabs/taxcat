@@ -205,7 +205,7 @@ export const T1General: React.FC<T1GeneralProps> = ({ taxpayerId, year, onSave, 
       setIsSaving(true);
       await onSave(data);
       setIsDirty(false);
-    } catch (___error) =>
+    } catch (error) {
       setErrors({ submit: 'Failed to save the tax return. Please try again.' });
     } finally {
       setIsSaving(false);
@@ -217,7 +217,7 @@ export const T1General: React.FC<T1GeneralProps> = ({ taxpayerId, year, onSave, 
       setIsSubmitting(true);
       await onSubmit(data);
       setIsDirty(false);
-    } catch (___error) =>
+    } catch (error) {
       setErrors({ submit: 'Failed to submit the tax return. Please try again.' });
     } finally {
       setIsSubmitting(false);

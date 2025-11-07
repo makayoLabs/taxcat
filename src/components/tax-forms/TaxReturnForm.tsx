@@ -146,7 +146,7 @@ export default function TaxReturnForm({ onSubmit, onSaveDraft, initialData }: Ta
 
       const result = taxCalculator.calculateTax(taxableIncome, deductions, credits, 'ON');
       setCalculatedTax(result);
-    } catch (___error) =>
+    } catch (error) {
       console.error('Error calculating tax:', error);
     } finally {
       setIsCalculating(false);

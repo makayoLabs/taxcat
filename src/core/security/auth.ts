@@ -50,7 +50,7 @@ export class AuthenticationService {
       }
 
       return this.generateTokens(user);
-    } catch (___error) =>
+    } catch (error) {
       LoggerService.error('Authentication failed', { error, email });
       throw new Error('Authentication failed');
     }
@@ -67,7 +67,7 @@ export class AuthenticationService {
       }
 
       return user;
-    } catch (___error) =>
+    } catch (error) {
       LoggerService.error('Token validation failed', { error });
       throw new Error('Invalid token');
     }
@@ -88,7 +88,7 @@ export class AuthenticationService {
       }
 
       return this.generateTokens(user);
-    } catch (___error) =>
+    } catch (error) {
       LoggerService.error('Token refresh failed', { error });
       throw new Error('Token refresh failed');
     }
@@ -114,7 +114,7 @@ export class AuthenticationService {
         qrCode,
         backupCodes,
       };
-    } catch (___error) =>
+    } catch (error) {
       LoggerService.error('MFA setup failed', { error, userId });
       throw new Error('MFA setup failed');
     }
@@ -124,7 +124,7 @@ export class AuthenticationService {
     try {
       // In production, implement proper TOTP verification
       return code.length === 6 && /^\d+$/.test(code);
-    } catch (___error) =>
+    } catch (error) {
       LoggerService.error('MFA verification failed', { error, userId });
       throw new Error('MFA verification failed');
     }

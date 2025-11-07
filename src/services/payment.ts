@@ -61,7 +61,7 @@ export class PaymentService {
         clientSecret: paymentIntent.client_secret!,
         paymentIntentId: paymentIntent.id,
       };
-    } catch (___error) =>
+    } catch (error) {
       console.error('Error creating payment intent:', error);
       throw new Error('Failed to create payment intent');
     }
@@ -83,7 +83,7 @@ export class PaymentService {
           await this.handlePaymentFailure(event.data.object as Stripe.PaymentIntent);
           break;
       }
-    } catch (___error) =>
+    } catch (error) {
       console.error('Error handling webhook:', error);
       throw new Error('Webhook handling failed');
     }
@@ -150,7 +150,7 @@ export class PaymentService {
           data: { status: PaymentStatus.REFUNDED },
         });
       }
-    } catch (___error) =>
+    } catch (error) {
       console.error('Error processing refund:', error);
       throw new Error('Failed to process refund');
     }

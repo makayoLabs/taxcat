@@ -121,7 +121,7 @@ export class NotificationService {
 
       await this.emailTransporter.sendMail(mailOptions);
       LoggerService.info('Email sent successfully', { to, type });
-    } catch (___error) =>
+    } catch (error) {
       captureError(error as Error, { service: 'EMAIL', to, type });
       LoggerService.error('Failed to send email', { error, to, type });
       throw new Error('Failed to send email');
@@ -155,7 +155,7 @@ export class NotificationService {
       LoggerService.info('Notification created', { userId, type, title });
 
       return notification;
-    } catch (___error) =>
+    } catch (error) {
       captureError(error as Error, {
         service: 'NOTIFICATION',
         userId,

@@ -1,34 +1,44 @@
-/* Import Google Fonts - TaxCat Typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;800&family=Roboto+Mono:wght@400;600&display=swap');
+/* Import Google Fonts - Modern Typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700;800&family=DM+Serif+Display:wght@400&family=Roboto+Mono:wght@400;600&display=swap');
 
 /* Import Brand System */
 @import './brand-taxcat.css';
+@import './brand-ekbooks.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* TaxCat Brand Colors */
+/* Wealthsimple-Inspired Design System */
 :root {
-  /* Primary - H&R Block Green */
+  /* Primary - H&R Block Green (TaxCat) */
   --color-primary: #00A950;
   --accent-green: #00A950;
-  
+
   /* Secondary - Toronto Blue */
   --color-secondary: #134A8E;
-  
+
   /* Accent - Premium Gold */
   --color-accent: #F5A623;
-  
-  /* Backgrounds */
+
+  /* Backgrounds - Clean & Minimal */
   --background: #fcfcfc;
   --background-alt: #f6f8fa;
+  --background-dark: #eeece7;
   --background-accent: #E6F7ED;
-  
-  /* Text */
+  --background-hero: #E9F2F9;
+
+  /* Text - Professional Hierarchy */
   --text: #32302f;
   --text-muted: #6b6b6b;
+  --text-light: #8a8a8a;
   --white: #ffffff;
+
+  /* Semantic Colors */
+  --color-success: #00a950;
+  --color-warning: #f5a623;
+  --color-error: #e8291c;
+  --color-info: #0077c5;
 }
 
 @layer base {
@@ -66,119 +76,199 @@
 }
 
 @layer components {
-  /* TaxCat Primary Button with Gradient */
-  .btn-primary {
-    @apply px-6 py-3 text-white rounded-lg font-semibold 
-           transition-all duration-200 shadow-sm hover:shadow-md
-           inline-flex items-center justify-center gap-2;
-    background: linear-gradient(135deg, #00A950 0%, #00BD5E 100%);
+  /* ==========================================
+     WEALTHSIMPLE-STYLE COMPONENT SYSTEM (ws-)
+     ========================================== */
+
+  /* === BUTTONS === */
+  .ws-button {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-lg
+           transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .ws-button-primary {
+    @apply px-6 py-3 text-white shadow-sm hover:shadow-md;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #00BD5E 100%);
     box-shadow: 0 4px 12px rgba(0, 169, 80, 0.25);
   }
 
-  .btn-primary:hover {
-    background: linear-gradient(135deg, #008040 0%, #00A950 100%);
+  .ws-button-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #008040 0%, var(--color-primary) 100%);
     box-shadow: 0 6px 16px rgba(0, 169, 80, 0.35);
     transform: translateY(-1px);
   }
 
-  .btn-secondary {
-    @apply px-6 py-3 rounded-lg font-semibold 
-           transition-all duration-200
-           inline-flex items-center justify-center gap-2;
-    border: 2px solid #00A950;
-    color: #00A950;
+  .ws-button-secondary {
+    @apply px-6 py-3;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
     background: transparent;
   }
 
-  .btn-secondary:hover {
-    background-color: #E6F7ED;
+  .ws-button-secondary:hover:not(:disabled) {
+    background-color: var(--background-accent);
     border-color: #008040;
     color: #008040;
   }
 
-  .btn-ghost {
-    @apply px-6 py-3 text-primary rounded-lg font-semibold 
-           hover:bg-background-alt transition-all duration-200
-           inline-flex items-center justify-center gap-2;
+  .ws-button-ghost {
+    @apply px-6 py-3;
+    color: var(--color-primary);
+    background: transparent;
   }
 
-  /* Card styles */
-  .card {
-    @apply bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-200;
+  .ws-button-ghost:hover:not(:disabled) {
+    background-color: var(--background-alt);
   }
 
-  .card-elevated {
-    @apply bg-white rounded-xl shadow-md p-8 hover:shadow-lg transition-shadow duration-200;
+  /* Button Sizes */
+  .ws-button-sm { @apply px-4 py-2 text-sm; }
+  .ws-button-md { @apply px-6 py-3 text-base; }
+  .ws-button-lg { @apply px-8 py-4 text-lg; }
+
+  /* === CARDS === */
+  .ws-card {
+    @apply bg-white rounded-2xl shadow-sm p-6 transition-all duration-200 border border-gray-100;
   }
 
-  /* Input styles */
-  .input-field {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg 
-           transition-all duration-200;
-  }
-  
-  .input-field:focus {
-    border-color: #00A950;
-    box-shadow: 0 0 0 3px #E6F7ED;
-    outline: none;
+  .ws-card:hover {
+    @apply shadow-md;
+    border-color: var(--color-primary);
+    border-opacity: 0.2;
   }
 
-  /* Section styles */
-  .section {
-    @apply py-16 md:py-20 lg:py-24 px-4;
+  .ws-card-elevated {
+    @apply bg-white rounded-2xl shadow-md p-8 transition-all duration-200;
   }
 
-  .section-alt {
-    @apply py-16 md:py-20 lg:py-24 px-4 bg-background-alt;
+  .ws-card-elevated:hover {
+    @apply shadow-lg;
+    transform: translateY(-2px);
   }
 
-  .section-accent {
-    @apply py-16 md:py-20 lg:py-24 px-4;
-    background-color: #E6F7ED;
+  .ws-card-featured {
+    @apply ws-card border-2;
+    border-color: var(--color-primary);
   }
 
-  /* Container */
-  .container-custom {
-    @apply max-w-7xl mx-auto;
+  /* === LEGACY COMPATIBILITY === */
+  .btn-primary { @apply ws-button ws-button-primary; }
+  .btn-secondary { @apply ws-button ws-button-secondary; }
+  .btn-ghost { @apply ws-button ws-button-ghost; }
+  .card { @apply ws-card; }
+  .card-elevated { @apply ws-card-elevated; }
+
+  /* === SECTIONS === */
+  .ws-section {
+    @apply py-16 md:py-20 lg:py-24 px-4 sm:px-6;
   }
 
-  /* Text utilities */
-  .text-balance {
-    text-wrap: balance;
+  .ws-section-sm {
+    @apply py-12 md:py-14 lg:py-16 px-4 sm:px-6;
   }
 
-  .eyebrow {
-    @apply text-sm md:text-base font-semibold uppercase tracking-wide text-text-muted;
+  .ws-section-lg {
+    @apply py-20 md:py-28 lg:py-32 px-4 sm:px-6;
   }
 
-  /* Legacy compatibility classes */
+  .ws-section-primary {
+    background-color: var(--background);
+  }
+
+  .ws-section-alt {
+    background-color: var(--background-alt);
+  }
+
+  .ws-section-dark {
+    background-color: var(--background-dark);
+  }
+
+  .ws-section-accent {
+    background-color: var(--background-accent);
+  }
+
+  /* === CONTAINERS === */
+  .ws-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .ws-container-narrow {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .ws-container-wide {
+    @apply max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* === GRID === */
+  .ws-grid {
+    @apply grid grid-cols-12 gap-6 md:gap-8;
+  }
+
+  .ws-col-12 { @apply col-span-12; }
+  .ws-col-6 { @apply col-span-12 md:col-span-6; }
+  .ws-col-4 { @apply col-span-12 md:col-span-4; }
+  .ws-col-3 { @apply col-span-12 md:col-span-3; }
+  .ws-col-5 { @apply col-span-12 md:col-span-5; }
+  .ws-col-7 { @apply col-span-12 md:col-span-7; }
+  .ws-col-start-7 { @apply md:col-start-7; }
+
+  /* === HERO LAYOUTS === */
+  .ws-split-hero {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center;
+  }
+
+  .ws-centered-hero {
+    @apply text-center max-w-4xl mx-auto;
+  }
+
+  /* === MEDIA === */
+  .ws-media {
+    @apply relative w-full;
+  }
+
+  .ws-media-rounded {
+    @apply rounded-2xl overflow-hidden;
+  }
+
+  /* === INPUT STYLES === */
+  .ws-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg
+           transition-all duration-200 focus:outline-none;
+  }
+
+  .ws-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--background-accent);
+  }
+
+  /* === LEGACY COMPATIBILITY === */
+  .input-field { @apply ws-input; }
+  .section { @apply ws-section; }
+  .section-alt { @apply ws-section ws-section-alt; }
+  .section-accent { @apply ws-section ws-section-accent; }
+  .container-custom { @apply ws-container; }
+
+  /* === LEGACY TAX COMPONENTS === */
   .form-radio {
     @apply h-4 w-4 border-gray-300;
-    color: #00A950;
+    color: var(--color-primary);
   }
-  
+
   .form-radio:focus {
-    ring-color: #00A950;
+    ring-color: var(--color-primary);
   }
 
-  .cat-card {
-    @apply card;
-  }
-
-  .cat-button {
-    @apply btn-primary;
-  }
-
-  .cat-input {
-    @apply input-field;
-  }
+  .cat-card { @apply ws-card; }
+  .cat-button { @apply ws-button ws-button-primary; }
+  .cat-input { @apply ws-input; }
 
   .cat-tab {
     @apply px-4 py-2 rounded-lg transition-colors duration-200;
   }
 
   .cat-tab-active {
-    background-color: #00A950;
+    background-color: var(--color-primary);
     @apply text-white;
   }
 
@@ -188,47 +278,124 @@
 }
 
 @layer utilities {
-  .text-display-lg {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  /* === WEALTHSIMPLE-STYLE TYPOGRAPHY === */
+  /* Display Sizes - For Headlines */
+  .ws-display-2xl {
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .ws-display-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .ws-display-lg {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.15];
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  .ws-display-md {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.2];
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  .ws-display-sm {
+    @apply text-xl md:text-2xl lg:text-3xl font-bold leading-[1.25];
     font-family: 'Poppins', sans-serif;
   }
 
-  .text-display-md {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
-    font-family: 'Poppins', sans-serif;
+  /* Heading Sizes */
+  .ws-heading-xl {
+    @apply text-2xl md:text-3xl font-semibold leading-[1.3];
   }
 
-  .text-display-sm {
-    @apply text-2xl md:text-3xl lg:text-4xl font-bold leading-tight;
-    font-family: 'Poppins', sans-serif;
+  .ws-heading-lg {
+    @apply text-xl md:text-2xl font-semibold leading-[1.35];
   }
-  
-  /* TaxCat brand color utilities */
-  .text-taxcat-green {
-    color: #00A950;
+
+  .ws-heading-md {
+    @apply text-lg md:text-xl font-semibold leading-[1.4];
   }
-  
-  .text-taxcat-blue {
-    color: #134A8E;
+
+  /* Text Sizes */
+  .ws-text-2xl {
+    @apply text-2xl leading-[1.4];
   }
-  
-  .text-taxcat-gold {
-    color: #F5A623;
+
+  .ws-text-xl {
+    @apply text-xl leading-[1.5];
   }
-  
-  .bg-taxcat-green {
-    background-color: #00A950;
+
+  .ws-text-lg {
+    @apply text-lg md:text-xl leading-[1.6];
   }
-  
-  .bg-taxcat-blue {
-    background-color: #134A8E;
+
+  .ws-text-md {
+    @apply text-base md:text-lg leading-[1.6];
   }
-  
-  .bg-taxcat-gold {
-    background-color: #F5A623;
+
+  .ws-text-sm {
+    @apply text-sm md:text-base leading-[1.5];
   }
-  
-  .border-taxcat-green {
-    border-color: #00A950;
+
+  /* Eyebrow Text */
+  .ws-eyebrow-sm {
+    @apply text-xs md:text-sm font-semibold uppercase tracking-wide;
+    color: var(--text-muted);
   }
+
+  .ws-eyebrow-md {
+    @apply text-sm md:text-base font-semibold uppercase tracking-wide;
+    color: var(--text-muted);
+  }
+
+  /* Color Utilities */
+  .ws-color-primary {
+    color: var(--color-primary);
+  }
+
+  .ws-color-secondary {
+    color: var(--color-secondary);
+  }
+
+  .ws-color-muted {
+    color: var(--text-muted);
+  }
+
+  .ws-color-light {
+    color: var(--text-light);
+  }
+
+  /* Text Balance */
+  .ws-balance {
+    text-wrap: balance;
+  }
+
+  /* === LEGACY COMPATIBILITY === */
+  .text-display-lg { @apply ws-display-lg; }
+  .text-display-md { @apply ws-display-md; }
+  .text-display-sm { @apply ws-display-sm; }
+  .text-balance { @apply ws-balance; }
+  .eyebrow { @apply ws-eyebrow-sm; }
+
+  /* Brand Colors */
+  .text-brand-primary { color: var(--color-primary); }
+  .text-brand-secondary { color: var(--color-secondary); }
+  .bg-brand-primary { background-color: var(--color-primary); }
+  .bg-brand-secondary { background-color: var(--color-secondary); }
+  .border-brand-primary { border-color: var(--color-primary); }
+
+  /* TaxCat Specific */
+  .text-taxcat-green { color: #00A950; }
+  .text-taxcat-blue { color: #134A8E; }
+  .text-taxcat-gold { color: #F5A623; }
+  .bg-taxcat-green { background-color: #00A950; }
+  .bg-taxcat-blue { background-color: #134A8E; }
+  .bg-taxcat-gold { background-color: #F5A623; }
+  .border-taxcat-green { border-color: #00A950; }
 }

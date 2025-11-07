@@ -56,6 +56,13 @@ export default function Header() {
             >
               Contact
             </Link>
+            <Link
+              href="http://localhost:3000"
+              target="_blank"
+              className="text-brand-primary hover:text-brand-primary-dark font-semibold transition-colors duration-200 flex items-center"
+            >
+              TaxCat →
+            </Link>
             <button className="ws-button ws-button-primary">
               Get Started
             </button>

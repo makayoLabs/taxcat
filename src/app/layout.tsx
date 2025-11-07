@@ -2,7 +2,7 @@ import './globals.css';
 import { Inter, DM_Serif_Display } from 'next/font/google';
 import { Metadata, Viewport } from 'next';
 import { Providers } from '@/components/Providers';
-import Navigation from '@/components/Navigation';
+import UnifiedNavigation from '@/components/UnifiedNavigation';
 import PerformanceMonitor from '@/components/PerformanceMonitor';
 
 const inter = Inter({
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
     <html lang="en" className={`${inter.variable} ${dmSerif.variable} scroll-smooth`}>
       <body className={`${inter.className} theme-taxcat antialiased`}>
         <Providers>
-          <Navigation />
+          <UnifiedNavigation />
           {children}
           <PerformanceMonitor />
         </Providers>

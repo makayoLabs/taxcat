@@ -30,19 +30,11 @@ const calculators: CalculatorCard[] = [
     difficulty: 'beginner'
   },
   {
-    title: 'Tax Refund Estimator',
-    description: 'Estimate your tax refund or amount owing with detailed breakdown',
-    href: '/calculators/refund-estimator',
-    icon: <DollarSign className="w-8 h-8" />,
-    status: 'coming-soon',
-    difficulty: 'intermediate'
-  },
-  {
     title: 'TFSA Calculator',
     description: 'Calculate your TFSA contribution room and project growth',
     href: '/calculators/tfsa',
     icon: <PiggyBank className="w-8 h-8" />,
-    status: 'coming-soon',
+    status: 'available',
     difficulty: 'intermediate'
   },
   {
@@ -50,7 +42,7 @@ const calculators: CalculatorCard[] = [
     description: 'Calculate CPP and EI contributions for employees and self-employed',
     href: '/calculators/cpp-ei',
     icon: <FileText className="w-8 h-8" />,
-    status: 'coming-soon',
+    status: 'available',
     difficulty: 'beginner'
   },
   {
@@ -58,8 +50,16 @@ const calculators: CalculatorCard[] = [
     description: 'See how additional income is taxed and compare income types',
     href: '/calculators/marginal-rate',
     icon: <Calculator className="w-8 h-8" />,
-    status: 'coming-soon',
+    status: 'available',
     difficulty: 'advanced'
+  },
+  {
+    title: 'Tax Refund Estimator',
+    description: 'Estimate your tax refund or amount owing with detailed breakdown',
+    href: '/calculators/refund-estimator',
+    icon: <DollarSign className="w-8 h-8" />,
+    status: 'coming-soon',
+    difficulty: 'intermediate'
   }
 ];
 

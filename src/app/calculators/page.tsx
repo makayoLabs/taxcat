@@ -58,7 +58,7 @@ const calculators: CalculatorCard[] = [
     description: 'Estimate your tax refund or amount owing with detailed breakdown',
     href: '/calculators/refund-estimator',
     icon: <DollarSign className="w-8 h-8" />,
-    status: 'coming-soon',
+    status: 'available',
     difficulty: 'intermediate'
   }
 ];

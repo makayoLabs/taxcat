@@ -11,34 +11,41 @@
 
 /* Wealthsimple-Inspired Design System */
 :root {
-  /* Primary - H&R Block Green (TaxCat) */
-  --color-primary: #00A950;
-  --accent-green: #00A950;
+  /* Primary - Wealthsimple Teal */
+  --color-primary: #00D3A0;
+  --color-primary-dark: #00B388;
+  --color-primary-light: #66E6C7;
+  --accent-green: #00D3A0;
 
-  /* Secondary - Toronto Blue */
-  --color-secondary: #134A8E;
+  /* Secondary - Almost Black */
+  --color-secondary: #191919;
+  --color-secondary-light: #2D2D2D;
 
-  /* Accent - Premium Gold */
-  --color-accent: #F5A623;
+  /* Accent Colors */
+  --color-accent: #7B61FF;
+  --accent-purple: #7B61FF;
+  --accent-pink: #FF6B9D;
+  --accent-yellow: #FFD166;
+  --accent-blue: #4A90E2;
 
   /* Backgrounds - Clean & Minimal */
-  --background: #fcfcfc;
-  --background-alt: #f6f8fa;
-  --background-dark: #eeece7;
-  --background-accent: #E6F7ED;
-  --background-hero: #E9F2F9;
+  --background: #FFFFFF;
+  --background-alt: #F9FAFB;
+  --background-dark: #F3F4F6;
+  --background-accent: #E6FBF5;
+  --background-hero: #F0FDFA;
 
   /* Text - Professional Hierarchy */
-  --text: #32302f;
-  --text-muted: #6b6b6b;
-  --text-light: #8a8a8a;
-  --white: #ffffff;
+  --text: #111827;
+  --text-muted: #6B7280;
+  --text-light: #9CA3AF;
+  --white: #FFFFFF;
 
   /* Semantic Colors */
-  --color-success: #00a950;
-  --color-warning: #f5a623;
-  --color-error: #e8291c;
-  --color-info: #0077c5;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
 }
 
 @layer base {

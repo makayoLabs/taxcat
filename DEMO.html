@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxCat Educational Platform - DEMO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f9fafb;
+            color: #111827;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #5B45E8 0%, #00C2A7 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .badge-primary {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: #1f2937;
+        }
+
+        .card p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 0.5rem;
+            background: #e5e7eb;
+            border-radius: 9999px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #5B45E8, #00C2A7);
+            transition: width 0.3s;
+        }
+
+        .meta {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #5B45E8, #00C2A7);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .lesson-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .intro-box {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .key-takeaways {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .example-box {
+            background: #f3f4f6;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box h3 {
+            color: #5B45E8;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-option {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            border-color: #5B45E8;
+            background: #f3f4f6;
+        }
+
+        .quiz-option.selected {
+            border-color: #5B45E8;
+            background: #dbeafe;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #5B45E8;
+        }
+
+        .stat-card .label {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .badge-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .badge-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid #e5e7eb;
+        }
+
+        .badge-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-card.locked {
+            opacity: 0.5;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .checkmark {
+            color: #10b981;
+            font-size: 1.25rem;
+        }
+
+        .lock {
+            color: #9ca3af;
+            font-size: 1.25rem;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .back-link {
+            color: #5B45E8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        ul li:before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1: MODULE LISTING -->
+    <div id="page-modules" class="page active">
+        <div class="container">
+            <div class="hero">
+                <h1>🎓 TaxCat Learning</h1>
+                <p>Master Tax & Financial Literacy</p>
+                <p style="font-size: 1rem;">Interactive courses designed for Canadian high school students.<br>Learn about taxes, understand your paycheque, and build essential money skills.</p>
+                <div class="stats">
+                    <div class="stat">📚 1 Learning Module</div>
+                    <div class="stat">⏱️ 45+ Minutes</div>
+                    <div class="stat">🏆 10+ Badges</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="showPage('module-detail')">
+                <div>
+                    <span class="badge badge-primary">TAX_BASICS</span>
+                    <span class="badge badge-success">BEGINNER</span>
+                </div>
+                <h2>📘 Tax Basics for Teens</h2>
+                <p>Learn the fundamentals of Canadian taxes: what they are, why you pay them, and how to file your first tax return.</p>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 80%"></div>
+                </div>
+                <small style="color: #6b7280;">Progress: 80% complete</small>
+
+                <div class="meta">
+                    <div class="meta-item">⏱️ 45 min</div>
+                    <div class="meta-item">📖 5 lessons</div>
+                    <div class="meta-item">📈 150 points</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: MODULE DETAIL -->
+    <div id="page-module-detail" class="page">
+        <div class="container">
+            <a href="#" class="back-link" onclick="showPage('modules')">← Back to Modules</a>
+
+            <div class="hero" style="text-align: left;">
+                <div>
+                    <span class="badge badge-primary">TAX_BASICS</span>
+                    <span class="badge badge-success">BEGINNER</span>
+                </div>
+                <h1>Tax Basics for Teens</h1>
+                <p>Learn the fundamentals of Canadian taxes: what they are, why you pay them, and how to file your first tax return.</p>
+                <div class="meta" style="border: none; color: rgba(255,255,255,0.9);">
+                    <div class="meta-item">⏱️ 45 minutes</div>
+                    <div class="meta-item">📖 5 lessons</div>
+                    <div class="meta-item">🏆 150 points</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Your Progress</h3>
+                <p>3 of 5 lessons completed</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%"></div>
+                </div>
+                <button class="btn" onclick="showPage('lesson-1')">Continue Learning →</button>
+            </div>
+
+            <div class="card">
+                <h3>What You'll Learn</h3>
+                <ul>
+                    <li>Understand what taxes are and how they fund government services</li>
+                    <li>Read and interpret your first paycheque deductions</li>
+                    <li>Learn why teens should file tax returns</li>
+                    <li>Protect your Social Insurance Number</li>
+                    <li>Decode a T4 slip</li>
+                </ul>
+            </div>
+
+            <h2>Course Content</h2>
+
+            <div class="card" onclick="showPage('lesson-1')" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span class="checkmark">✅</span>
+                        <strong>Lesson 1: What Are Taxes?</strong>
+                        <div class="meta" style="border: none; padding: 0; margin-top: 0.5rem;">
+                            <div class="meta-item">⏱️ 8 min</div>
+                            <div class="meta-item">📄 Reading</div>
+                            <div class="meta-item">🎮 Interactive</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span class="checkmark">✅</span>
+                        <strong>Lesson 2: Understanding Your Paycheque</strong>
+                        <div class="meta" style="border: none; padding: 0; margin-top: 0.5rem;">
+                            <div class="meta-item">⏱️ 10 min</div>
+                            <div class="meta-item">📄 Reading</div>
+                            <div class="meta-item">🎮 Interactive</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span class="checkmark">✅</span>
+                        <strong>Lesson 3: Why File a Tax Return?</strong>
+                        <div class="meta" style="border: none; padding: 0; margin-top: 0.5rem;">
+                            <div class="meta-item">⏱️ 7 min</div>
+                            <div class="meta-item">📄 Reading</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong>Lesson 4: Your Social Insurance Number (SIN)</strong>
+                        <div class="meta" style="border: none; padding: 0; margin-top: 0.5rem;">
+                            <div class="meta-item">⏱️ 10 min</div>
+                            <div class="meta-item">📄 Reading</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="opacity: 0.6;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span class="lock">🔒</span>
+                        <strong>Lesson 5: Reading a T4 Slip</strong>
+                        <div class="meta" style="border: none; padding: 0; margin-top: 0.5rem;">
+                            <div class="meta-item">⏱️ 10 min</div>
+                            <div class="meta-item">📄 Reading</div>
+                        </div>
+                        <p style="margin-top: 0.5rem; font-size: 0.875rem;">Complete lesson 4 to unlock</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="showPage('quiz')">
+                <div style="text-align: center;">
+                    <h3>🏆 Tax Basics Final Assessment</h3>
+                    <p>10 questions • 70% to pass</p>
+                    <button class="btn">Take Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: LESSON -->
+    <div id="page-lesson-1" class="page">
+        <div class="container">
+            <a href="#" class="back-link" onclick="showPage('module-detail')">← Back to Module</a>
+
+            <div style="color: #6b7280; margin-bottom: 1rem;">
+                Lesson 1 of 5 • ⏱️ 8 minutes • ✅ Completed
+            </div>
+
+            <h1>What Are Taxes?</h1>
+
+            <div class="lesson-content">
+                <div class="intro-box">
+                    <strong>💡 Introduction</strong>
+                    <p style="margin-top: 1rem;">Taxes are contributions that individuals and businesses make to fund government services and programs. Think of them as everyone chipping in to pay for things we all use!</p>
+                </div>
+
+                <h2>Why Do We Pay Taxes?</h2>
+                <p>Every time you use a public service—like going to the doctor, riding the bus, or attending school—you're using something that taxes helped pay for.</p>
+
+                <div class="example-box">
+                    <h3>Examples of What Taxes Fund:</h3>
+                    <ul>
+                        <li>🏥 Healthcare: Doctor visits, hospitals, emergency services</li>
+                        <li>📚 Education: Public schools, libraries, student programs</li>
+                        <li>🚌 Infrastructure: Roads, bridges, public transit, bike lanes</li>
+                        <li>👮 Safety: Police, fire departments, ambulances</li>
+                        <li>🌳 Services: Parks, garbage collection, clean water</li>
+                    </ul>
+                </div>
+
+                <h2>Types of Taxes</h2>
+
+                <h3>Income Tax</h3>
+                <p>The tax you pay on money you earn from work.</p>
+                <p><strong>Example:</strong> If you earn $200 working part-time at a coffee shop, a percentage goes to the government.</p>
+
+                <h3>Sales Tax (GST/HST/PST)</h3>
+                <p>Tax added to purchases you make.</p>
+                <p><strong>Example:</strong> A $10 item might cost $11.30 with 13% HST in Ontario.</p>
+
+                <h3>Property Tax</h3>
+                <p>Tax homeowners pay on their property.</p>
+                <p><strong>Example:</strong> Your parents pay this annually to the city to fund local services.</p>
+
+                <div class="example-box">
+                    <h3>🎮 Interactive: Where Does Your Tax Dollar Go?</h3>
+                    <p>See how government spending breaks down across different services</p>
+                    <p style="text-align: center; margin: 2rem 0;">
+                        <em>[Interactive pie chart would appear here]</em>
+                    </p>
+                </div>
+
+                <div class="key-takeaways">
+                    <strong>🎯 Key Takeaways</strong>
+                    <ul style="margin-top: 1rem;">
+                        <li>Taxes fund services we all use every day</li>
+                        <li>You pay income tax on earnings and sales tax on purchases</li>
+                        <li>Filing taxes can get you money back through credits and refunds</li>
+                        <li>Understanding taxes helps you make better financial decisions</li>
+                    </ul>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn" onclick="showPage('module-detail')">← Back to Lessons</button>
+                    <button class="btn">Mark Complete ✓</button>
+                    <button class="btn" onclick="showPage('lesson-1')">Next Lesson →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 4: QUIZ -->
+    <div id="page-quiz" class="page">
+        <div class="container">
+            <a href="#" class="back-link" onclick="showPage('module-detail')">← Back to Module</a>
+
+            <div class="hero" style="text-align: center;">
+                <h1>Tax Basics Final Assessment</h1>
+                <p>Test your knowledge of tax basics</p>
+                <div style="margin-top: 1rem;">10 Questions • Passing Score: 70%</div>
+                <div style="margin-top: 0.5rem;">⏱️ Timer: 14:32</div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <div style="color: #6b7280; margin-bottom: 0.5rem;">Question 1 of 10</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 10%"></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h2>Which of these services is primarily funded by taxes?</h2>
+
+                <div class="quiz-option" onclick="this.classList.toggle('selected')">
+                    ○ Netflix subscriptions
+                </div>
+
+                <div class="quiz-option selected" onclick="this.classList.toggle('selected')">
+                    ● Public hospitals <span style="float: right;">← Selected</span>
+                </div>
+
+                <div class="quiz-option" onclick="this.classList.toggle('selected')">
+                    ○ Private schools
+                </div>
+
+                <div class="quiz-option" onclick="this.classList.toggle('selected')">
+                    ○ Restaurant meals
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn">← Previous</button>
+                <div style="color: #6b7280;">7 of 10 answered</div>
+                <button class="btn" onclick="showPage('quiz-results')">Next Question →</button>
+            </div>
+
+            <p style="text-align: center; color: #6b7280; margin-top: 1rem;">You must answer all questions before submitting</p>
+        </div>
+    </div>
+
+    <!-- PAGE 5: QUIZ RESULTS -->
+    <div id="page-quiz-results" class="page">
+        <div class="container">
+            <div class="hero" style="text-align: center;">
+                <div style="font-size: 4rem;">🎉</div>
+                <h1>Congratulations!</h1>
+                <h2 style="color: white;">You scored 80%</h2>
+                <div class="stats" style="margin-top: 2rem;">
+                    <div class="stat">8/10 Correct</div>
+                    <div class="stat">+200 Points</div>
+                    <div class="stat">12:34 Time</div>
+                </div>
+                <div style="margin-top: 2rem; font-size: 1.25rem;">
+                    🏆 Badge Unlocked: Tax Basics Master
+                </div>
+            </div>
+
+            <h2>Review Your Answers</h2>
+
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <strong>Question 1</strong>
+                    <span class="checkmark">✅ 10 points</span>
+                </div>
+                <p><strong>Which of these services is primarily funded by taxes?</strong></p>
+                <p style="margin: 1rem 0;"><strong>Your Answer:</strong> Public hospitals</p>
+                <div class="intro-box" style="margin-top: 1rem;">
+                    <strong>Explanation:</strong> Public hospitals are funded by taxes collected from all Canadians through income tax. This ensures everyone has access to healthcare regardless of their ability to pay.
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <strong>Question 2</strong>
+                    <span style="color: #ef4444;">❌ 0 points</span>
+                </div>
+                <p><strong>At what age can you start paying CPP contributions?</strong></p>
+                <p style="margin: 1rem 0;"><strong>Your Answer:</strong> 16</p>
+                <p style="margin: 1rem 0; color: #10b981;"><strong>Correct Answer:</strong> 18</p>
+                <div class="intro-box" style="margin-top: 1rem;">
+                    <strong>Explanation:</strong> CPP contributions begin when you turn 18 and have earned income. This money goes toward your retirement benefits that you'll receive starting at age 65.
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn" onclick="showPage('modules')">Back to Modules</button>
+                <button class="btn" onclick="showPage('dashboard')">Go to Dashboard →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 6: DASHBOARD -->
+    <div id="page-dashboard" class="page">
+        <div class="container">
+            <a href="#" class="back-link" onclick="showPage('modules')">← Back to Modules</a>
+
+            <h1>Welcome back, Student! 👋</h1>
+
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="number">2</div>
+                    <div class="label">Level</div>
+                    <div style="font-size: 2rem; margin-top: 0.5rem;">📈</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">200</div>
+                    <div class="label">Points</div>
+                    <div style="font-size: 2rem; margin-top: 0.5rem;">💎</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">1</div>
+                    <div class="label">Module</div>
+                    <div style="font-size: 2rem; margin-top: 0.5rem;">📚</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">1</div>
+                    <div class="label">Badge</div>
+                    <div style="font-size: 2rem; margin-top: 0.5rem;">🏆</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Your Learning Journey</h2>
+                <ul>
+                    <li>Modules Completed: 1 / 1 (100%)</li>
+                    <li>Lessons Completed: 5 / 5</li>
+                    <li>Quizzes Passed: 1 / 1</li>
+                    <li>Average Score: 80%</li>
+                    <li>Current Streak: 1 day 🔥</li>
+                </ul>
+
+                <h3 style="margin-top: 2rem;">Progress to Level 3</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%"></div>
+                </div>
+                <small style="color: #6b7280;">150/200 points</small>
+            </div>
+
+            <div class="card">
+                <h2>Recent Activity</h2>
+                <div style="padding: 1rem 0; border-bottom: 1px solid #e5e7eb;">
+                    <p><strong>✅ Completed "Tax Basics Final Assessment" - 80%</strong></p>
+                    <small style="color: #6b7280;">+200 points • 2 hours ago</small>
+                </div>
+                <div style="padding: 1rem 0; border-bottom: 1px solid #e5e7eb;">
+                    <p><strong>🏆 Earned badge "Tax Basics Master"</strong></p>
+                    <small style="color: #6b7280;">2 hours ago</small>
+                </div>
+                <div style="padding: 1rem 0;">
+                    <p><strong>✅ Completed "Reading a T4 Slip"</strong></p>
+                    <small style="color: #6b7280;">3 hours ago</small>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Your Badges</h2>
+                <div class="badge-showcase">
+                    <div class="badge-card">
+                        <div class="badge-icon">🎓</div>
+                        <strong>Tax Basics Master</strong>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">✅ Unlocked</p>
+                    </div>
+                </div>
+                <button class="btn" onclick="showPage('achievements')" style="margin-top: 1rem;">View All Achievements →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 7: ACHIEVEMENTS -->
+    <div id="page-achievements" class="page">
+        <div class="container">
+            <a href="#" class="back-link" onclick="showPage('dashboard')">← Back to Dashboard</a>
+
+            <h1>Achievements & Badges</h1>
+            <p style="color: #6b7280; font-size: 1.25rem; margin-bottom: 2rem;">Your Progress: 1 / 10 badges unlocked (10%)</p>
+
+            <h2>Unlocked Badges</h2>
+            <div class="badge-showcase">
+                <div class="badge-card">
+                    <div class="badge-icon">🎓</div>
+                    <strong>Tax Basics Master</strong>
+                    <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">Complete Tax Basics for Teens module</p>
+                    <p style="color: #10b981; margin-top: 0.5rem;"><strong>✅ Unlocked</strong></p>
+                    <small style="color: #6b7280;">Nov 6, 2024</small>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Locked Badges</h2>
+            <div class="badge-showcase">
+                <div class="badge-card locked">
+                    <div class="badge-icon">🔒</div>
+                    <strong>First Module</strong>
+                    <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">Complete any module</p>
+                    <p style="color: #6b7280; margin-top: 0.5rem;">90% Progress</p>
+                </div>
+                <div class="badge-card locked">
+                    <div class="badge-icon">🔒</div>
+                    <strong>7-Day Streak</strong>
+                    <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">Learn 7 days in a row</p>
+                    <p style="color: #6b7280; margin-top: 0.5rem;">0% Progress</p>
+                </div>
+                <div class="badge-card locked">
+                    <div class="badge-icon">🔒</div>
+                    <strong>Perfect Score</strong>
+                    <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">Score 100% on any quiz</p>
+                    <p style="color: #6b7280; margin-top: 0.5rem;">0% Progress</p>
+                </div>
+                <div class="badge-card locked">
+                    <div class="badge-icon">🔒</div>
+                    <strong>Fast Learner</strong>
+                    <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">Complete module in < 30 min</p>
+                    <p style="color: #6b7280; margin-top: 0.5rem;">0% Progress</p>
+                </div>
+                <div class="badge-card locked">
+                    <div class="badge-icon">🔒</div>
+                    <strong>Quiz Master</strong>
+                    <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">Pass 5 quizzes at 80%+</p>
+                    <p style="color: #6b7280; margin-top: 0.5rem;">20% Progress</p>
+                </div>
+                <div class="badge-card locked">
+                    <div class="badge-icon">🔒</div>
+                    <strong>30-Day Streak</strong>
+                    <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">Learn 30 days in a row</p>
+                    <p style="color: #6b7280; margin-top: 0.5rem;">0% Progress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const page = document.getElementById('page-' + pageId);
+            if (page) {
+                page.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+
+            return false;
+        }
+    </script>
+</body>
+</html>

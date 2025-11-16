@@ -23,6 +23,13 @@ export default function About() {
       {/* Our Story Section */}
       <section className="ws-section ws-section-primary">
         <div className="ws-container">
+          <div className="mb-12">
+            <img
+              src="/images/office/modern-office.jpg"
+              alt="EKBooks modern professional accounting office"
+              className="w-full h-96 object-cover rounded-2xl shadow-lg"
+            />
+          </div>
           <div className="ws-grid">
             <div className="ws-col-12 md:ws-col-6">
               <h2 className="ws-display-md ws-balance mb-6">Our Story</h2>

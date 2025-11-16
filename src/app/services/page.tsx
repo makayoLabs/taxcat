@@ -24,6 +24,47 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Visual Showcase Section */}
+      <section className="ws-section ws-section-alt">
+        <div className="ws-container">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/images/services/tax-filing.jpg"
+                alt="Professional Canadian tax filing services"
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-4 bg-white">
+                <h3 className="font-semibold text-lg mb-2">Professional Tax Filing</h3>
+                <p className="text-sm text-gray-600">CRA-certified filing with maximum refund guarantee</p>
+              </div>
+            </div>
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/images/services/tax-deductions.jpg"
+                alt="Tax deductions and credits optimization"
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-4 bg-white">
+                <h3 className="font-semibold text-lg mb-2">Smart Deductions</h3>
+                <p className="text-sm text-gray-600">AI-powered optimization finds every eligible credit</p>
+              </div>
+            </div>
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/images/services/tax-completion.jpg"
+                alt="Successful tax return completion"
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-4 bg-white">
+                <h3 className="font-semibold text-lg mb-2">Fast & Secure</h3>
+                <p className="text-sm text-gray-600">Complete your return in minutes with confidence</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Personal Tax Services */}
       <section id="services" className="ws-section ws-section-primary">
         <div className="ws-container">

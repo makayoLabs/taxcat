@@ -215,12 +215,18 @@ export default function Contact() {
                   </div>
 
                   <div className="ws-col-12 md:ws-col-6">
-                    <div className="bg-background-alt rounded-lg p-6 text-center">
-                      <div className="text-6xl mb-4">🏢</div>
-                      <p className="ws-text-lg font-semibold">Modern Office Building</p>
-                      <p className="ws-text-sm ws-color-muted mt-2">
-                        Located in the financial district with easy access to Union Station
-                      </p>
+                    <div className="rounded-lg overflow-hidden">
+                      <img
+                        src="/images/contact/meeting-room.jpg"
+                        alt="Modern professional conference room"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="bg-background-alt p-4 text-center">
+                        <p className="ws-text-md font-semibold">Modern Office Building</p>
+                        <p className="ws-text-sm ws-color-muted mt-1">
+                          Located in the financial district with easy access to Union Station
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

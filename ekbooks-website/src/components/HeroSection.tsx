@@ -42,9 +42,11 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
           <div className="ws-media ws-media-rounded">
-            <div className="text-center text-6xl p-12 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg ekbooks-hero-image">
-              <TrendingUp className="w-24 h-24 text-brand-primary mx-auto" />
-            </div>
+            <img
+              src="/images/hero/office-workspace.jpg"
+              alt="Professional accounting office workspace"
+              className="w-full h-full object-cover rounded-2xl shadow-lg"
+            />
           </div>
         </div>
       </div>

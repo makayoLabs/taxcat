@@ -31,9 +31,11 @@ export default function HomePage() {
               </div>
             </div>
             <div className="ws-media ws-media-rounded">
-              <div className="text-center text-6xl p-12 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg taxcat-hero-image">
-                📊
-              </div>
+              <img
+                src="/images/hero/tax-app-hero.jpg"
+                alt="Modern tax filing dashboard on smartphone"
+                className="w-full h-full object-cover rounded-2xl shadow-lg"
+              />
             </div>
           </div>
         </div>

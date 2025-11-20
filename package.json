@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "build": "next build",
+    "build:dev": "vite build --mode development"
     "start": "next start",
     "dev": "next dev",
     "test": "jest --detectOpenHandles",

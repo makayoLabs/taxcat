@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:dev": "vite build --mode development",
     "export": "next build",
     "preview": "npx serve@latest out",
     "start": "next start",
